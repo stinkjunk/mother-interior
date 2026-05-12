@@ -25,7 +25,7 @@ export default function Home() {
           <h1 className="text-xl font-display">Mother Interior</h1>
         </div>
         <nav>
-          <ul className="flex flex-col mt-5 gap-5 items-center font-semibold">
+          <ul className="flex flex-col mt-5 gap-5 max-sm:items-center font-semibold">
             <SimpleDropdown
               topClassName="sm:hidden"
               ulClassName="gap-5 items-center mt-5 font-normal"
