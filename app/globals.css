@@ -123,23 +123,13 @@ body {
 
 /*Bounding Boxes*/
 .bBox {
-  border: 1px solid var(--color-mi-yellow-300);
-  &:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border: 2px solid var(--color-mi-yellow-300);
-    opacity: 0;
-    transition: opacity 0.15s ease-in-out;
-  }
+  border: 2px solid var(--color-mi-yellow-300);
+  opacity: 0;
 }
 
-.bBox:hover:before,
-body:has(.dskHeroLink.Vinyls:hover) .bBox.Vinyls:before,
-body:has(.dskHeroLink.Interior:hover) .bBox.Interior:before {
+.bBox:hover,
+body:has(.dskHeroLink.Vinyls:hover) .bBox.Vinyls,
+body:has(.dskHeroLink.Interior:hover) .bBox.Interior {
   opacity: 1;
 }
 
@@ -147,6 +137,18 @@ body:has(.dskHeroLink.Interior:hover) .bBox.Interior:before {
 body:has(.bBox.Vinyls:hover) .dskHeroLink.Vinyls,
 body:has(.bBox.Interior:hover) .dskHeroLink.Interior {
   text-decoration: underline;
+}
+
+.dskLine {
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+body:has(.dskHeroLink.Vinyls:hover) .dskLine.Vinyls,
+body:has(.bBox.Vinyls:hover) .dskLine.Vinyls,
+body:has(.dskHeroLink.Interior:hover) .dskLine.Interior,
+body:has(.bBox.Interior:hover) .dskLine.Interior {
+  opacity: 1;
 }
 
 /* .dskHeroLink {

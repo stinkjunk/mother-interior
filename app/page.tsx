@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CompositeLogo from "./components/compositelogo";
 import SimpleDropdown from "./components/simpledropdown";
+import LineDrawer from "./components/linedrawer";
 
 export default function Home() {
   return (
@@ -84,6 +85,7 @@ export default function Home() {
           </ul>
         </nav>
       </div>
+      <LineDrawer />
     </>
   );
 }
