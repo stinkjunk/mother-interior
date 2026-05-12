@@ -15,7 +15,26 @@ export default function Home() {
           fill
         ></Image>
       </div>
-      <div className="absolute w-screen h-screen sm:hidden bg-mi-neutral-200/68 mix-blend-lighten"></div>
+      {/* BOUNDING BOX OVERLAY FOR HERO IMAGE - DESKTOP ONLY */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-sm:hidden"
+        style={{
+          width: "max(100vw, calc(100vh * 637 / 478))",
+          aspectRatio: "637/ 478",
+        }}
+      >
+        <Link
+          href="/items?categories=interior"
+          className="absolute bBox Interior"
+          style={{ top: "50%", left: "45%", width: "60%", height: "50%" }}
+        />
+        <Link
+          href="/items?categories=vinyls"
+          className="absolute bBox Vinyls"
+          style={{ top: "30%", left: "25%", width: "35%", height: "30%" }}
+        />
+      </div>
+      <div className="absolute w-screen h-screen sm:hidden bg-mi-neutral-200/68 mix-blend-lighten -z-10"></div>
       <div className="max-sm:h-screen  z-10 flex flex-col max-sm:items-center max-sm:justify-center sm:w-fit sm:ml-10 sm:mt-10 sm:text-mi-neutral-50">
         <div className="max-sm:absolute max-sm:top-20 flex flex-col items-center">
           <CompositeLogo
@@ -38,19 +57,30 @@ export default function Home() {
               ]}
               id="items-dropdown"
             ></SimpleDropdown>
-            <Link href="/items" className="max-sm:hidden">
+            <Link href="/items" className="max-sm:hidden dskHeroLink">
               All items
             </Link>
-            <Link href="/items?categories=vinyls" className="max-sm:hidden">
+            <Link
+              href="/items?categories=vinyls"
+              className="max-sm:hidden dskHeroLink Vinyls"
+            >
               Vinyls
             </Link>
-            <Link href="/items?categories=interior" className="max-sm:hidden">
+            <Link
+              href="/items?categories=interior"
+              className="max-sm:hidden dskHeroLink Interior"
+            >
               Interior
             </Link>
-            <Link href="/items?categories=blogposts" className="max-sm:hidden">
+            <Link
+              href="/items?categories=blogposts"
+              className="max-sm:hidden dskHeroLink"
+            >
               Blog
             </Link>
-            <Link href="/about">About</Link>
+            <Link href="/about" className="dskHeroLink">
+              About
+            </Link>
           </ul>
         </nav>
       </div>
