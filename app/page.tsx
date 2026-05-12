@@ -7,7 +7,7 @@ import LineDrawer from "./components/linedrawer";
 export default function Home() {
   return (
     <>
-      <div className="h-screen w-screen absolute">
+      <div className="h-screen w-screen absolute frontPage">
         <Image
           className="h-full object-cover -z-10"
           src="/media/heroimg-placeholder.jpg"

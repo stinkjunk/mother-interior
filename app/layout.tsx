@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import LangPlayerButton from "./components/menu/lang-playerbutton";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,6 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col overflow-hidden">
+        <header className="absolute w-screen top-0 z-50">
+          <LangPlayerButton />
+        </header>
         {children}
       </body>
     </html>
