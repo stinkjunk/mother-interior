@@ -4,6 +4,7 @@ interface CompositeLogoProps {
   iCol?: string;
   iTittleCol?: string;
   className?: string;
+  fillAll?: string;
 }
 
 export default function CompositeLogo({
@@ -12,7 +13,13 @@ export default function CompositeLogo({
   iCol = "fill-mi-blue-700",
   iTittleCol = "fill-mi-blue-700",
   className = "",
+  fillAll = "",
 }: CompositeLogoProps) {
+  if (fillAll) {
+    mCol = fillAll;
+    iCol = fillAll;
+    iTittleCol = fillAll;
+  }
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

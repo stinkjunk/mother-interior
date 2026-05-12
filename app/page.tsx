@@ -15,22 +15,19 @@ export default function Home() {
           fill
         ></Image>
       </div>
-      <div className="absolute w-screen h-screen max-sm:bg-mi-neutral-200/68 max-sm:mix-blend-lighten"></div>
-      <div className="h-screen w-screen z-10 flex flex-col items-center justify-center">
-        <div className="absolute top-20 w-screen flex flex-col items-center">
+      <div className="absolute w-screen h-screen sm:hidden bg-mi-neutral-200/68 mix-blend-lighten"></div>
+      <div className="max-sm:h-screen  z-10 flex flex-col max-sm:items-center max-sm:justify-center sm:w-fit sm:ml-10 sm:mt-10 sm:text-mi-neutral-50">
+        <div className="max-sm:absolute max-sm:top-20 flex flex-col items-center">
           <CompositeLogo
             className="w-22 h-22 mb-1"
-            // TEST:
-            // bgCol="fill-mi-mint-100"
-            // mCol="fill-mi-tomato-500"
-            // iCol="fill-mi-mint-500"
-            // iTittleCol="fill-mi-yellow-500"
+            fillAll="sm:fill-mi-yellow-300 fill-mi-blue-700"
           ></CompositeLogo>
-          <h1 className="uppercase text-xl">Mother Interior</h1>
+          <h1 className="text-xl font-display">Mother Interior</h1>
         </div>
         <nav>
           <ul className="flex flex-col mt-5 gap-5 items-center font-semibold">
             <SimpleDropdown
+              topClassName="sm:hidden"
               ulClassName="gap-5 items-center mt-5 font-normal"
               title="Items"
               titleURL="/items"
@@ -41,6 +38,18 @@ export default function Home() {
               ]}
               id="items-dropdown"
             ></SimpleDropdown>
+            <Link href="/items" className="max-sm:hidden">
+              All items
+            </Link>
+            <Link href="/items?categories=vinyls" className="max-sm:hidden">
+              Vinyls
+            </Link>
+            <Link href="/items?categories=interior" className="max-sm:hidden">
+              Interior
+            </Link>
+            <Link href="/items?categories=blogposts" className="max-sm:hidden">
+              Blog
+            </Link>
             <Link href="/about">About</Link>
           </ul>
         </nav>
