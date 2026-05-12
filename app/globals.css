@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FDEFE4;
-  --foreground: #1E0E02;
+  --background: #fdefe4;
+  --foreground: #1e0e02;
   --font-dm-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-cal-sans: "Cal Sans", var(--font-dm-sans);
   --font-lexend-zetta: "Lexend Zetta", var(--font-dm-sans);
@@ -13,6 +13,73 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-dm-sans);
+}
+
+@theme inline {
+  /* neutral */
+  --color-mi-neutral-50: #fefaf7;
+  --color-mi-neutral-100: #fdefe4;
+  --color-mi-neutral-200: #f9d0b0;
+  --color-mi-neutral-300: #f5b17c;
+  --color-mi-neutral-400: #f19247;
+  --color-mi-neutral-500: #ee7313;
+  --color-mi-neutral-600: #bb5a0e;
+  --color-mi-neutral-700: #86410a;
+  --color-mi-neutral-800: #522806;
+  --color-mi-neutral-900: #1e0e02;
+  --color-mi-neutral-950: #040200;
+
+  /* tomato */
+  --color-mi-tomato-50: #ffe7e4;
+  --color-mi-tomato-100: #ffd6cf;
+  --color-mi-tomato-200: #ffb2a6;
+  --color-mi-tomato-300: #ff8f7e;
+  --color-mi-tomato-400: #ff6b55;
+  --color-mi-tomato-500: #ff482c;
+  --color-mi-tomato-600: #f32000;
+  --color-mi-tomato-700: #bb1900;
+  --color-mi-tomato-800: #831100;
+  --color-mi-tomato-900: #4b0a00;
+  --color-mi-tomato-950: #2f0600;
+
+  /* blue */
+  --color-mi-blue-50: #bed2ff;
+  --color-mi-blue-100: #aac3ff;
+  --color-mi-blue-200: #81a7ff;
+  --color-mi-blue-300: #588aff;
+  --color-mi-blue-400: #2f6eff;
+  --color-mi-blue-500: #0751ff;
+  --color-mi-blue-600: #0042dd;
+  --color-mi-blue-700: #0036b4;
+  --color-mi-blue-800: #00257c;
+  --color-mi-blue-900: #001444;
+  --color-mi-blue-950: #000c28;
+
+  /* mint */
+  --color-mi-mint-50: #fafdfd;
+  --color-mi-mint-100: #ebf7f7;
+  --color-mi-mint-200: #ceecea;
+  --color-mi-mint-300: #b0e0de;
+  --color-mi-mint-400: #93d5d2;
+  --color-mi-mint-500: #6bc5c1;
+  --color-mi-mint-600: #45b2ad;
+  --color-mi-mint-700: #368a86;
+  --color-mi-mint-800: #26625f;
+  --color-mi-mint-900: #163938;
+  --color-mi-mint-950: #0e2524;
+
+  /* yellow */
+  --color-mi-yellow-50: #fefdf6;
+  --color-mi-yellow-100: #fcfae3;
+  --color-mi-yellow-200: #f8f3be;
+  --color-mi-yellow-300: #f4ec9a;
+  --color-mi-yellow-400: #f0e575;
+  --color-mi-yellow-500: #ecde50;
+  --color-mi-yellow-600: #e7d41d;
+  --color-mi-yellow-700: #b8a914;
+  --color-mi-yellow-800: #857b0e;
+  --color-mi-yellow-900: #534c09;
+  --color-mi-yellow-950: #393506;
 }
 
 body {
