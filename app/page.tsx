@@ -16,8 +16,8 @@ export default function Home() {
         ></Image>
       </div>
       <div className="absolute w-screen h-screen max-sm:bg-mi-neutral-200/68 max-sm:mix-blend-lighten"></div>
-      <div className="h-screen w-screen flex items-center justify-center flex-col z-10">
-        <div className="absolute top-30">
+      <div className="h-screen w-screen z-10 flex flex-col items-center justify-center">
+        <div className="absolute top-20 w-screen flex flex-col items-center">
           <CompositeLogo
             className="w-22 h-22 mb-1"
             // TEST:
@@ -26,22 +26,10 @@ export default function Home() {
             // iCol="fill-mi-mint-500"
             // iTittleCol="fill-mi-yellow-500"
           ></CompositeLogo>
-          <h1 className="hidden">Mother Interior</h1>
+          <h1 className="uppercase text-xl">Mother Interior</h1>
         </div>
         <nav>
           <ul className="flex flex-col mt-5 gap-5 items-center font-semibold">
-            {/* <li>
-              <Link href="/items?categories=interior">Interior</Link>
-            </li>
-            <li>
-              <Link href="/items?categories=vinyls">Vinyls</Link>
-            </li>
-            <li>
-              <Link href="/items?categories=blogposts">Blog</Link>
-            </li>
-            <li>
-              <Link href="/about">About</Link>
-            </li> */}
             <SimpleDropdown
               ulClassName="gap-5 items-center mt-5 font-normal"
               title="Items"
