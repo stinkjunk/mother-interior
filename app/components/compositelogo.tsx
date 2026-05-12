@@ -1,4 +1,4 @@
-interface propsTypes {
+interface CompositeLogoProps {
   bgCol?: string;
   mCol?: string;
   iCol?: string;
@@ -12,7 +12,7 @@ export default function CompositeLogo({
   iCol = "fill-mi-blue-700",
   iTittleCol = "fill-mi-blue-700",
   className = "",
-}: propsTypes) {
+}: CompositeLogoProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
