@@ -7,6 +7,7 @@ interface LineCoords {
   y1: number;
   x2: number;
   y2: number;
+  lineName: string;
 }
 
 export default function LineDrawer() {
@@ -28,10 +29,12 @@ export default function LineDrawer() {
       const pairs: [string, string, string][] = [
         [".bBox.Vinyls", ".dskHeroLink.Vinyls", "Vinyls"],
         [".bBox.Interior", ".dskHeroLink.Interior", "Interior"],
+        [".bBox.Vinyls", ".dskHeroLink.allItems", "allItemsVinyls"],
+        [".bBox.Interior", ".dskHeroLink.allItems", "allItemsInterior"],
       ];
 
       setLines(
-        pairs.flatMap(([boxSel, linkSel]) => {
+        pairs.flatMap(([boxSel, linkSel, lineName]) => {
           const box = document.querySelector(boxSel);
           const link = document.querySelector(linkSel);
           if (!box || !link) return [];
@@ -44,6 +47,7 @@ export default function LineDrawer() {
               y1: b.top + b.height / 2,
               x2: l.right,
               y2: l.top + l.height / 2,
+              lineName,
             },
           ];
         })
@@ -76,7 +80,7 @@ export default function LineDrawer() {
           x2={l.x2}
           y2={l.y2}
           strokeWidth={1}
-          className={`stroke-mi-yellow-300 dskLine ${i === 0 ? "Vinyls" : "Interior"}`}
+          className={`stroke-mi-yellow-300 dskLine ${l.lineName}`}
         />
       ))}
     </svg>

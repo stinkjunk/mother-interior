@@ -58,7 +58,10 @@ export default function Home() {
               ]}
               id="items-dropdown"
             ></SimpleDropdown>
-            <Link href="/items" className="max-sm:hidden dskHeroLink sm:pr-5">
+            <Link
+              href="/items"
+              className="max-sm:hidden dskHeroLink allItems sm:pr-5"
+            >
               All items
             </Link>
             <Link

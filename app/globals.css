@@ -129,7 +129,8 @@ body {
 
 .bBox:hover,
 body:has(.dskHeroLink.Vinyls:hover) .bBox.Vinyls,
-body:has(.dskHeroLink.Interior:hover) .bBox.Interior {
+body:has(.dskHeroLink.Interior:hover) .bBox.Interior,
+body:has(.dskHeroLink.allItems:hover) .bBox {
   opacity: 1;
 }
 
@@ -148,6 +149,11 @@ body:has(.dskHeroLink.Vinyls:hover) .dskLine.Vinyls,
 body:has(.bBox.Vinyls:hover) .dskLine.Vinyls,
 body:has(.dskHeroLink.Interior:hover) .dskLine.Interior,
 body:has(.bBox.Interior:hover) .dskLine.Interior {
+  opacity: 1;
+}
+
+body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsVinyls,
+body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
   opacity: 1;
 }
 
