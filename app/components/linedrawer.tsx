@@ -1,6 +1,5 @@
 "use client";
 
-// import { useMediaQuery } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 
 interface LineCoords {

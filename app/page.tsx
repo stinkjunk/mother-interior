@@ -45,7 +45,7 @@ export default function Home() {
           <h1 className="text-xl font-display">Mother Interior</h1>
         </div>
         <nav>
-          <ul className="flex flex-col mt-5 gap-5 max-sm:items-center font-semibold">
+          <ul className="flex flex-col mt-5 gap-5 max-sm:items-center items-start font-semibold">
             <SimpleDropdown
               topClassName="sm:hidden"
               ulClassName="gap-5 items-center mt-5 font-normal"
@@ -58,28 +58,28 @@ export default function Home() {
               ]}
               id="items-dropdown"
             ></SimpleDropdown>
-            <Link href="/items" className="max-sm:hidden dskHeroLink">
+            <Link href="/items" className="max-sm:hidden dskHeroLink sm:pr-5">
               All items
             </Link>
             <Link
               href="/items?categories=vinyls"
-              className="max-sm:hidden dskHeroLink Vinyls"
+              className="max-sm:hidden dskHeroLink Vinyls sm:pr-5"
             >
               Vinyls
             </Link>
             <Link
               href="/items?categories=interior"
-              className="max-sm:hidden dskHeroLink Interior"
+              className="max-sm:hidden dskHeroLink Interior sm:pr-5"
             >
               Interior
             </Link>
             <Link
               href="/items?categories=blogposts"
-              className="max-sm:hidden dskHeroLink"
+              className="max-sm:hidden dskHeroLink sm:pr-5"
             >
               Blog
             </Link>
-            <Link href="/about" className="dskHeroLink">
+            <Link href="/about" className="dskHeroLink sm:pr-5">
               About
             </Link>
           </ul>
