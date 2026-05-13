@@ -33,10 +33,10 @@ export default function NotFound() {
       <h1 className="text-2xl font-semibold">{t("title")}</h1>
       <p className="flex flex-col justify-center text-center">
         {t("description")}{" "}
-        <span className="h-13 relative">
+        <span className="h-13 relative translate-[-2%]">
           <span
             className={
-              "font-display text-3xl c404 absolute bottom-0 translate-x-[-150%]"
+              "font-display text-3xl c404 absolute w-6 bottom-0 translate-x-[-150%]"
               // + fourOhFourCols[(countdown + 6) % 6]
             }
           >
