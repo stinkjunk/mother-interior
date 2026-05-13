@@ -1,26 +1,30 @@
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
+
 // https://nextjs.org/docs/app/api-reference/functions/headers
 
 import { getRequestConfig } from "next-intl/server";
 
-// async function detectLocale() {
-//   const requestHeaders = await headers();
-//   const acceptLanguage = requestHeaders.get("accept-language") ?? "";
-//   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Language
+async function detectLocale() {
+  const cookieStore = await cookies();
+  const stored = cookieStore.get("locale")?.value;
+  if (stored === "da" || stored === "en") return stored;
 
-//   const primaryLanguage = acceptLanguage.split(",")[0]?.trim().toLowerCase();
-//   // console.log("Detected primary language:", primaryLanguage);
+  const requestHeaders = await headers();
+  const acceptLanguage = requestHeaders.get("accept-language") ?? "";
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Language
 
-//   if (primaryLanguage?.startsWith("da")) {
-//     return "da";
-//   }
+  const primaryLanguage = acceptLanguage.split(",")[0]?.trim().toLowerCase();
+  // console.log("Detected primary language:", primaryLanguage);
 
-//   return "en";
-// }
+  if (primaryLanguage?.startsWith("da")) {
+    return "da";
+  }
+
+  return "en";
+}
 
 export default getRequestConfig(async () => {
-  // const locale = await detectLocale();
-  const locale = "da";
+  const locale = await detectLocale();
 
   return {
     locale,
