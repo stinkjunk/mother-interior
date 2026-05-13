@@ -1,17 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import CompositeLogo from "./components/compositelogo";
 import SimpleDropdown from "./components/simpledropdown";
 import LineDrawer from "./components/linedrawer";
 
 export default function Home() {
+  const t = useTranslations("HomePage");
+
   return (
     <>
       <div className="h-screen w-screen absolute frontPage">
         <Image
           className="h-full object-cover -z-10"
           src="/media/heroimg-placeholder.jpg"
-          alt="Mother Interior"
+          alt={t("heroImageAlt")}
           priority
           fill
         ></Image>
@@ -26,11 +29,13 @@ export default function Home() {
       >
         <Link
           href="/items?categories=interior"
+          aria-labelledby="interior-link"
           className="absolute bBox Interior"
           style={{ top: "50%", left: "45%", width: "60%", height: "50%" }}
         />
         <Link
           href="/items?categories=vinyls"
+          aria-labelledby="vinyls-link"
           className="absolute bBox Vinyls"
           style={{ top: "30%", left: "25%", width: "35%", height: "30%" }}
         />
@@ -42,19 +47,22 @@ export default function Home() {
             className="w-22 h-22 mb-1"
             fillAll="sm:fill-mi-yellow-300 fill-mi-blue-700"
           ></CompositeLogo>
-          <h1 className="text-xl font-display">Mother Interior</h1>
+          <h1 className="text-xl font-display">{t("brandName")}</h1>
         </div>
         <nav>
           <ul className="flex flex-col mt-5 gap-5 max-sm:items-center items-start font-semibold">
             <SimpleDropdown
               topClassName="sm:hidden"
               ulClassName="gap-5 items-center mt-5 font-normal"
-              title="Items"
+              title={t("nav.items")}
               titleURL="/items"
               options={[
-                { label: "Interior", url: "/items?categories=interior" },
-                { label: "Vinyls", url: "/items?categories=vinyls" },
-                { label: "Blog", url: "/items?categories=blogposts" },
+                {
+                  label: t("nav.interior"),
+                  url: "/items?categories=interior",
+                },
+                { label: t("nav.vinyls"), url: "/items?categories=vinyls" },
+                { label: t("nav.blog"), url: "/items?categories=blogposts" },
               ]}
               id="items-dropdown"
             ></SimpleDropdown>
@@ -62,28 +70,30 @@ export default function Home() {
               href="/items"
               className="max-sm:hidden dskHeroLink allItems sm:pr-5"
             >
-              All items
+              {t("nav.allItems")}
             </Link>
             <Link
               href="/items?categories=vinyls"
               className="max-sm:hidden dskHeroLink Vinyls sm:pr-5"
+              id="vinyls-link"
             >
-              Vinyls
+              {t("nav.vinyls")}
             </Link>
             <Link
               href="/items?categories=interior"
               className="max-sm:hidden dskHeroLink Interior sm:pr-5"
+              id="interior-link"
             >
-              Interior
+              {t("nav.interior")}
             </Link>
             <Link
               href="/items?categories=blogposts"
               className="max-sm:hidden dskHeroLink sm:pr-5"
             >
-              Blog
+              {t("nav.blog")}
             </Link>
             <Link href="/about" className="dskHeroLink sm:pr-5">
-              About
+              {t("nav.about")}
             </Link>
           </ul>
         </nav>
