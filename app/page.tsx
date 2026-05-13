@@ -28,13 +28,13 @@ export default function Home() {
         }}
       >
         <Link
-          href="/items?categories=interior"
+          href="/items?category=interior"
           aria-labelledby="interior-link"
           className="absolute bBox Interior"
           style={{ top: "50%", left: "45%", width: "60%", height: "50%" }}
         />
         <Link
-          href="/items?categories=vinyls"
+          href="/items?category=vinyls"
           aria-labelledby="vinyls-link"
           className="absolute bBox Vinyls"
           style={{ top: "30%", left: "25%", width: "35%", height: "30%" }}
@@ -59,10 +59,10 @@ export default function Home() {
               options={[
                 {
                   label: t("nav.interior"),
-                  url: "/items?categories=interior",
+                  url: "/items?category=interior",
                 },
-                { label: t("nav.vinyls"), url: "/items?categories=vinyls" },
-                { label: t("nav.blog"), url: "/items?categories=blogposts" },
+                { label: t("nav.vinyls"), url: "/items?category=vinyls" },
+                { label: t("nav.blog"), url: "/items?category=blogposts" },
               ]}
               id="items-dropdown"
             ></SimpleDropdown>
@@ -73,21 +73,21 @@ export default function Home() {
               {t("nav.allItems")}
             </Link>
             <Link
-              href="/items?categories=vinyls"
+              href="/items?category=vinyls"
               className="max-sm:hidden dskHeroLink Vinyls sm:pr-5"
               id="vinyls-link"
             >
               {t("nav.vinyls")}
             </Link>
             <Link
-              href="/items?categories=interior"
+              href="/items?category=interior"
               className="max-sm:hidden dskHeroLink Interior sm:pr-5"
               id="interior-link"
             >
               {t("nav.interior")}
             </Link>
             <Link
-              href="/items?categories=blogposts"
+              href="/items?category=blogposts"
               className="max-sm:hidden dskHeroLink sm:pr-5"
             >
               {t("nav.blog")}
