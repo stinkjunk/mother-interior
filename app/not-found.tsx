@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 export default function NotFound() {
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(6);
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown((prev) => prev - 1);
@@ -21,16 +21,17 @@ export default function NotFound() {
     "text-mi-yellow-500",
     "text-mi-mint-500",
     "text-mi-neutral-500",
+    "text-mi-tomato-300",
   ];
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center gap-4 px-10 c404">
+    <div className="w-screen h-screen flex flex-col items-center justify-center gap-4 px-8 c404">
       <p className="text-8xl font-bold font-display tras">
-        <span className={fourOhFourCols[(countdown + 0) % 5]}>4</span>
-        <span className={fourOhFourCols[(countdown + 1) % 5]}>0</span>
-        <span className={fourOhFourCols[(countdown + 2) % 5]}>4</span>
+        <span className={fourOhFourCols[(countdown + 0) % 6]}>4</span>
+        <span className={fourOhFourCols[(countdown + 1) % 6]}>0</span>
+        <span className={fourOhFourCols[(countdown + 2) % 6]}>4</span>
       </p>
       <h1 className="text-2xl font-semibold">{t("title")}</h1>
-      <p className="text-lg">
+      <p>
         {t("description")} <span className="font-bold">{countdown}</span>{" "}
         {t("seconds")}
       </p>
