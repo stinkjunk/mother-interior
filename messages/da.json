@@ -25,5 +25,10 @@
     "Player": {
       "openWidgetAriaLabel": "Åbn SoundCloud-widget"
     }
+  },
+  "NotFound": {
+    "title": "Siden blev ikke fundet",
+    "description": "Beklager, siden du leder efter kunne ikke findes. Du omdirigeres tilbage om",
+    "seconds": " sekunder."
   }
 }

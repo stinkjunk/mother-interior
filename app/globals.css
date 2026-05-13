@@ -188,3 +188,9 @@ body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
     transform: translateY(-20%);
   }
 }
+
+/*404 page*/
+
+.c404 span {
+  transition: color 0.2s ease-in-out;
+}

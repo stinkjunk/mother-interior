@@ -25,5 +25,10 @@
     "Player": {
       "openWidgetAriaLabel": "Open SoundCloud Widget"
     }
+  },
+  "NotFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you're looking for could not be found. You will be redirected back in",
+    "seconds": " seconds."
   }
 }
