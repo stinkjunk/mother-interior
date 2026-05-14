@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function About() {
   return (
-    <div className="h-screen">
+    <div className="h-dvh">
       <div className="flex h-full items-center justify-center pt-20 aboutPage">
         <h1 className="text-2xl font-display">About Page</h1>
       </div>

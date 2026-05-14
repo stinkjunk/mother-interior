@@ -67,7 +67,7 @@ export default function LineDrawer() {
         position: "fixed",
         inset: 0,
         width: "100vw",
-        height: "100vh",
+        height: "100dvh",
         pointerEvents: "none",
         zIndex: 20,
       }}

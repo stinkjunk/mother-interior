@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="h-screen w-screen absolute frontPage">
+      <div className="h-dvh w-screen absolute frontPage">
         <Image
           className="h-full object-cover -z-10"
           src="/media/heroimg-placeholder.jpg"
@@ -24,7 +24,7 @@ export default function Home() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-sm:hidden"
         style={{
-          width: "max(100vw, calc(100vh * 637 / 478))",
+          width: "max(100vw, calc(100dvh * 637 / 478))",
           aspectRatio: "637/ 478",
         }}
       >
@@ -41,8 +41,8 @@ export default function Home() {
           style={{ top: "30%", left: "25%", width: "35%", height: "30%" }}
         />
       </div>
-      <div className="absolute w-screen h-screen sm:hidden bg-mi-neutral-200/68 mix-blend-lighten -z-10"></div>
-      <div className="max-sm:h-screen  z-10 flex flex-col max-sm:items-center max-sm:justify-center sm:w-fit sm:ml-10 sm:mt-10 sm:text-mi-neutral-50">
+      <div className="absolute w-screen h-dvh sm:hidden bg-mi-neutral-200/68 mix-blend-lighten -z-10"></div>
+      <div className="max-sm:h-dvh  z-10 flex flex-col max-sm:items-center max-sm:justify-center sm:w-fit sm:ml-10 sm:mt-10 sm:text-mi-neutral-50">
         <div className="max-sm:absolute max-sm:top-20 flex flex-col items-center">
           <CompositeLogo
             className="w-22 h-22 mb-1"
