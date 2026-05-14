@@ -26,7 +26,13 @@
     "vinyls": "Vinyls",
     "interior": "Interior",
     "blog": "Blog",
-    "about": "About"
+    "about": "About",
+    "ToggleMenu": {
+      "openMenuAriaLabel": "Open navigation menu",
+      "closeMenuAriaLabel": "Close navigation menu",
+      "openMenuLabel": "Menu",
+      "closeMenuLabel": "Close"
+    }
   },
   "HomePage": {
     "heroImageAlt": "Mother Interior",

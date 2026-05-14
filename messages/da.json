@@ -26,7 +26,13 @@
     "vinyls": "Vinyler",
     "interior": "Interiør",
     "blog": "Blog",
-    "about": "Om os"
+    "about": "Om os",
+    "ToggleMenu": {
+      "openMenuAriaLabel": "Åbn navigationsmenu",
+      "closeMenuAriaLabel": "Luk navigationsmenu",
+      "openMenuLabel": "Menu",
+      "closeMenuLabel": "Luk"
+    }
   },
   "HomePage": {
     "heroImageAlt": "Mother Interior",

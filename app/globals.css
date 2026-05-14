@@ -94,11 +94,11 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-dm-sans);
   --font-display: var(--font-cal-sans);
   --font-label: var(--font-lexend-zetta);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 }
 
 body {
@@ -200,10 +200,52 @@ body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
   }
 }
 
+/*Nav Menu*/
+
 body:has(.frontPage) .navMenu {
   display: none;
 }
 
+/*Toggle Menu*/
+.menuToggle {
+  position: absolute;
+  top: 0;
+  height: 6.5rem;
+  width: 100vw;
+}
+.menuToggleLayer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.menuToggleBackground {
+  pointer-events: none;
+}
+.menuToggleBackground > div,
+.menuToggleButton > button {
+  height: 2.5rem;
+  width: 5rem;
+  transition: all 0.5s ease-in-out;
+}
+.menuToggleBackground > div {
+  margin-left: auto;
+  background-color: var(--color-mi-neutral-900);
+}
+.menuToggleButton > button {
+  margin-left: auto;
+  color: var(--color-mi-neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menuToggle.menuOpen .menuToggleBackground > div {
+  width: 100%;
+  height: 100%;
+}
+
+/*Lang selection widget*/
 .menuPopup {
   box-sizing: border-box;
 
