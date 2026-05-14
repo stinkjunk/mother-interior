@@ -1,16 +1,4 @@
 {
-  "HomePage": {
-    "heroImageAlt": "Mother Interior",
-    "brandName": "Mother Interior",
-    "nav": {
-      "items": "Opslag",
-      "allItems": "Alle opslag",
-      "vinyls": "Vinyler",
-      "interior": "Interiør",
-      "blog": "Blog",
-      "about": "Om os"
-    }
-  },
   "Metadata": {
     "title": "Mother Interior",
     "description": "Mother Interior er en butik i København for vintage mobler og vinylplader. Vi brænder for at kuratere en unik samling af tidløse objekter, der forener stil og funktion. Vores haådplukkede udvalg rummer mid-century modern møbler, retro boligdetaljer og et bredt udvalg af vinyl pa tværs af genrer. Uanset om du er designentusiast eller musikelsker, tilbyder Mother Interior et udvalg, der hylder fortidens skønhed og tilføjer karakter til dit hjem."
@@ -33,5 +21,23 @@
   },
   "Navigation": {
     "home": "Hjem"
+  },
+  "HomePage": {
+    "heroImageAlt": "Mother Interior",
+    "brandName": "Mother Interior",
+    "nav": {
+      "items": "Opslag",
+      "allItems": "Alle opslag",
+      "vinyls": "Vinyler",
+      "interior": "Interiør",
+      "blog": "Blog",
+      "about": "Om os"
+    }
+  },
+  "ItemsPage": {
+    "title": "Opslag | Mother Interior"
+  },
+  "AboutPage": {
+    "title": "Om os | Mother Interior"
   }
 }
