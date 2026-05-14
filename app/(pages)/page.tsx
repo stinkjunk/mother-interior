@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import CompositeLogo from "../components/compositelogo";
 import SimpleDropdown from "../components/simpledropdown";
-import LineDrawer from "../components/linedrawer";
+import LineDrawer from "../components/homepage/linedrawer";
 
 export default function Home() {
   const t = useTranslations("HomePage");
