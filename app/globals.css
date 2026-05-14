@@ -448,7 +448,7 @@ body:has(.itemsPage) .navLogoITittleCol {
    .altColor — timer‑driven menu button / front‑page highlight
    ============================================================ */
 
-.altColor {
+body:not(:has(.frontPage)) .altColor {
   /* The color when the menu is fully closed (or idle) */
   --button-base: var(--foreground);
 
