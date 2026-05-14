@@ -459,12 +459,12 @@ body:not(:has(.frontPage)) .altColor {
 
   color: color-mix(
     in srgb,
-    var(--color-mi-tomato-50) calc(var(--button-progress) * 100%),
+    var(--color-on-interior) calc(var(--button-progress) * 100%),
     var(--button-base)
   );
   fill: color-mix(
     in srgb,
-    var(--color-mi-tomato-50) calc(var(--button-progress) * 100%),
+    var(--color-on-interior) calc(var(--button-progress) * 100%),
     var(--button-base)
   );
 }
@@ -472,8 +472,8 @@ body:not(:has(.frontPage)) .altColor {
 /* Front page: always solid target color (menu is hidden, no animation) */
 @media (min-width: 640px) {
   body:has(.frontPage) .altColor {
-    color: var(--color-on-items);
-    fill: var(--color-on-items);
+    color: var(--color-mi-neutral-50);
+    fill: var(--color-mi-neutral-50);
   }
 }
 
