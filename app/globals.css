@@ -230,6 +230,12 @@ body:has(.frontPage) .navMenu {
   width: 100vw;
 }
 
+@media (min-width: 640px) {
+  .menuToggle {
+    display: none;
+  }
+}
+
 .menuToggleLayer {
   position: absolute;
   inset: 0;
@@ -341,7 +347,7 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
 }
 
 /* Shared link styles — hidden and non-interactive at rest */
-@media (max-width: 639px) {
+@media (max-width: 640px) {
   .navMenu li {
     opacity: var(--link-progress, 0);
     transform: translateY(calc(-100% * (1 - var(--link-progress, 0))));
