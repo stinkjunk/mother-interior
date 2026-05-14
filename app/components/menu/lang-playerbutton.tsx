@@ -33,7 +33,7 @@ export default function LangPlayerButton() {
           <Menu.Positioner className="z-80">
             <Menu.Popup className="menuPopup">
               <Menu.Item
-                className="cursor-pointer font-label altColor mt-2 max-sm:p-2"
+                className="langMenuPopupItem cursor-pointer font-label mt-2 max-sm:py-2 max-sm:px-4"
                 aria-label={t("LangSelect.otherLocaleAriaLabel")}
                 onClick={() => handleLocaleSwitch(otherLocale)}
               >
