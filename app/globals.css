@@ -328,6 +328,26 @@ body:has(.aboutPage) .menuToggleBackground > button {
     --t: 0;
   }
 }
+/*Gør mobile sider klikbare:*/
+body:has(.menuToggle[data-state="closed"]) header {
+  pointer-events: none;
+}
+body:has(.menuToggle[data-state="closed"]) .menuToggle,
+body:has(.menuToggle[data-state="closed"]) .lang-playerButton,
+body:has(.menuToggle[data-state="closed"]) .navLogoLink {
+  pointer-events: auto;
+}
+/* body:has(.menuToggle[data-state="closed"]) {
+  header {
+    pointer-events: none;
+  }
+  .navMenu {
+    pointer-events: auto;
+  }
+  .lang-playerButton {
+    pointer-events: auto;
+  }
+} */
 
 body:has(.menuToggle[data-interacted="true"][data-state="open"]) {
   animation: masterOpen var(--menuOpenTime) ease forwards;
