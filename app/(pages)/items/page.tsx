@@ -10,8 +10,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Items() {
   return (
-    <div className="flex h-screen items-center justify-center sm:pt-20 itemsPage">
-      <h1 className="text-2xl font-display">Items Page</h1>
+    <div className="h-screen">
+      <div className="flex h-full items-center justify-center pt-20 itemsPage">
+        <h1 className="text-2xl font-display">Items Page</h1>
+      </div>
     </div>
   );
 }
