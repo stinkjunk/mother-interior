@@ -322,13 +322,15 @@ body:has(.aboutPage) .menuToggleBackground > button {
   }
 }
 /*Gør mobile sider klikbare:*/
-body:has(.menuToggle[data-state="closed"]) header {
-  pointer-events: none;
-}
-body:has(.menuToggle[data-state="closed"]) .menuToggle,
-body:has(.menuToggle[data-state="closed"]) .lang-playerButton,
-body:has(.menuToggle[data-state="closed"]) .navLogoLink {
-  pointer-events: auto;
+@media (max-width: 640) {
+  body:has(.menuToggle[data-state="closed"]) header {
+    pointer-events: none;
+  }
+  body:has(.menuToggle[data-state="closed"]) .menuToggle,
+  body:has(.menuToggle[data-state="closed"]) .lang-playerButton,
+  body:has(.menuToggle[data-state="closed"]) .navLogoLink {
+    pointer-events: auto;
+  }
 }
 /* body:has(.menuToggle[data-state="closed"]) {
   header {
@@ -464,25 +466,27 @@ body:has(.itemsPage) .navLogoITittleCol {
 
 /*Lang/Playerbutton*/
 
-body:not(:has(.frontPage)) .altColor {
-  /* The color when the menu is fully closed (or idle) */
-  --button-base: var(--foreground);
+@media (max-width: 640px) {
+  body:not(:has(.frontPage)) .altColor {
+    /* The color when the menu is fully closed (or idle) */
+    --button-base: var(--foreground);
 
-  /* Progress synced with the menu animation:
+    /* Progress synced with the menu animation:
      starts after the background expansion (slot 1 → 16.666%)
      and finishes at slot 2 (33.333%) */
-  --button-progress: clamp(0, var(--t) / var(--slot), 1);
+    --button-progress: clamp(0, var(--t) / var(--slot), 1);
 
-  color: color-mix(
-    in srgb,
-    var(--color-on-interior) calc(var(--button-progress) * 100%),
-    var(--button-base)
-  );
-  fill: color-mix(
-    in srgb,
-    var(--color-on-interior) calc(var(--button-progress) * 100%),
-    var(--button-base)
-  );
+    color: color-mix(
+      in srgb,
+      var(--color-on-interior) calc(var(--button-progress) * 100%),
+      var(--button-base)
+    );
+    fill: color-mix(
+      in srgb,
+      var(--color-on-interior) calc(var(--button-progress) * 100%),
+      var(--button-base)
+    );
+  }
 }
 
 .langMenuPopupItem {
