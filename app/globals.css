@@ -412,6 +412,38 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   opacity: 0;
   transform: translateY(-20%);
 }
+
+/*Nav Logo*/
+
+.navLogoMCol,
+.navLogoICol,
+.navLogoITittleCol {
+  transition: all 0.2s ease-in-out;
+  fill: var(--color-mi-blue-700);
+}
+body:has(.itemsPage) .navLogoMCol,
+body:has(.itemsPage) .navLogoICol,
+body:has(.itemsPage) .navLogoITittleCol {
+  stroke-width: 1px;
+  stroke: var(--color-mi-neutral-900);
+}
+/* .navLogoBgCol {
+  fill: var(--color-mi-blue-700);
+} */
+
+body:has(.itemsPage) .navLogoMCol {
+  fill: var(--color-interior);
+  /* fill: var(--color-mi-tomato-500); */
+}
+body:has(.itemsPage) .navLogoICol {
+  fill: var(--color-vinyls);
+  /* fill: var(--color-mi-yellow-500); */
+}
+body:has(.itemsPage) .navLogoITittleCol {
+  fill: var(--color-blogposts);
+  /* fill: var(--color-mi-mint-600); */
+}
+
 /*404 page*/
 
 .c404 span {
