@@ -240,7 +240,7 @@ body:has(.frontPage) .navMenu {
   align-items: center;
   justify-content: center;
 }
-.menuToggle.menuOpen .menuToggleBackground > div {
+.menuToggle[data-state="open"] .menuToggleBackground > div {
   width: 100%;
   height: 100%;
 }

@@ -8,7 +8,8 @@ export default function ToggleMenu({ className }: { className?: string }) {
   const t = useTranslations("Navigation.ToggleMenu");
   return (
     <div
-      className={`mediaConditional menuToggle ${isOpen ? "menuOpen" : ""} font-label ${className}`}
+      className={`mediaConditional menuToggle font-label ${className}`}
+      data-state={isOpen ? "open" : "closed"}
     >
       <div className="menuToggleLayer menuToggleBackground">
         <div></div>
