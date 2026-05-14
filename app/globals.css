@@ -179,10 +179,10 @@ body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
 }
 
 /*Conditional styling af front page header*/
-.altColor {
+/* .altColor {
   color: var(--color-mi-neutral-900);
   fill: var(--color-mi-neutral-900);
-}
+} */
 
 body:has(.itemsPage) .navMenu .itemsLink {
   text-decoration: underline;
@@ -208,7 +208,6 @@ body:has(.aboutPage) .navMenu .aboutLink {
     color: var(--color-mi-neutral-50);
     fill: var(--color-mi-neutral-50);
   }
-
   .mediaConditional > *:not(.desktopHandler) {
     display: none;
   }
@@ -442,6 +441,40 @@ body:has(.itemsPage) .navLogoICol {
 body:has(.itemsPage) .navLogoITittleCol {
   fill: var(--color-blogposts);
   /* fill: var(--color-mi-mint-600); */
+}
+
+/*Lang/Playerbutton*/
+/* ============================================================
+   .altColor — timer‑driven menu button / front‑page highlight
+   ============================================================ */
+
+.altColor {
+  /* The color when the menu is fully closed (or idle) */
+  --button-base: var(--foreground);
+
+  /* Progress synced with the menu animation:
+     starts after the background expansion (slot 1 → 16.666%)
+     and finishes at slot 2 (33.333%) */
+  --button-progress: clamp(0, var(--t) / var(--slot), 1);
+
+  color: color-mix(
+    in srgb,
+    var(--color-mi-tomato-50) calc(var(--button-progress) * 100%),
+    var(--button-base)
+  );
+  fill: color-mix(
+    in srgb,
+    var(--color-mi-tomato-50) calc(var(--button-progress) * 100%),
+    var(--button-base)
+  );
+}
+
+/* Front page: always solid target color (menu is hidden, no animation) */
+@media (min-width: 640px) {
+  body:has(.frontPage) .altColor {
+    color: var(--color-on-items);
+    fill: var(--color-on-items);
+  }
 }
 
 /*404 page*/
