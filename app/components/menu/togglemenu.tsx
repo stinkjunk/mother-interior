@@ -1,10 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 export default function ToggleMenu({ className }: { className?: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === "/") {
+      setIsOpen(false);
+    }
+  }, [pathname]);
+
   const [hasInteracted, setHasInteracted] = useState(false);
   const t = useTranslations("Navigation.ToggleMenu");
   return (
