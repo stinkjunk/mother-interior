@@ -195,6 +195,9 @@ body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
   body:has(.aboutPage) .navMenu .aboutLink {
     text-decoration: underline;
   }
+  .mediaConditional > *:not(.desktopHandler) {
+    display: none;
+  }
 }
 
 body:has(.frontPage) .navMenu {
