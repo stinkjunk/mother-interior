@@ -2,17 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function ToggleMenu({ className }: { className?: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (pathname === "/") {
-      setIsOpen(false);
-    }
-  }, [pathname]);
+    setIsOpen(false);
+  }, [pathname, searchParams.toString()]);
 
   const [hasInteracted, setHasInteracted] = useState(false);
   const t = useTranslations("Navigation.ToggleMenu");
