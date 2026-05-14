@@ -250,12 +250,12 @@ body:has(.frontPage) .navMenu {
   --expandedColor: var(--color-on-items);
 }
 
-body:has(.aboutPage) .menuToggleBackground > div {
+/* body:has(.aboutPage) .menuToggleBackground > div {
   --expandedColor: var(--color-about);
 }
 body:has(.aboutPage) .menuToggleBackground > button {
   --expandedColor: var(--color-on-about);
-}
+} */
 
 .menuToggleBackground > div {
   margin-left: auto;
