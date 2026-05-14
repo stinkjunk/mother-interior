@@ -20,19 +20,17 @@
     "seconds": " sekunder."
   },
   "Navigation": {
-    "home": "Hjem"
+    "home": "Hjem",
+    "items": "Opslag",
+    "allItems": "Alle opslag",
+    "vinyls": "Vinyler",
+    "interior": "Interiør",
+    "blog": "Blog",
+    "about": "Om os"
   },
   "HomePage": {
     "heroImageAlt": "Mother Interior",
-    "brandName": "Mother Interior",
-    "nav": {
-      "items": "Opslag",
-      "allItems": "Alle opslag",
-      "vinyls": "Vinyler",
-      "interior": "Interiør",
-      "blog": "Blog",
-      "about": "Om os"
-    }
+    "brandName": "Mother Interior"
   },
   "ItemsPage": {
     "title": "Opslag | Mother Interior"

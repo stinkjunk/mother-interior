@@ -7,6 +7,7 @@ import LineDrawer from "../components/homepage/linedrawer";
 
 export default function Home() {
   const t = useTranslations("HomePage");
+  const nav = useTranslations("Navigation");
 
   return (
     <>
@@ -54,15 +55,15 @@ export default function Home() {
             <SimpleDropdown
               topClassName="sm:hidden"
               ulClassName="gap-5 items-center mt-5 font-normal"
-              title={t("nav.items")}
+              title={nav("items")}
               titleURL="/items"
               options={[
                 {
-                  label: t("nav.interior"),
+                  label: nav("interior"),
                   url: "/items?category=interior",
                 },
-                { label: t("nav.vinyls"), url: "/items?category=vinyls" },
-                { label: t("nav.blog"), url: "/items?category=blogposts" },
+                { label: nav("vinyls"), url: "/items?category=vinyls" },
+                { label: nav("blog"), url: "/items?category=blogposts" },
               ]}
               id="items-dropdown"
             ></SimpleDropdown>
@@ -70,30 +71,30 @@ export default function Home() {
               href="/items"
               className="max-sm:hidden dskHeroLink allItems sm:pr-5"
             >
-              {t("nav.allItems")}
+              {nav("allItems")}
             </Link>
             <Link
               href="/items?category=vinyls"
               className="max-sm:hidden dskHeroLink Vinyls sm:pr-5"
               id="vinyls-link"
             >
-              {t("nav.vinyls")}
+              {nav("vinyls")}
             </Link>
             <Link
               href="/items?category=interior"
               className="max-sm:hidden dskHeroLink Interior sm:pr-5"
               id="interior-link"
             >
-              {t("nav.interior")}
+              {nav("interior")}
             </Link>
             <Link
               href="/items?category=blogposts"
               className="max-sm:hidden dskHeroLink sm:pr-5"
             >
-              {t("nav.blog")}
+              {nav("blog")}
             </Link>
             <Link href="/about" className="dskHeroLink sm:pr-5">
-              {t("nav.about")}
+              {nav("about")}
             </Link>
           </ul>
         </nav>

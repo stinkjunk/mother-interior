@@ -20,19 +20,17 @@
     "seconds": " seconds."
   },
   "Navigation": {
-    "home": "Home"
+    "home": "Home",
+    "items": "Items",
+    "allItems": "All items",
+    "vinyls": "Vinyls",
+    "interior": "Interior",
+    "blog": "Blog",
+    "about": "About"
   },
   "HomePage": {
     "heroImageAlt": "Mother Interior",
-    "brandName": "Mother Interior",
-    "nav": {
-      "items": "Items",
-      "allItems": "All items",
-      "vinyls": "Vinyls",
-      "interior": "Interior",
-      "blog": "Blog",
-      "about": "About"
-    }
+    "brandName": "Mother Interior"
   },
   "ItemsPage": {
     "title": "Items | Mother Interior"
