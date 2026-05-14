@@ -295,7 +295,7 @@ body:has(.aboutPage) .menuToggleBackground > button {
    ============================================================ */
 
 :root {
-  --menuOpenTime: 1.5s;
+  --menuOpenTime: 0.8s;
   --slot: 16.666; /* one sixth — change this if you add/remove elements */
 }
 
