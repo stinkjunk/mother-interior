@@ -184,17 +184,31 @@ body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
   fill: var(--color-mi-neutral-900);
 }
 
+body:has(.itemsPage) .navMenu .itemsLink {
+  text-decoration: underline;
+}
+body:has(.aboutPage) .navMenu .aboutLink {
+  text-decoration: underline;
+}
+body:has(.interiorFilter) .navMenu .interiorLink {
+  text-decoration: underline;
+}
+body:has(.vinylsFilter) .navMenu .vinylsLink {
+  text-decoration: underline;
+}
+body:has(.blogFilter) .navMenu .blogLink {
+  text-decoration: underline;
+}
+body:has(.aboutPage) .navMenu .aboutLink {
+  text-decoration: underline;
+}
+
 @media (min-width: 640px) {
   body:has(.frontPage) .altColor {
     color: var(--color-mi-neutral-50);
     fill: var(--color-mi-neutral-50);
   }
-  body:has(.itemsPage) .navMenu .itemsLink {
-    text-decoration: underline;
-  }
-  body:has(.aboutPage) .navMenu .aboutLink {
-    text-decoration: underline;
-  }
+
   .mediaConditional > *:not(.desktopHandler) {
     display: none;
   }
@@ -206,7 +220,9 @@ body:has(.frontPage) .navMenu {
   display: none;
 }
 
-/*Toggle Menu*/
+/* ============================================================
+   TOGGLE MENU — BASE STYLES
+   ============================================================ */
 
 .menuToggle {
   position: absolute;
@@ -228,13 +244,33 @@ body:has(.frontPage) .navMenu {
 }
 
 .menuToggleBackground > div {
+  --expandedColor: var(--color-items);
+}
+.menuToggleBackground > button {
+  --expandedColor: var(--color-on-items);
+}
+
+body:has(.aboutPage) .menuToggleBackground > div {
+  --expandedColor: var(--color-about);
+}
+body:has(.aboutPage) .menuToggleBackground > button {
+  --expandedColor: var(--color-on-about);
+}
+
+.menuToggleBackground > div {
+  margin-left: auto;
   height: 2.5rem;
   width: 5rem;
-  background-color: var(--color-mi-neutral-900);
-  margin-left: auto;
 
-  width: calc(5rem + (100vw - 5rem) * var(--bg-progress, 0));
-  height: calc(2.5rem + (100% - 2.5rem) * var(--bg-progress, 0));
+  /* Interpolates between neutral pill color and page-specific expanded color */
+  background-color: color-mix(
+    in srgb,
+    var(--expandedColor) calc(var(--menu-button-bg-progress, 0) * 100%),
+    var(--color-mi-neutral-900)
+  );
+
+  width: calc(5rem + (100vw - 5rem) * var(--menu-button-bg-progress, 0));
+  height: calc(2.5rem + (100% - 2.5rem) * var(--menu-button-bg-progress, 0));
 }
 
 .menuToggleButton > button {
@@ -247,10 +283,21 @@ body:has(.frontPage) .navMenu {
   justify-content: center;
 }
 
-/* Toggle Menu - Master Animation */
+/* ============================================================
+   MASTER TIMER
+   7 slots total (1 background + 5 links... add 6th link when ready)
+   Each slot = 100 / 6 = 16.666 units of --t
+   Slot 1 (bg):        0  – 16.666
+   Slot 2 (items):     16.666 – 33.333
+   Slot 3 (interior):  33.333 – 50
+   Slot 4 (vinyls):    50     – 66.666
+   Slot 5 (blog):      66.666 – 83.333
+   Slot 6 (about):     83.333 – 100
+   ============================================================ */
 
 :root {
   --menuOpenTime: 1.5s;
+  --slot: 16.666; /* one sixth — change this if you add/remove elements */
 }
 
 @property --t {
@@ -285,28 +332,76 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   animation: masterClose var(--menuOpenTime) ease forwards;
 }
 
-/* Toggle Menu -Element animations */
+/* ============================================================
+   ELEMENT ANIMATIONS
+   ============================================================ */
 
+/* Slot 1: background pill expands 0 → 16.666% */
 .menuToggleBackground > div {
-  /*Examples*/
-  /* 0% to 25% */
-  /* --bg-progress: clamp(0, var(--t) / 25, 1); */
-
-  /* 25% to 50% */
-  /* --bg-progress: clamp(0, (var(--t) - 25) / 25, 1); */
-
-  /* 40% to 70% */
-  /* --bg-progress: clamp(0, (var(--t) - 40) / 30, 1); */
-
-  /*-------------*/
-
-  --bg-progress: clamp(0, var(--t) / 25, 1);
+  --menu-button-bg-progress: clamp(0, var(--t) / var(--slot), 1);
 }
 
-/*Lang selection widget*/
+/* Shared link styles — hidden and non-interactive at rest */
+@media (max-width: 639px) {
+  .navMenu li {
+    opacity: var(--link-progress, 0);
+    transform: translateY(calc(-100% * (1 - var(--link-progress, 0))));
+    pointer-events: none;
+  }
+
+  /* Re-enable pointer events once open */
+  body:has(.menuToggle[data-state="open"]) .navMenu li {
+    pointer-events: auto;
+  }
+}
+
+/* Slot 2: 16.666 → 33.333% */
+.navMenu .itemsLink {
+  --link-progress: clamp(0, (var(--t) - var(--slot)) / var(--slot), 1);
+}
+
+/* Slot 3: 33.333 → 50% */
+.navMenu .interiorLink {
+  --link-progress: clamp(
+    0,
+    (var(--t) - calc(var(--slot) * 2)) / var(--slot),
+    1
+  );
+}
+
+/* Slot 4: 50 → 66.666% */
+.navMenu .vinylsLink {
+  --link-progress: clamp(
+    0,
+    (var(--t) - calc(var(--slot) * 3)) / var(--slot),
+    1
+  );
+}
+
+/* Slot 5: 66.666 → 83.333% */
+.navMenu .blogLink {
+  --link-progress: clamp(
+    0,
+    (var(--t) - calc(var(--slot) * 4)) / var(--slot),
+    1
+  );
+}
+
+/* Slot 6: 83.333 → 100% */
+.navMenu .aboutLink {
+  --link-progress: clamp(
+    0,
+    (var(--t) - calc(var(--slot) * 5)) / var(--slot),
+    1
+  );
+}
+
+/* ============================================================
+   LANG SELECTION WIDGET
+   ============================================================ */
+
 .menuPopup {
   box-sizing: border-box;
-
   transition:
     transform 150ms,
     opacity 150ms;
@@ -317,7 +412,6 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   opacity: 0;
   transform: translateY(-20%);
 }
-
 /*404 page*/
 
 .c404 span {

@@ -5,45 +5,45 @@ export default function NavMenu() {
   const t = useTranslations("Navigation");
   return (
     <nav className="h-full">
-      <ul className="h-full w-full flex max-sm:flex-col max-sm:justify-evenly max-sm:items-stretch justify-center sm:gap-20 md:gap-40 lg:gap-60 items-center mediaConditional sm:font-semibold mediaConditional">
-        <li className="itemsLink desktopHandler max-sm:flex-1 max-sm:bg-items max-sm:overflow-hidden">
+      <ul className="mediaConditional h-full w-full flex flex-row-reverse max-sm:flex-col-reverse max-sm:justify-evenly max-sm:items-stretch justify-center sm:gap-20 md:gap-40 lg:gap-60 items-center sm:font-semibold">
+        <li className="aboutLink desktopHandler overflow-hidden max-sm:flex-1 max-sm:bg-about">
           <Link
-            href="/items"
-            className="max-sm:flex max-sm:h-full max-sm:w-full max-sm:items-center max-sm:text-on-items max-sm:font-display max-sm:text-8xl max-sm:pl-7"
+            href="/about"
+            className="max-sm:flex max-sm:h-full max-sm:w-full max-sm:items-center max-sm:pl-7 max-sm:font-display max-sm:text-8xl max-sm:text-on-about"
           >
-            {t("items")}
+            {t("about")}
           </Link>
         </li>
-        <li className="interiorLink flex-1 bg-interior overflow-hidden">
-          <Link
-            href="/items?category=interior"
-            className="flex h-full w-full items-center  text-on-interior font-display text-8xl pl-7"
-          >
-            {t("interior")}
-          </Link>
-        </li>
-        <li className="vinylsLink flex-1 bg-vinyls overflow-hidden">
-          <Link
-            className="flex h-full w-full items-center  text-on-vinyls font-display text-8xl pl-7"
-            href="/items?category=vinyls"
-          >
-            {t("vinyls")}
-          </Link>
-        </li>
-        <li className="blogLink flex-1 bg-blogposts overflow-hidden">
+        <li className="blogLink overflow-hidden max-sm:flex-1 max-sm:bg-blogposts">
           <Link
             href="/items?category=blogposts"
-            className="flex h-full w-full items-center  text-on-blogposts font-display text-8xl pl-7"
+            className="flex h-full w-full items-center pl-7 font-display text-8xl text-on-blogposts"
           >
             {t("blog")}
           </Link>
         </li>
-        <li className="aboutLink desktopHandler max-sm:flex-1 max-sm:bg-about max-sm:overflow-hidden">
+        <li className="vinylsLink overflow-hidden max-sm:flex-1 max-sm:bg-vinyls">
           <Link
-            href="/about"
-            className="max-sm:flex max-sm:h-full max-sm:w-full max-sm:items-center max-sm:text-on-about max-sm:font-display max-sm:text-8xl max-sm:pl-7"
+            href="/items?category=vinyls"
+            className="flex h-full w-full items-center pl-7 font-display text-8xl text-on-vinyls"
           >
-            {t("about")}
+            {t("vinyls")}
+          </Link>
+        </li>
+        <li className="interiorLink overflow-hidden max-sm:flex-1 max-sm:bg-interior">
+          <Link
+            href="/items?category=interior"
+            className="flex h-full w-full items-center pl-7 font-display text-8xl text-on-interior"
+          >
+            {t("interior")}
+          </Link>
+        </li>
+        <li className="itemsLink desktopHandler overflow-hidden max-sm:flex-1 max-sm:bg-items">
+          <Link
+            href="/items"
+            className="max-sm:flex max-sm:h-full max-sm:w-full max-sm:items-center max-sm:pl-7 max-sm:font-display max-sm:text-8xl max-sm:text-on-items"
+          >
+            {t("items")}
           </Link>
         </li>
       </ul>
