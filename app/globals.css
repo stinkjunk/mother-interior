@@ -75,8 +75,8 @@
   --color-vinyls: var(--color-mi-yellow-500);
   --color-on-vinyls: var(--color-mi-mint-700);
 
-  --color-blogposts: var(--color-mi-mint-300);
-  --color-on-blogposts: var(--color-mi-mint-50);
+  --color-blogposts: var(--color-mi-mint-600);
+  --color-on-blogposts: var(--color-mi-yellow-500);
 
   --color-items: var(--color-mi-tomato-700);
   --color-on-items: var(--color-mi-tomato-50);
