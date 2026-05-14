@@ -67,6 +67,22 @@
   --color-mi-yellow-800: #857b0e;
   --color-mi-yellow-900: #534c09;
   --color-mi-yellow-950: #393506;
+
+  /*Item Themes*/
+  --color-interior: var(--color-mi-tomato-300);
+  --color-on-interior: var(--color-mi-tomato-50);
+
+  --color-vinyls: var(--color-mi-yellow-500);
+  --color-on-vinyls: var(--color-mi-mint-700);
+
+  --color-blogposts: var(--color-mi-mint-300);
+  --color-on-blogposts: var(--color-mi-mint-50);
+
+  --color-items: var(--color-mi-tomato-700);
+  --color-on-items: var(--color-mi-tomato-50);
+
+  --color-about: var(--color-mi-blue-700);
+  --color-on-about: var(--color-mi-blue-50);
 }
 
 :root {
@@ -173,6 +189,16 @@ body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
     color: var(--color-mi-neutral-50);
     fill: var(--color-mi-neutral-50);
   }
+  body:has(.itemsPage) .navMenu .itemsLink {
+    text-decoration: underline;
+  }
+  body:has(.aboutPage) .navMenu .aboutLink {
+    text-decoration: underline;
+  }
+}
+
+body:has(.frontPage) .navMenu {
+  display: none;
 }
 
 .menuPopup {
