@@ -107,8 +107,37 @@ body {
   font-family: var(--font-dm-sans);
 }
 /*Global rules*/
-/* button {
+button {
   cursor: pointer;
+}
+
+/*Styling of longer text*/
+.textClass a {
+  color: var(--color-mi-blue-700);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.textClass h1 {
+  margin-bottom: 1rem;
+}
+.textClass * + h1 {
+  margin-top: 1.5rem;
+}
+
+.textClass h2 {
+  margin-bottom: 0.75rem;
+}
+.textClass * + h2 {
+  margin-top: 1.25rem;
+}
+
+.textClass p {
+  margin-bottom: 0.5rem;
+}
+
+/* .textClass p {
+  font-size: var(--text-sm);
 } */
 
 /*Specific stuff*/
@@ -140,6 +169,14 @@ body {
 .simpleDropDown:has(input:not(:checked)) ul {
   max-height: 0;
   opacity: 0;
+}
+body {
+  overflow-x: hidden;
+}
+
+body:has(.menuToggle[data-state="open"]),
+body:has(.frontPage) {
+  overflow-y: hidden;
 }
 
 /*Bounding Boxes*/
@@ -544,3 +581,7 @@ body:has(.menuToggle[data-state="closed"]):has(.altColor[data-popup-open])
 .c404 span {
   transition: color 0.2s ease-in-out;
 }
+
+/* html {
+  scrollbar-gutter: stable;
+} */

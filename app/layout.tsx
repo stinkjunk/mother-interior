@@ -27,9 +27,9 @@ export default function RootLayout({
 
   return (
     <html className="h-full antialiased" lang={locale}>
-      <body className="min-h-full flex flex-col overflow-hidden">
+      <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
-          <header className="absolute w-screen top-0 z-50">
+          <header className="fixed bg-background w-dvw top-0 z-50">
             <div className="navMenu sm:h-20 max-sm:pt-26 h-dvh">
               <NavLogo
                 className="pl-5 max-sm:pt-5 absolute top-0 left-0 h-20 flex items-center z-50 navLogoLink"

@@ -42,6 +42,33 @@
     "title": "Items | Mother Interior"
   },
   "AboutPage": {
-    "title": "About | Mother Interior"
+    "title": "About | Mother Interior",
+    "about": {
+      "landingInfo": {
+        "h1": "About Mother Interior",
+        "description": "<strong>Mother Interior</strong> is the extended living room of <linkOwnerInsta>Christian d'Or</linkOwnerInsta> — a place for style and tunes, where vinyls and furniture are curated and sold."
+      },
+      "ownerImage": {
+        "alt": "Christian d'Or, owner of Mother Interior",
+        "caption": "Owned by Christian d'Or",
+        "instagramHandle": "<linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
+      },
+      "purchasing": {
+        "h2": "How do I purchase a listed item?",
+        "description": "This site is not a webshop — it is primarily a gallery and a platform to showcase inventory and post updates via short blogposts.",
+        "callToAction": "<strong>To buy listed items</strong>, please visit us at <linkStoreLocation>Blågårdsgade 31c, open Tuesdays 12:00-18:00</linkStoreLocation>, or by <linkMiInsta>appointment via Instagram DM.</linkMiInsta>"
+      },
+      "address": {
+        "h2": "Address and opening times",
+        "address": "<linkStoreLocation>Blågårdsgade 31c, 2200 Copenhagen N</linkStoreLocation>",
+        "hours": "Tuesdays 12:00-18:00",
+        "appointment": "Or by <linkMiInsta>appointment via Instagram DM.</linkMiInsta>"
+      },
+      "contact": {
+        "h2": "Contact",
+        "store": "<linkMiInsta>@mother_interior_cph</linkMiInsta>",
+        "owner": "<linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
+      }
+    }
   }
 }

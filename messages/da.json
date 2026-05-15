@@ -42,6 +42,33 @@
     "title": "Opslag | Mother Interior"
   },
   "AboutPage": {
-    "title": "Om os | Mother Interior"
+    "title": "Om os | Mother Interior",
+    "about": {
+      "landingInfo": {
+        "h1": "Om Mother Interior",
+        "description": "<strong>Mother Interior</strong> er <linkOwnerInsta>Christian d'Ors</linkOwnerInsta> forlængede stue — et sted for stil og toner, hvor vinylplader samt møbler kurateres og sælges."
+      },
+      "ownerImage": {
+        "alt": "Christian d'Or, ejer af Mother Interior",
+        "caption": "Ejet af Christian d'Or",
+        "instagramHandle": "<linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
+      },
+      "purchasing": {
+        "h2": "Hvordan køber jeg en vare?",
+        "description": "Denne side er ikke en webshop — det er primært et galleri og en platform, hvor Mother Interior fremviser sit lager og poster opdateringer via korte blogindlæg.",
+        "callToAction": "<strong>For at købe de viste varer</strong>, besøg os på <linkStoreLocation>Blågårdsgade 31c</linkStoreLocation>, åbent tirsdage 12:00-18:00, eller efter <linkMiInsta>aftale via Instagram DM.</linkMiInsta>"
+      },
+      "address": {
+        "h2": "Adresse og åbningstider",
+        "address": "<linkStoreLocation>Blågårdsgade 31c, 2200 København N</linkStoreLocation>",
+        "hours": "Tirsdage 12:00-18:00",
+        "appointment": "Eller efter <linkMiInsta>aftale via Instagram DM.</linkMiInsta>"
+      },
+      "contact": {
+        "h2": "Kontakt",
+        "store": "<linkMiInsta>@mother_interior_cph</linkMiInsta>",
+        "owner": "<linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
+      }
+    }
   }
 }
