@@ -19,7 +19,7 @@ export default function LangPlayerButton() {
   };
 
   return (
-    <div className="flex gap-2 font-label absolute top-0 right-0 h-20 items-center pr-5 max-sm:pr-7 z-50 lang-playerButton">
+    <div className="flex gap-2 font-label absolute top-0 right-0 h-20 items-center pr-12.5 max-sm:pr-7 z-50 lang-playerButton">
       <Menu.Root>
         <Menu.Trigger
           className="altColor cursor-pointer p-1"
