@@ -10,10 +10,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Items() {
   return (
-    <div className="h-dvh">
-      <div className="flex h-full items-center justify-center pt-20 itemsPage">
+    <div className="scrollablePage itemsPage">
+      <div className="flex items-center justify-center h-full">
         <h1 className="text-2xl font-display">Items Page</h1>
       </div>
+      <div className="h-[500dvh]">{/* spacer div for scrollin'! */}</div>
     </div>
   );
 }

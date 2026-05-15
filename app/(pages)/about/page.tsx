@@ -38,7 +38,7 @@ export default function About() {
   const t = useTranslations("AboutPage.about");
 
   return (
-    <div className="aboutPage h-full py-20 flex flex-col items-center">
+    <div className="aboutPage scrollablePage overflow-y-scroll pb-20 flex flex-col items-center">
       <div className="grid grid-cols-[5fr_2fr] sm:w-2/3 lg:w-1/2">
         <div className="textClass sm:col-start-1">
           <h1 className="text-3xl font-medium">{t("landingInfo.h1")}</h1>

@@ -4,7 +4,7 @@ import ToggleMenu from "./togglemenu";
 export default function NavMenu() {
   const t = useTranslations("Navigation");
   return (
-    <nav className="h-full">
+    <nav className="h-full w-dvw">
       <ul className="mediaConditional h-full w-full flex flex-row-reverse max-sm:flex-col-reverse max-sm:justify-evenly max-sm:items-stretch justify-center sm:gap-20 md:gap-40 lg:gap-60 items-center sm:font-semibold">
         <li className="aboutLink desktopHandler overflow-hidden max-sm:flex-1 max-sm:bg-about">
           <Link
