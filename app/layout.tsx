@@ -31,13 +31,10 @@ export default function RootLayout({
         <NextIntlClientProvider>
           <header className="absolute w-screen top-0 z-50">
             <div className="navMenu sm:h-20 max-sm:pt-26 h-dvh">
-              <Link
+              <NavLogo
                 className="pl-5 max-sm:pt-5 absolute top-0 left-0 h-20 flex items-center z-50 navLogoLink"
-                href="/"
-                aria-label={homeLabel}
-              >
-                <NavLogo />
-              </Link>
+                ariaLabel={homeLabel}
+              />
               <NavMenu />
             </div>
             <LangPlayerButton />

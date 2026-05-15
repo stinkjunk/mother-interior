@@ -435,7 +435,7 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
 
 /*Nav Logo*/
 
-.navLogoMCol,
+/* .navLogoMCol,
 .navLogoICol,
 .navLogoITittleCol {
   transition: all 0.2s ease-in-out;
@@ -446,46 +446,58 @@ body:has(.itemsPage) .navLogoICol,
 body:has(.itemsPage) .navLogoITittleCol {
   stroke-width: 1px;
   stroke: var(--color-mi-neutral-900);
-}
-/* .navLogoBgCol {
+} 
+.navLogoBgCol {
   fill: var(--color-mi-blue-700);
-} */
-
+} 
 body:has(.itemsPage) .navLogoMCol {
   fill: var(--color-interior);
-  /* fill: var(--color-mi-tomato-500); */
 }
 body:has(.itemsPage) .navLogoICol {
   fill: var(--color-vinyls);
-  /* fill: var(--color-mi-yellow-500); */
 }
 body:has(.itemsPage) .navLogoITittleCol {
   fill: var(--color-blogposts);
-  /* fill: var(--color-mi-mint-600); */
 }
+*/
 
 /*Lang/Playerbutton*/
 
-@media (max-width: 640px) {
-  body:not(:has(.frontPage)) .altColor {
-    /* The color when the menu is fully closed (or idle) */
-    --button-base: var(--foreground);
+.navLogoFillAll {
+  fill: var(--color-mi-blue-700);
+}
 
-    /* Progress synced with the menu animation:
+@media (max-width: 640px) {
+  body:not(:has(.frontPage)) {
+    .altColor {
+      /* The color when the menu is fully closed (or idle) */
+      --button-base: var(--foreground);
+
+      /* Progress synced with the menu animation:
      starts after the background expansion (slot 1 → 16.666%)
      and finishes at slot 2 (33.333%) */
-    --button-progress: clamp(0, var(--t) / var(--slot), 1);
+      --button-progress: clamp(0, var(--t) / var(--slot), 1);
 
-    color: color-mix(
-      in srgb,
-      var(--color-on-interior) calc(var(--button-progress) * 100%),
-      var(--button-base)
-    );
-    fill: color-mix(
-      in srgb,
-      var(--color-on-interior) calc(var(--button-progress) * 100%),
-      var(--button-base)
-    );
+      color: color-mix(
+        in srgb,
+        var(--color-on-interior) calc(var(--button-progress) * 100%),
+        var(--button-base)
+      );
+      fill: color-mix(
+        in srgb,
+        var(--color-on-interior) calc(var(--button-progress) * 100%),
+        var(--button-base)
+      );
+    }
+    .navLogoFillAll {
+      --logo-base: var(--color-mi-blue-700);
+      --logo-progress: clamp(0, var(--t) / var(--slot), 1);
+      fill: color-mix(
+        in srgb,
+        var(--color-on-interior) calc(var(--logo-progress) * 100%),
+        var(--logo-base)
+      );
+    }
   }
 }
 
