@@ -39,28 +39,27 @@ export default function About() {
 
   return (
     <div className="aboutPage scrollablePage overflow-y-scroll pb-20 flex flex-col items-center">
-      <div className="grid grid-cols-[5fr_2fr] sm:w-2/3 lg:w-1/2">
-        <div className="textClass sm:col-start-1">
+      <div className="w-7/10 sm:w-2/3 lg:w-1/2 sm:relative">
+        <div className="max-sm:w-full max-sm:my-10 sm:absolute right-0 top-0 w-40 aspect-1">
+          <div className="max-sm:w-full max-sm:aspect-1 w-0.4 sm:fixed h-40 40">
+            <Image
+              src="/media/owner.jpg"
+              loading="eager"
+              alt={t("ownerImage.alt")}
+              width={400}
+              height={400}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div className="textClass sm:w-3/5 md:w-4/5">
           <h1 className="text-3xl font-medium">{t("landingInfo.h1")}</h1>
           <p className="sm:mr-20 lg:mr-40">
             {t.rich("landingInfo.description", resolvers)}
           </p>
         </div>
-        <div className="sm:fixed sm:flex sm:flex-col sm:items-center sm:w-full sm:right-0">
-          <div className="sm:grid sm:grid-cols-[5fr_2fr] sm:w-2/3 lg:w-1/2">
-            <div className="col-start-2">
-              <Image
-                src="/media/owner.jpg"
-                loading="eager"
-                alt={t("ownerImage.alt")}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="textClass sm:col-start-1 mt-5 pr-15">
+
+        <div className="textClass sm:w-4/5 mt-5 pr-15">
           <h2 className="text-xl font-medium mt-10">{t("purchasing.h2")}</h2>
           <p className="mt-5">{t.rich("purchasing.description", resolvers)}</p>
           <p className="mt-5">{t.rich("purchasing.callToAction", resolvers)}</p>
