@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Items() {
   return (
-    <div className="h-[calc(100dvh-var(--headerheight))] itemsPage">
+    <div className="h-[calc(100dvh-var(--headerheight))] scrollablePage itemsPage">
       <div className="flex items-center justify-center h-full">
         <h1 className="text-2xl font-display">Items Page</h1>
       </div>

@@ -327,9 +327,9 @@ html:has(.frontPage) {
 :root {
   --headerheight: 5rem; /*h-20*/
 }
-/* .scrollablePage {
+.scrollablePage {
   margin-top: var(--headerheight);
-} */
+}
 
 /*h-[calc(100dvh-5rem)]*/
 /*Underside styling*/
