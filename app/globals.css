@@ -292,10 +292,16 @@ body:has(.aboutPage) .menuToggleBackground > button {
   --expandedColor: var(--color-on-about);
 } */
 
+/*Fordi BaseUI driller mig*/
+html:has(*[data-popup-open]) {
+  scrollbar-gutter: auto !important;
+  scroll-behavior: auto !important;
+  overflow: hidden !important;
+}
+
 .menuToggleBackground > div {
   margin-left: auto;
   height: 2.5rem;
-  width: 5rem;
 
   /* Interpolates between neutral pill color and page-specific expanded color */
   background-color: color-mix(
@@ -304,13 +310,14 @@ body:has(.aboutPage) .menuToggleBackground > button {
     var(--color-mi-neutral-900)
   );
 
-  width: calc(5rem + (100vw - 5rem) * var(--menu-button-bg-progress, 0));
+  width: calc(6rem + (100vw - 5rem) * var(--menu-button-bg-progress, 0));
   height: calc(2.5rem + (100% - 2.5rem) * var(--menu-button-bg-progress, 0));
 }
 
 .menuToggleButton > button {
   height: 2.5rem;
-  width: 5rem;
+  width: 6rem;
+  padding-right: 1rem;
   margin-left: auto;
   color: var(--color-mi-neutral-100);
   display: flex;
@@ -581,7 +588,3 @@ body:has(.menuToggle[data-state="closed"]):has(.altColor[data-popup-open])
 .c404 span {
   transition: color 0.2s ease-in-out;
 }
-
-/* html {
-  scrollbar-gutter: stable;
-} */
