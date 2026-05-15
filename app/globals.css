@@ -118,7 +118,7 @@ button {
   text-decoration: underline;
 }
 
-.textClass h1 {
+/* .textClass h1 {
   margin-bottom: 1rem;
 }
 .textClass * + h1 {
@@ -134,7 +134,7 @@ button {
 
 .textClass p {
   margin-bottom: 0.5rem;
-}
+} */
 
 /* .textClass p {
   font-size: var(--text-sm);
