@@ -318,20 +318,18 @@ body:has(.aboutPage) .menuToggleBackground > button {
   overflow: hidden !important;
 } */
 
+html:has(.frontPage) {
+  overflow: hidden;
+}
+
 /*Header Styling*/
 
 :root {
   --headerheight: 5rem; /*h-20*/
 }
-.scrollablePage {
-  height: calc(100dvh - var(--headerheight));
-  overflow-y: auto;
-}
-@media (max-width: 640px) {
-  .scrollablePage {
-    margin-top: var(--headerheight);
-  }
-}
+/* .scrollablePage {
+  margin-top: var(--headerheight);
+} */
 
 /*h-[calc(100dvh-5rem)]*/
 /*Underside styling*/
@@ -506,12 +504,15 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   transition:
     transform 150ms,
     opacity 150ms;
-}
-
-.menuPopup[data-starting-style],
-.menuPopup[data-ending-style] {
+  pointer-events: none;
   opacity: 0;
   transform: translateY(-20%);
+}
+
+.menuPopup[data-state="open"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /*Nav Logo*/
@@ -615,7 +616,9 @@ body:has(.frontPage) .langMenuPopupItem {
   transition: opacity 0.25s ease-in-out;
 }
 
-body:has(.menuToggle[data-state="closed"]):has(.altColor[data-popup-open])
+body:has(.menuToggle[data-state="closed"]):has(
+    .lang-playerButton[data-state="open"]
+  )
   .menuToggle {
   opacity: 40%;
 }

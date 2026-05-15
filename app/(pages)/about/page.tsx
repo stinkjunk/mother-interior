@@ -38,7 +38,7 @@ export default function About() {
   const t = useTranslations("AboutPage.about");
 
   return (
-    <div className="aboutPage scrollablePage overflow-y-scroll pb-20 flex flex-col items-center">
+    <div className="aboutPage scrollablePage  pb-20 flex flex-col items-center">
       <div className="w-7/10 sm:w-2/3 lg:w-1/2 sm:relative">
         <div className="max-sm:w-full max-sm:my-10 sm:absolute right-0 top-0 w-40 aspect-1">
           <div className="max-sm:w-full max-sm:aspect-1 w-0.4 sm:fixed h-40 40">
