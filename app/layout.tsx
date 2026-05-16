@@ -38,7 +38,7 @@ export default function RootLayout({
               <NavMenu />
             </div>
             <LangPlayerButton />
-            <div className="absolute h-20 w-dvw -z-10 sm:hidden flex flex-col bg-background">
+            <div className="absolute h-20 w-dvw -z-10 sm:hidden flex flex-col bg-background mobileHeaderBg">
               {/* <div className="flex-1 bg-mi-neutral-100"></div>
               <div className="bg-linear-to-b from-mi-neutral-100 to-transparent h-2"></div> */}
             </div>

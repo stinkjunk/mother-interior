@@ -246,7 +246,8 @@ body:has(.aboutPage) .navMenu .aboutLink {
 
 /*Nav Menu*/
 
-body:has(.frontPage) .navMenu {
+body:has(.frontPage) .navMenu,
+body:has(.frontPage) .mobileHeaderBg {
   display: none;
 }
 
