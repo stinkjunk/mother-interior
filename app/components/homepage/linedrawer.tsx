@@ -11,19 +11,9 @@ interface LineCoords {
 }
 
 export default function LineDrawer() {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 640);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
   const [lines, setLines] = useState<LineCoords[]>([]);
 
   useEffect(() => {
-    if (!isDesktop) return;
 
     const calculate = () => {
       const pairs: [string, string, string][] = [
@@ -57,9 +47,9 @@ export default function LineDrawer() {
     calculate();
     window.addEventListener("resize", calculate);
     return () => window.removeEventListener("resize", calculate);
-  }, [isDesktop]);
+  }, []);
 
-  if (!isDesktop || lines.length === 0) return null;
+  if (lines.length === 0) return null;
 
   return (
     <svg

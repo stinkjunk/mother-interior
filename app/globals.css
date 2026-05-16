@@ -189,17 +189,35 @@ body:has(.menuToggle[data-state="open"]) {
   opacity: 0;
 }
 
-.bBox:hover,
-body:has(.dskHeroLink.Vinyls:hover) .bBox.Vinyls,
-body:has(.dskHeroLink.Interior:hover) .bBox.Interior,
-body:has(.dskHeroLink.allItems:hover) .bBox {
-  opacity: 1;
+/* On mobile (max-width: 640px), show boxes by default except allItems variants */
+@media (max-width: 640px) {
+  .bBox {
+    opacity: 1;
+  }
+
+  /* Hide allItems variants on mobile */
+  .bBox.allItems {
+    display: none;
+  }
 }
 
-.dskHeroLink:hover,
-body:has(.bBox.Vinyls:hover) .dskHeroLink.Vinyls,
-body:has(.bBox.Interior:hover) .dskHeroLink.Interior {
-  text-decoration: underline;
+/* Desktop hover behavior only */
+@media (min-width: 640px) {
+  .bBox:hover,
+  body:has(.dskHeroLink.Vinyls:hover) .bBox.Vinyls,
+  body:has(.dskHeroLink.Interior:hover) .bBox.Interior,
+  body:has(.dskHeroLink.allItems:hover) .bBox {
+    opacity: 1;
+  }
+}
+
+/* Desktop-only underline hover */
+@media (min-width: 640px) {
+  .dskHeroLink:hover,
+  body:has(.bBox.Vinyls:hover) .dskHeroLink.Vinyls,
+  body:has(.bBox.Interior:hover) .dskHeroLink.Interior {
+    text-decoration: underline;
+  }
 }
 
 .dskLine {
@@ -207,16 +225,32 @@ body:has(.bBox.Interior:hover) .dskHeroLink.Interior {
   transition: opacity 0.15s ease-in-out;
 }
 
-body:has(.dskHeroLink.Vinyls:hover) .dskLine.Vinyls,
-body:has(.bBox.Vinyls:hover) .dskLine.Vinyls,
-body:has(.dskHeroLink.Interior:hover) .dskLine.Interior,
-body:has(.bBox.Interior:hover) .dskLine.Interior {
-  opacity: 1;
+/* Mobile: show lines by default except allItems variants */
+@media (max-width: 640px) {
+  .dskLine {
+    opacity: 1;
+  }
+
+  /* Hide allItems line variants on mobile */
+  .dskLine.allItemsVinyls,
+  .dskLine.allItemsInterior {
+    display: none;
+  }
 }
 
-body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsVinyls,
-body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
-  opacity: 1;
+/* Desktop hover behavior only */
+@media (min-width: 640px) {
+  body:has(.dskHeroLink.Vinyls:hover) .dskLine.Vinyls,
+  body:has(.bBox.Vinyls:hover) .dskLine.Vinyls,
+  body:has(.dskHeroLink.Interior:hover) .dskLine.Interior,
+  body:has(.bBox.Interior:hover) .dskLine.Interior {
+    opacity: 1;
+  }
+
+  body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsVinyls,
+  body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
+    opacity: 1;
+  }
 }
 
 /*Conditional styling af front page header*/
@@ -246,9 +280,45 @@ body:has(.aboutPage) .navMenu .aboutLink {
 
 /*Nav Menu*/
 
-body:has(.frontPage) .navMenu,
 body:has(.frontPage) .mobileHeaderBg {
   display: none;
+}
+
+/* On front page mobile, style navMenu like desktop */
+@media (max-width: 640px) {
+  body:has(.frontPage) .navMenu {
+    height: auto !important;
+    padding-top: 0 !important;
+    position: static !important;
+    width: auto !important;
+  }
+
+  body:has(.frontPage) .navMenu ul {
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 1.25rem !important;
+  }
+
+  body:has(.frontPage) .navMenu li {
+    flex: 0 !important;
+    background-color: transparent !important;
+    overflow: visible !important;
+    height: auto !important;
+    width: auto !important;
+  }
+
+  body:has(.frontPage) .navMenu li a {
+    display: inline !important;
+    height: auto !important;
+    width: auto !important;
+    align-items: flex-start !important;
+    padding-left: 0 !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    color: inherit !important;
+    font-weight: 600;
+  }
 }
 
 /* ============================================================
@@ -518,6 +588,15 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
 
 /*Nav Logo*/
 
+/* NavLogo opacity animation on front page mobile */
+@media (max-width: 640px) {
+  body:has(.frontPage) .navLogoLink {
+    opacity: clamp(0, var(--t) / var(--slot), 1);
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+  }
+}
+
 /* .navLogoMCol,
 .navLogoICol,
 .navLogoITittleCol {
@@ -614,7 +693,20 @@ body:has(.frontPage) .langMenuPopupItem {
 }
 
 .menuToggle {
-  transition: opacity 0.25s ease-in-out;
+  transition:
+    opacity 0.25s ease-in-out,
+    transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+/* On frontPage with closed menu: slide off-screen */
+body:has(.frontPage) .menuToggle {
+  transform: translateX(100vw);
+}
+
+/* On frontPage with open menu: slide back in */
+body:has(.frontPage) .menuToggle[data-state="open"] {
+  transform: translateX(0);
 }
 
 body:has(.menuToggle[data-state="closed"]):has(

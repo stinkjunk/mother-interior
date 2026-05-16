@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import CompositeLogo from "../components/compositelogo";
-import SimpleDropdown from "../components/simpledropdown";
 import LineDrawer from "../components/homepage/linedrawer";
 
 export default function Home() {
@@ -52,44 +51,26 @@ export default function Home() {
         </div>
         <nav>
           <ul className="flex flex-col mt-5 gap-5 max-sm:items-center items-start font-semibold">
-            <SimpleDropdown
-              topClassName="sm:hidden"
-              ulClassName="gap-5 items-center mt-5 font-normal"
-              title={nav("items")}
-              titleURL="/items"
-              options={[
-                {
-                  label: nav("interior"),
-                  url: "/items?category=interior",
-                },
-                { label: nav("vinyls"), url: "/items?category=vinyls" },
-                { label: nav("blog"), url: "/items?category=blogposts" },
-              ]}
-              id="items-dropdown"
-            ></SimpleDropdown>
-            <Link
-              href="/items"
-              className="max-sm:hidden dskHeroLink allItems sm:pr-5"
-            >
-              {nav("allItems")}
-            </Link>
-            <Link
-              href="/items?category=vinyls"
-              className="max-sm:hidden dskHeroLink Vinyls sm:pr-5"
-              id="vinyls-link"
-            >
-              {nav("vinyls")}
+            <Link href="/items" className="dskHeroLink sm:pr-5">
+              {nav("items")}
             </Link>
             <Link
               href="/items?category=interior"
-              className="max-sm:hidden dskHeroLink Interior sm:pr-5"
+              className="dskHeroLink Interior sm:pr-5"
               id="interior-link"
             >
               {nav("interior")}
             </Link>
             <Link
+              href="/items?category=vinyls"
+              className="dskHeroLink Vinyls sm:pr-5"
+              id="vinyls-link"
+            >
+              {nav("vinyls")}
+            </Link>
+            <Link
               href="/items?category=blogposts"
-              className="max-sm:hidden dskHeroLink sm:pr-5"
+              className="dskHeroLink sm:pr-5"
             >
               {nav("blog")}
             </Link>
