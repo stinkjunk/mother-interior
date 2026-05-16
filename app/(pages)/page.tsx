@@ -21,7 +21,7 @@ export default function Home() {
       </div>
       {/* BOUNDING BOX OVERLAY FOR HERO IMAGE - DESKTOP ONLY */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-sm:hidden"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         style={{
           width: "max(100vw, calc(100dvh * 637 / 478))",
           aspectRatio: "637/ 478",
@@ -40,41 +40,37 @@ export default function Home() {
           style={{ top: "30%", left: "25%", width: "35%", height: "30%" }}
         />
       </div>
-      <div className="absolute w-dvw h-dvh sm:hidden bg-mi-neutral-200/68 mix-blend-lighten -z-10"></div>
-      <div className="max-sm:h-dvh  z-10 flex flex-col max-sm:items-center max-sm:justify-center sm:w-fit sm:ml-10 sm:mt-10 sm:text-mi-neutral-50">
-        <div className="max-sm:absolute max-sm:top-20 flex flex-col items-center">
+      <div className="  z-10 flex flex-col  w-fit ml-10 mt-10 text-mi-neutral-50">
+        <div className=" flex flex-col items-center">
           <CompositeLogo
             className="w-22 h-22 mb-1"
-            fillAll="sm:fill-mi-yellow-300 fill-mi-blue-700"
+            fillAll="fill-mi-yellow-300"
           ></CompositeLogo>
           <h1 className="text-xl font-display">{t("brandName")}</h1>
         </div>
         <nav>
-          <ul className="flex flex-col mt-5 gap-5 max-sm:items-center items-start font-semibold">
-            <Link href="/items" className="dskHeroLink sm:pr-5">
+          <ul className="flex flex-col mt-5 gap-5 items-start font-semibold">
+            <Link href="/items" className="dskHeroLink pr-5">
               {nav("items")}
             </Link>
             <Link
               href="/items?category=interior"
-              className="dskHeroLink Interior sm:pr-5"
+              className="dskHeroLink Interior pr-5"
               id="interior-link"
             >
               {nav("interior")}
             </Link>
             <Link
               href="/items?category=vinyls"
-              className="dskHeroLink Vinyls sm:pr-5"
+              className="dskHeroLink Vinyls pr-5"
               id="vinyls-link"
             >
               {nav("vinyls")}
             </Link>
-            <Link
-              href="/items?category=blogposts"
-              className="dskHeroLink sm:pr-5"
-            >
+            <Link href="/items?category=blogposts" className="dskHeroLink pr-5">
               {nav("blog")}
             </Link>
-            <Link href="/about" className="dskHeroLink sm:pr-5">
+            <Link href="/about" className="dskHeroLink pr-5">
               {nav("about")}
             </Link>
           </ul>

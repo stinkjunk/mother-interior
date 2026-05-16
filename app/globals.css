@@ -174,10 +174,9 @@ body {
   overflow-x: hidden;
 }
 
-/* body:has(.menuToggle[data-state="open"]),
-body:has(.frontPage) {
-  overflow-y: hidden;
-} */
+html:has(.frontPage) {
+  overflow: hidden;
+}
 
 body:has(.menuToggle[data-state="open"]) {
   overflow-y: hidden;
@@ -282,6 +281,9 @@ body:has(.aboutPage) .navMenu .aboutLink {
 
 body:has(.frontPage) .mobileHeaderBg {
   display: none;
+}
+body:has(.frontPage) header {
+  background-color: transparent;
 }
 
 /* On front page mobile, style navMenu like desktop */
@@ -675,21 +677,28 @@ body:has(.frontPage) .langMenuPopupItem {
   outline: none;
 }
 
+body:has(.frontPage) .altColor {
+  color: var(--color-mi-neutral-50);
+  fill: var(--color-mi-neutral-50);
+}
+
 @media (min-width: 640px) {
-  body:has(.frontPage) .altColor {
-    color: var(--color-mi-neutral-50);
-    fill: var(--color-mi-neutral-50);
+  body:has(.frontPage) .navMenu,
+  body:has(.frontPage) .navLogoLink {
+    display: none;
   }
+
   .langMenuPopupItem {
     background-color: transparent;
     color: var(--foreground);
     outline: none;
   }
-  body:has(.frontPage) .langMenuPopupItem {
-    background-color: transparent;
-    color: var(--color-mi-neutral-50);
-    outline: none;
-  }
+}
+
+body:has(.frontPage) .langMenuPopupItem {
+  background-color: transparent;
+  color: var(--color-mi-neutral-50);
+  outline: none;
 }
 
 .menuToggle {
