@@ -14,7 +14,6 @@ export default function LineDrawer() {
   const [lines, setLines] = useState<LineCoords[]>([]);
 
   useEffect(() => {
-
     const calculate = () => {
       const pairs: [string, string, string][] = [
         [".bBox.Vinyls", ".dskHeroLink.Vinyls", "Vinyls"],
@@ -22,6 +21,9 @@ export default function LineDrawer() {
         [".bBox.Vinyls", ".dskHeroLink.allItems", "allItemsVinyls"],
         [".bBox.Interior", ".dskHeroLink.allItems", "allItemsInterior"],
       ];
+
+      const isMobile =
+        typeof window !== "undefined" && window.innerWidth <= 640;
 
       setLines(
         pairs.flatMap(([boxSel, linkSel, lineName]) => {
@@ -31,6 +33,48 @@ export default function LineDrawer() {
 
           const b = box.getBoundingClientRect();
           const l = link.getBoundingClientRect();
+
+          // Desktop: keep previous behaviour (center-to-right-center)
+          if (!isMobile) {
+            return [
+              {
+                x1: b.left,
+                y1: b.top + b.height / 2,
+                x2: l.right,
+                y2: l.top + l.height / 2,
+                lineName,
+              },
+            ];
+          }
+
+          // Mobile tweaks per request
+          if (lineName === "Vinyls") {
+            // start from bottom-center of bounding box, stop at bottom-center of link
+            return [
+              {
+                x1: b.left + b.width / 2,
+                y1: b.top + b.height,
+                x2: l.left + l.width / 2,
+                y2: l.top + l.height,
+                lineName,
+              },
+            ];
+          }
+
+          if (lineName === "Interior") {
+            // start from top-left corner of bounding box, stop at right side of the link (keep vertical mid)
+            return [
+              {
+                x1: b.left,
+                y1: b.top,
+                x2: l.right,
+                y2: l.top + l.height / 2,
+                lineName,
+              },
+            ];
+          }
+
+          // Fallback for allItems variants: keep previous behaviour but on mobile these are hidden by CSS
           return [
             {
               x1: b.left,
