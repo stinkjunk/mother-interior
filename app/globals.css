@@ -287,41 +287,6 @@ body:has(.frontPage) header {
 }
 
 /* On front page mobile, style navMenu like desktop */
-@media (max-width: 640px) {
-  body:has(.frontPage) .navMenu {
-    height: auto !important;
-    padding-top: 0 !important;
-    position: static !important;
-    width: auto !important;
-  }
-
-  body:has(.frontPage) .navMenu ul {
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    gap: 1.25rem !important;
-  }
-
-  body:has(.frontPage) .navMenu li {
-    flex: 0 !important;
-    background-color: transparent !important;
-    overflow: visible !important;
-    height: auto !important;
-    width: auto !important;
-  }
-
-  body:has(.frontPage) .navMenu li a {
-    display: inline !important;
-    height: auto !important;
-    width: auto !important;
-    align-items: flex-start !important;
-    padding-left: 0 !important;
-    font-family: inherit !important;
-    font-size: inherit !important;
-    color: inherit !important;
-    font-weight: 600;
-  }
-}
 
 /* ============================================================
    TOGGLE MENU — BASE STYLES
@@ -709,9 +674,9 @@ body:has(.frontPage) .langMenuPopupItem {
 }
 
 /* On frontPage with closed menu: slide off-screen */
-body:has(.frontPage) .menuToggle {
+/* body:has(.frontPage) .menuToggle {
   transform: translateX(100vw);
-}
+} */
 
 /* On frontPage with open menu: slide back in */
 body:has(.frontPage) .menuToggle[data-state="open"] {
