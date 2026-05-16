@@ -201,11 +201,28 @@ body:has(.menuToggle[data-state="open"]) {
 @media (max-width: 640px) {
   .dskLine {
     opacity: 1;
+    stroke-width: 1;
   }
 
   .dskLine.allItemsVinyls,
   .dskLine.allItemsInterior {
     display: none;
+  }
+
+  .dskHeroLink {
+    transition: 0.3s ease-in-out color;
+  }
+  .dskHeroLink:hover,
+  body:has(.bBox.Vinyls:hover) .dskHeroLink.Vinyls,
+  body:has(.bBox.Interior:hover) .dskHeroLink.Interior {
+    color: var(--color-mi-yellow-300);
+  }
+
+  body:has(.dskHeroLink.Vinyls:hover) .dskLine.Vinyls,
+  body:has(.bBox.Vinyls:hover) .dskLine.Vinyls,
+  body:has(.dskHeroLink.Interior:hover) .dskLine.Interior,
+  body:has(.bBox.Interior:hover) .dskLine.Interior {
+    stroke-width: 2;
   }
 }
 
