@@ -50,8 +50,8 @@
       },
       "ownerImage": {
         "alt": "Christian d'Or, owner of Mother Interior",
-        "caption": "Owned by Christian d'Or",
-        "instagramHandle": "<linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
+        "caption": "Owned by <strong>Christian d'Or</strong>",
+        "instagramHandle": "Instagram<br></br><linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
       },
       "purchasing": {
         "h2": "How do I purchase a listed item?",

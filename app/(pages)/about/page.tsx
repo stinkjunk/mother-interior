@@ -39,29 +39,39 @@ export default function About() {
 
   return (
     <div className="aboutPage scrollablePage  pb-20 flex flex-col items-center">
-      <div className="w-7/10 sm:w-2/3 lg:w-1/2 sm:relative">
-        <div className="max-sm:w-full max-sm:my-10 sm:absolute right-0 top-0 w-40 aspect-1">
-          <div className="max-sm:w-full max-sm:aspect-1 w-0.4 sm:fixed h-40 40">
+      <div className="w-7/10 sm:w-2/3 lg:w-1/2 sm:relative max-sm:grid max-sm:grid-cols-2">
+        <div className="max-sm:w-full max-sm:col-start-2 sm:absolute right-0 top-0 w-32 aspect-1">
+          <div className="max-sm:w-full aspect-1 w-0.4 sm:fixed h-50 relative textClass">
             <Image
               src="/media/owner.jpg"
               loading="eager"
               alt={t("ownerImage.alt")}
               width={400}
               height={400}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover aspect-square"
             />
+            <p className="font-label absolute bottom-0 w-full p-1 text-background text-[0.6rem]">
+              {t.rich("ownerImage.caption", resolvers)}
+            </p>
+            <p className="font-label absolute bottom-0 w-full p-1 text-[0.6rem] translate-y-full max-sm:truncate">
+              {t.rich("ownerImage.instagramHandle", resolvers)}
+            </p>
           </div>
         </div>
-        <div className="textClass sm:w-3/5 md:w-4/5">
-          <h1 className="text-3xl font-medium">{t("landingInfo.h1")}</h1>
-          <p className="sm:mr-20 lg:mr-40">
+        <h1 className="text-3xl font-medium mb-5 sm:w-3/5 max-sm:col-span-2 max-sm:row-start-1 max-sm:mt-15">
+          {t("landingInfo.h1")}
+        </h1>
+        <div className="textClass max-sm:row-start-2 max-sm:h-full max-sm:flex max-sm:items-center max-sm:pr-5">
+          <p className="sm:mr-20 lg:mr-40 sm:w-2/5 md:w-3/5">
             {t.rich("landingInfo.description", resolvers)}
           </p>
         </div>
 
-        <div className="textClass sm:w-4/5 mt-5 pr-15">
+        <div className="textClass sm:w-6/7 mt-5 md:mt-20 sm:pr-15 max-sm:col-span-2">
           <h2 className="text-xl font-medium mt-10">{t("purchasing.h2")}</h2>
-          <p className="mt-5">{t.rich("purchasing.description", resolvers)}</p>
+          <p className="mt-5 sm:mr-10">
+            {t.rich("purchasing.description", resolvers)}
+          </p>
           <p className="mt-5">{t.rich("purchasing.callToAction", resolvers)}</p>
           <h2 className="text-xl font-medium mt-20">{t("address.h2")}</h2>
           <p>{t.rich("address.address", resolvers)}</p>
