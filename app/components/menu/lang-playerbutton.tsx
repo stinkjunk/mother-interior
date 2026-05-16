@@ -67,7 +67,7 @@ export default function LangPlayerButton() {
           data-state={isLangMenuOpen ? "open" : "closed"}
         >
           <button
-            className="langMenuPopupItem cursor-pointer font-label mt-2 max-sm:py-2 max-sm:px-4 block w-full text-left"
+            className="langMenuPopupItem cursor-pointer font-label mt-2 max-sm:py-2 max-sm:px-4 max-sm:translate-x-4 block w-full text-left"
             aria-label={t("LangSelect.otherLocaleAriaLabel")}
             onClick={() => handleLocaleSwitch(otherLocale)}
           >
