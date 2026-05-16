@@ -39,8 +39,8 @@ export default function About() {
 
   return (
     <div className="aboutPage scrollablePage  pb-20 flex flex-col items-center">
-      <div className="w-7/10 sm:w-2/3 lg:w-1/2 sm:relative max-sm:grid max-sm:grid-cols-2">
-        <div className="max-sm:w-full max-sm:col-start-2 sm:absolute right-0 top-0 w-32 aspect-1">
+      <div className="w-7/10 sm:w-2/3 lg:w-1/2 sm:relative max-sm:flex max-sm:flex-col">
+        <div className="max-sm:w-full max-sm:order-1 max-sm:mt-10 sm:absolute right-0 top-0 w-32 aspect-1">
           <div className="max-sm:w-full aspect-1 w-0.4 sm:fixed h-50 relative textClass">
             <Image
               src="/media/owner.jpg"
@@ -58,22 +58,24 @@ export default function About() {
             </p>
           </div>
         </div>
-        <h1 className="text-3xl font-medium mb-5 sm:w-3/5 max-sm:col-span-2 max-sm:row-start-1 max-sm:mt-15">
+        <h1 className="text-3xl font-medium mb-5 sm:w-3/5 max-sm:mt-15 max-sm:order-first">
           {t("landingInfo.h1")}
         </h1>
-        <div className="textClass max-sm:row-start-2 max-sm:h-full max-sm:flex max-sm:items-center max-sm:pr-5">
+        <div className="textClass">
           <p className="sm:mr-20 lg:mr-40 sm:w-2/5 md:w-3/5">
             {t.rich("landingInfo.description", resolvers)}
           </p>
         </div>
 
-        <div className="textClass sm:w-6/7 mt-5 md:mt-20 sm:pr-15 max-sm:col-span-2">
+        <div className="textClass sm:w-6/7 max-sm:mt-10 md:mt-20 sm:pr-15 max-sm:order-2">
           <h2 className="text-xl font-medium mt-10">{t("purchasing.h2")}</h2>
           <p className="mt-5 sm:mr-10">
             {t.rich("purchasing.description", resolvers)}
           </p>
           <p className="mt-5">{t.rich("purchasing.callToAction", resolvers)}</p>
-          <h2 className="text-xl font-medium mt-20">{t("address.h2")}</h2>
+          <h2 className="text-xl font-medium mt-20 max-sm:mt-10">
+            {t("address.h2")}
+          </h2>
           <p>{t.rich("address.address", resolvers)}</p>
           <p className="mt-5">{t.rich("address.hours", resolvers)}</p>
           <p className="mt-5">{t.rich("address.appointment", resolvers)}</p>
