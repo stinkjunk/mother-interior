@@ -4,28 +4,7 @@ import type { RichTranslationValues } from "next-intl";
 import Image from "next/image";
 
 import { Metadata } from "next";
-import links from "@/lib/links.json";
-import Link from "next/link";
-
-const resolvers: RichTranslationValues = {
-  linkOwnerInsta: (chunks) => (
-    <Link href={links.ownerInstagram} target="_blank">
-      {chunks}
-    </Link>
-  ),
-  linkMiInsta: (chunks) => (
-    <Link href={links.miInstagram} target="_blank">
-      {chunks}
-    </Link>
-  ),
-  linkStoreLocation: (chunks) => (
-    <Link href={links.storeLocation.maps} target="_blank">
-      {chunks}
-    </Link>
-  ),
-  strong: (chunks) => <strong>{chunks}</strong>,
-  br: () => <br />,
-};
+import { resolvers } from "@/i8n/resolvers/resolvers";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AboutPage");
