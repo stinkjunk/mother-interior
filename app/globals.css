@@ -667,20 +667,17 @@ body:has(.frontPage) .langMenuPopupItem {
 }
 
 .menuToggle {
-  transition:
-    opacity 0.25s ease-in-out,
-    transform 0.3s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
   transform: translateX(0);
 }
 
-/* On frontPage with closed menu: slide off-screen */
-/* body:has(.frontPage) .menuToggle {
-  transform: translateX(100vw);
-} */
-
-/* On frontPage with open menu: slide back in */
-body:has(.frontPage) .menuToggle[data-state="open"] {
-  transform: translateX(0);
+/* On frontPage: drive the toggle's horizontal position from slot-1 progress
+   (uses --menu-button-bg-progress which is derived from --t / --slot) */
+body:has(.frontPage) .navMenu {
+  /* Start translation when master timer reaches slot 1
+     progress = clamp(0, (t - slot) / slot, 1) -> runs from 0 at t=slot to 1 at t=2*slot */
+  --menu-toggle-progress: clamp(0, (var(--t) - var(--slot)) / var(--slot), 1);
+  transform: translateX(calc((1 - var(--menu-toggle-progress, 0)) * 100vw));
 }
 
 body:has(.menuToggle[data-state="closed"]):has(
