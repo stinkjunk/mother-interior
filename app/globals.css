@@ -106,6 +106,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-dm-sans);
 }
+
 /*Global rules*/
 button {
   cursor: pointer;
@@ -117,30 +118,6 @@ button {
   font-weight: bold;
   text-decoration: underline;
 }
-
-/* .textClass h1 {
-  margin-bottom: 1rem;
-}
-.textClass * + h1 {
-  margin-top: 1.5rem;
-}
-
-.textClass h2 {
-  margin-bottom: 0.75rem;
-}
-.textClass * + h2 {
-  margin-top: 1.25rem;
-}
-
-.textClass p {
-  margin-bottom: 0.5rem;
-} */
-
-/* .textClass p {
-  font-size: var(--text-sm);
-} */
-
-/*Specific stuff*/
 
 /*Simple Dropdown*/
 .simpleDropDown .simpleDropDownArrow {
@@ -170,6 +147,7 @@ button {
   max-height: 0;
   opacity: 0;
 }
+
 body {
   overflow-x: hidden;
 }
@@ -188,19 +166,16 @@ body:has(.menuToggle[data-state="open"]) {
   opacity: 0;
 }
 
-/* On mobile (max-width: 640px), show boxes by default except allItems variants */
 @media (max-width: 640px) {
   .bBox {
     opacity: 1;
   }
 
-  /* Hide allItems variants on mobile */
   .bBox.allItems {
     display: none;
   }
 }
 
-/* Desktop hover behavior only */
 @media (min-width: 640px) {
   .bBox:hover,
   body:has(.dskHeroLink.Vinyls:hover) .bBox.Vinyls,
@@ -210,7 +185,6 @@ body:has(.menuToggle[data-state="open"]) {
   }
 }
 
-/* Desktop-only underline hover */
 @media (min-width: 640px) {
   .dskHeroLink:hover,
   body:has(.bBox.Vinyls:hover) .dskHeroLink.Vinyls,
@@ -224,20 +198,17 @@ body:has(.menuToggle[data-state="open"]) {
   transition: opacity 0.15s ease-in-out;
 }
 
-/* Mobile: show lines by default except allItems variants */
 @media (max-width: 640px) {
   .dskLine {
     opacity: 1;
   }
 
-  /* Hide allItems line variants on mobile */
   .dskLine.allItemsVinyls,
   .dskLine.allItemsInterior {
     display: none;
   }
 }
 
-/* Desktop hover behavior only */
 @media (min-width: 640px) {
   body:has(.dskHeroLink.Vinyls:hover) .dskLine.Vinyls,
   body:has(.bBox.Vinyls:hover) .dskLine.Vinyls,
@@ -252,41 +223,55 @@ body:has(.menuToggle[data-state="open"]) {
   }
 }
 
-/*Conditional styling af front page header*/
-/* .altColor {
-  color: var(--color-mi-neutral-900);
-  fill: var(--color-mi-neutral-900);
-} */
+/*Nav active states*/
+/* Slot 2 */
+.navMenu .itemsLink {
+  --link-progress: clamp(0, (var(--t) - var(--slot)) / var(--slot), 1);
+}
 
-body:has(.itemsPage) .navMenu .itemsLink {
-  text-decoration: underline;
+/* Slot 3 */
+.navMenu .interiorLink {
+  --link-progress: clamp(
+    0,
+    (var(--t) - calc(var(--slot) * 2)) / var(--slot),
+    1
+  );
 }
-body:has(.aboutPage) .navMenu .aboutLink {
-  text-decoration: underline;
+
+/* Slot 4 */
+.navMenu .vinylsLink {
+  --link-progress: clamp(
+    0,
+    (var(--t) - calc(var(--slot) * 3)) / var(--slot),
+    1
+  );
 }
-body:has(.interiorFilter) .navMenu .interiorLink {
-  text-decoration: underline;
+
+/* Slot 5 */
+.navMenu .blogLink {
+  --link-progress: clamp(
+    0,
+    (var(--t) - calc(var(--slot) * 4)) / var(--slot),
+    1
+  );
 }
-body:has(.vinylsFilter) .navMenu .vinylsLink {
-  text-decoration: underline;
-}
-body:has(.blogFilter) .navMenu .blogLink {
-  text-decoration: underline;
-}
-body:has(.aboutPage) .navMenu .aboutLink {
-  text-decoration: underline;
+
+/* Slot 6 */
+.navMenu .aboutLink {
+  --link-progress: clamp(
+    0,
+    (var(--t) - calc(var(--slot) * 5)) / var(--slot),
+    1
+  );
 }
 
 /*Nav Menu*/
-
 body:has(.frontPage) .mobileHeaderBg {
   display: none;
 }
 body:has(.frontPage) header {
   background-color: transparent;
 }
-
-/* On front page mobile, style navMenu like desktop */
 
 /* ============================================================
    TOGGLE MENU — BASE STYLES
@@ -297,6 +282,7 @@ body:has(.frontPage) header {
   top: 0;
   height: 6.5rem;
   width: 100vw;
+  transition: opacity 0.25s ease-in-out;
 }
 
 @media (min-width: 640px) {
@@ -327,56 +313,9 @@ body:has(.frontPage) header {
   --expandedColor: var(--color-on-items);
 }
 
-/* body:has(.aboutPage) .menuToggleBackground > div {
-  --expandedColor: var(--color-about);
-}
-body:has(.aboutPage) .menuToggleBackground > button {
-  --expandedColor: var(--color-on-about);
-} */
-
-/*Fordi BaseUI driller mig*/
-/* @media (max-width: 640px) {
-  html:has(*[data-popup-open]) {
-    scrollbar-gutter: auto !important;
-    scroll-behavior: auto !important;
-    overflow: hidden !important;
-  }
-}
-@media (min-width: 640px) {
-  html:has(*[data-popup-closed]) header {
-    scrollbar-gutter: stable !important;
-  }
-} */
-
-/* html {
-  scrollbar-gutter: auto !important;
-} */
-
-/* html:has(.altColor[data-popup-open]) {
-  overflow: hidden !important;
-} */
-
-html:has(.frontPage) {
-  overflow: hidden;
-}
-
-/*Header Styling*/
-
-:root {
-  --headerheight: 5rem; /*h-20*/
-}
-.scrollablePage {
-  margin-top: var(--headerheight);
-}
-
-/*h-[calc(100dvh-5rem)]*/
-/*Underside styling*/
-
 .menuToggleBackground > div {
   margin-left: auto;
-  height: 2.5rem;
 
-  /* Interpolates between neutral pill color and page-specific expanded color */
   background-color: color-mix(
     in srgb,
     var(--expandedColor) calc(var(--menu-button-bg-progress, 0) * 100%),
@@ -399,23 +338,65 @@ html:has(.frontPage) {
 }
 
 /* ============================================================
+   FRONT PAGE — DEFAULT HIDDEN STATES
+   The navMenu and background pill are invisible on front page
+   at rest. They only become visible during the close animation
+   triggered by JS when navigating to front page from an open menu.
+   The :not(...) guard ensures these never conflict with the animation.
+   ============================================================ */
+
+body:has(.frontPage):not(
+    :has(.menuToggle[data-interacted="true"][data-state="closed"])
+  )
+  .navMenu {
+  transform: translateX(100vw);
+}
+
+body:has(.frontPage):not(
+    :has(.menuToggle[data-interacted="true"][data-state="closed"])
+  )
+  .menuToggleBackground
+  > div,
+body:has(.frontPage):not(
+    :has(.menuToggle[data-interacted="true"][data-state="closed"])
+  )
+  .menuToggleButton
+  > button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
    MASTER TIMER
-   7 slots total (1 background + 5 links... add 6th link when ready)
+   6 slots total (1 background + 5 links)
    Each slot = 100 / 6 = 16.666 units of --t
-   Slot 1 (bg):        0  – 16.666
-   Slot 2 (items):     16.666 – 33.333
-   Slot 3 (interior):  33.333 – 50
-   Slot 4 (vinyls):    50     – 66.666
-   Slot 5 (blog):      66.666 – 83.333
-   Slot 6 (about):     83.333 – 100
+   Slot 1 (bg):       0       – 16.666
+   Slot 2 (items):    16.666  – 33.333
+   Slot 3 (interior): 33.333  – 50
+   Slot 4 (vinyls):   50      – 66.666
+   Slot 5 (blog):     66.666  – 83.333
+   Slot 6 (about):    83.333  – 100
+
+   Front page close adds a 7th slot for navMenu slide-out.
+   Both --t (links, 100→0) and --t-close-front (slide-out, 0→100)
+   run simultaneously so the full sequence plays correctly.
+   Slot 7 occupies 85.714–100 of --t-close-front.
    ============================================================ */
 
 :root {
+  --headerheight: 5rem;
   --menuOpenTime: 0.8s;
-  --slot: 16.666; /* one sixth — change this if you add/remove elements */
+  --slot: 16.666;
+  --menuCloseTimeFront: calc(var(--menuOpenTime) + var(--menuOpenTime) / 6);
 }
 
 @property --t {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --t-close-front {
   syntax: "<number>";
   inherits: true;
   initial-value: 0;
@@ -438,35 +419,38 @@ html:has(.frontPage) {
     --t: 0;
   }
 }
-/*Gør mobile sider klikbare:*/
-@media (max-width: 640) {
-  body:has(.menuToggle[data-state="closed"]) header {
-    pointer-events: none;
+
+@keyframes masterCloseFront {
+  from {
+    --t-close-front: 0;
   }
-  body:has(.menuToggle[data-state="closed"]) .menuToggle,
-  body:has(.menuToggle[data-state="closed"]) .lang-playerButton,
-  body:has(.menuToggle[data-state="closed"]) .navLogoLink {
-    pointer-events: auto;
+  to {
+    --t-close-front: 100;
   }
 }
-/* body:has(.menuToggle[data-state="closed"]) {
-  header {
-    pointer-events: none;
-  }
-  .navMenu {
-    pointer-events: auto;
-  }
-  .lang-playerButton {
-    pointer-events: auto;
-  }
-} */
 
+/* Open — all pages */
 body:has(.menuToggle[data-interacted="true"][data-state="open"]) {
   animation: masterOpen var(--menuOpenTime) ease forwards;
 }
 
-body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
+/* Close — non-front pages */
+body:not(:has(.frontPage)):has(
+    .menuToggle[data-interacted="true"][data-state="closed"]
+  ) {
   animation: masterClose var(--menuOpenTime) ease forwards;
+}
+
+/* Close — front page only.
+   Both timers run simultaneously:
+   masterClose drives --t (100→0) so link animations fire normally.
+   masterCloseFront drives --t-close-front (0→100) for the slide-out. */
+body:has(.frontPage):has(
+    .menuToggle[data-interacted="true"][data-state="closed"]
+  ) {
+  animation:
+    masterClose var(--menuOpenTime) ease forwards,
+    masterCloseFront var(--menuCloseTimeFront) ease forwards;
 }
 
 /* ============================================================
@@ -478,7 +462,7 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   --menu-button-bg-progress: clamp(0, var(--t) / var(--slot), 1);
 }
 
-/* Shared link styles — hidden and non-interactive at rest */
+/* Shared link styles — hidden and non-interactive at rest, mobile only */
 @media (max-width: 640px) {
   .navMenu li {
     opacity: var(--link-progress, 0);
@@ -486,18 +470,17 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
     pointer-events: none;
   }
 
-  /* Re-enable pointer events once open */
   body:has(.menuToggle[data-state="open"]) .navMenu li {
     pointer-events: auto;
   }
 }
 
-/* Slot 2: 16.666 → 33.333% */
+/* Slot 2 */
 .navMenu .itemsLink {
   --link-progress: clamp(0, (var(--t) - var(--slot)) / var(--slot), 1);
 }
 
-/* Slot 3: 33.333 → 50% */
+/* Slot 3 */
 .navMenu .interiorLink {
   --link-progress: clamp(
     0,
@@ -506,7 +489,7 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   );
 }
 
-/* Slot 4: 50 → 66.666% */
+/* Slot 4 */
 .navMenu .vinylsLink {
   --link-progress: clamp(
     0,
@@ -515,7 +498,7 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   );
 }
 
-/* Slot 5: 66.666 → 83.333% */
+/* Slot 5 */
 .navMenu .blogLink {
   --link-progress: clamp(
     0,
@@ -524,13 +507,52 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   );
 }
 
-/* Slot 6: 83.333 → 100% */
+/* Slot 6 */
 .navMenu .aboutLink {
   --link-progress: clamp(
     0,
     (var(--t) - calc(var(--slot) * 5)) / var(--slot),
     1
   );
+}
+
+/* Slot 7 — front page close only.
+   Slides the entire navMenu offscreen after links have animated out.
+   Scoped to the active close state so it never fires on page load. */
+body:has(.frontPage):has(
+    .menuToggle[data-interacted="true"][data-state="closed"]
+  )
+  .navMenu {
+  --menu-toggle-progress: clamp(0, (var(--t-close-front) - 85.714) / 14.286, 1);
+  transform: translateX(calc(var(--menu-toggle-progress) * 100vw));
+}
+:root {
+  --menuCloseTimeFront: calc(
+    var(--menuOpenTime) + var(--menuOpenTime) / 6 + 0.1s
+  );
+  /*Time Padding*/
+}
+
+/* ============================================================
+   POINTER EVENTS — mobile
+   ============================================================ */
+
+@media (max-width: 640px) {
+  body:has(.menuToggle[data-state="closed"]) header {
+    pointer-events: none;
+  }
+  body:has(.menuToggle[data-state="closed"]) .menuToggle,
+  body:has(.menuToggle[data-state="closed"]) .lang-playerButton,
+  body:has(.menuToggle[data-state="closed"]) .navLogoLink {
+    pointer-events: auto;
+  }
+}
+
+body:has(.menuToggle[data-state="closed"]):has(
+    .lang-playerButton[data-state="open"]
+  )
+  .menuToggle {
+  opacity: 40%;
 }
 
 /* ============================================================
@@ -553,82 +575,61 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   pointer-events: auto;
 }
 
-/*Nav Logo*/
-
-/* NavLogo opacity animation on front page mobile */
-@media (max-width: 640px) {
-  body:has(.frontPage) .navLogoLink {
-    opacity: clamp(0, var(--t) / var(--slot), 1);
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
-  }
-}
-
-/* .navLogoMCol,
-.navLogoICol,
-.navLogoITittleCol {
-  transition: all 0.2s ease-in-out;
-  fill: var(--color-mi-blue-700);
-}
-body:has(.itemsPage) .navLogoMCol,
-body:has(.itemsPage) .navLogoICol,
-body:has(.itemsPage) .navLogoITittleCol {
-  stroke-width: 1px;
-  stroke: var(--color-mi-neutral-900);
-} 
-.navLogoBgCol {
-  fill: var(--color-mi-blue-700);
-} 
-body:has(.itemsPage) .navLogoMCol {
-  fill: var(--color-interior);
-}
-body:has(.itemsPage) .navLogoICol {
-  fill: var(--color-vinyls);
-}
-body:has(.itemsPage) .navLogoITittleCol {
-  fill: var(--color-blogposts);
-}
-*/
-
-/*Lang/Playerbutton*/
+/* ============================================================
+   NAV LOGO
+   ============================================================ */
 
 .navLogoFillAll {
   fill: var(--color-mi-blue-700);
 }
 
+/* Fade in on front page mobile, synced to slot 1 */
 @media (max-width: 640px) {
-  body:not(:has(.frontPage)) {
-    .altColor {
-      /* The color when the menu is fully closed (or idle) */
-      --button-base: var(--foreground);
-
-      /* Progress synced with the menu animation:
-     starts after the background expansion (slot 1 → 16.666%)
-     and finishes at slot 2 (33.333%) */
-      --button-progress: clamp(0, var(--t) / var(--slot), 1);
-
-      color: color-mix(
-        in srgb,
-        var(--color-on-interior) calc(var(--button-progress) * 100%),
-        var(--button-base)
-      );
-      fill: color-mix(
-        in srgb,
-        var(--color-on-interior) calc(var(--button-progress) * 100%),
-        var(--button-base)
-      );
-    }
-    .navLogoFillAll {
-      --logo-base: var(--color-mi-blue-700);
-      --logo-progress: clamp(0, var(--t) / var(--slot), 1);
-      fill: color-mix(
-        in srgb,
-        var(--color-on-interior) calc(var(--logo-progress) * 100%),
-        var(--logo-base)
-      );
-    }
+  body:has(.frontPage) .navLogoLink {
+    opacity: clamp(0, var(--t) / var(--slot), 1);
+    pointer-events: none;
   }
 }
+
+/* ============================================================
+   ALT COLOR — lang/player button
+   ============================================================ */
+
+body:has(.frontPage) .altColor {
+  color: var(--color-mi-neutral-50);
+  fill: var(--color-mi-neutral-50);
+}
+
+@media (max-width: 640px) {
+  body:not(:has(.frontPage)) .altColor {
+    --button-base: var(--foreground);
+    --button-progress: clamp(0, var(--t) / var(--slot), 1);
+    color: color-mix(
+      in srgb,
+      var(--color-on-interior) calc(var(--button-progress) * 100%),
+      var(--button-base)
+    );
+    fill: color-mix(
+      in srgb,
+      var(--color-on-interior) calc(var(--button-progress) * 100%),
+      var(--button-base)
+    );
+  }
+
+  body:not(:has(.frontPage)) .navLogoFillAll {
+    --logo-base: var(--color-mi-blue-700);
+    --logo-progress: clamp(0, var(--t) / var(--slot), 1);
+    fill: color-mix(
+      in srgb,
+      var(--color-on-interior) calc(var(--logo-progress) * 100%),
+      var(--logo-base)
+    );
+  }
+}
+
+/* ============================================================
+   LANG MENU POPUP ITEMS
+   ============================================================ */
 
 .langMenuPopupItem {
   background-color: var(--foreground);
@@ -636,28 +637,17 @@ body:has(.itemsPage) .navLogoITittleCol {
   outline: 2px solid var(--background);
 }
 
-body:has(.frontPage) .langMenuPopupItem {
-  background-color: transparent;
-  color: var(--foreground);
-  outline: none;
-}
-
-body:has(.frontPage) .altColor {
-  color: var(--color-mi-neutral-50);
-  fill: var(--color-mi-neutral-50);
-}
-
 @media (min-width: 640px) {
-  body:has(.frontPage) .navMenu,
-  body:has(.frontPage) .navLogoLink {
-    display: none;
-  }
-
   .langMenuPopupItem {
     background-color: transparent;
     color: var(--foreground);
     outline: none;
   }
+
+  body:has(.frontPage) .navMenu,
+  body:has(.frontPage) .navLogoLink {
+    display: none;
+  }
 }
 
 body:has(.frontPage) .langMenuPopupItem {
@@ -666,37 +656,30 @@ body:has(.frontPage) .langMenuPopupItem {
   outline: none;
 }
 
-.menuToggle {
-  transition: opacity 0.25s ease-in-out;
-  transform: translateX(0);
+/* ============================================================
+   HEADER / SCROLL
+   ============================================================ */
+
+.scrollablePage {
+  margin-top: var(--headerheight);
 }
 
-/* On frontPage: drive the toggle's horizontal position from slot-1 progress
-   (uses --menu-button-bg-progress which is derived from --t / --slot) */
-body:has(.frontPage) .navMenu {
-  /* Start translation when master timer reaches slot 1
-     progress = clamp(0, (t - slot) / slot, 1) -> runs from 0 at t=slot to 1 at t=2*slot */
-  --menu-toggle-progress: clamp(0, (var(--t) - var(--slot)) / var(--slot), 1);
-  transform: translateX(calc((1 - var(--menu-toggle-progress, 0)) * 100vw));
-}
-
-body:has(.menuToggle[data-state="closed"]):has(
-    .lang-playerButton[data-state="open"]
-  )
-  .menuToggle {
-  opacity: 40%;
-}
-
-/*404 page*/
+/* ============================================================
+   404 PAGE
+   ============================================================ */
 
 .c404 span {
   transition: color 0.2s ease-in-out;
 }
 
-/*Scrollbar*/
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
 :root {
   --foreground-faded: color-mix(in srgb, var(--foreground) 50%, transparent);
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: var(--foreground-faded);
 }
@@ -709,8 +692,6 @@ body:has(.menuToggle[data-state="closed"]):has(
   background-color: transparent;
 }
 
-/* firefox */
-
 * {
-  scrollbar-color: var(--foreground-faded) transparent; /* thumb color, then track color */
+  scrollbar-color: var(--foreground-faded) transparent;
 }
