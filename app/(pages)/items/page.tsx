@@ -37,6 +37,18 @@ export default async function Items({
   //contentful:
   const results = await client.getEntries({});
   console.log("Resultater: ", results);
+  results.items.forEach((item) => {
+    const title = item.fields.title;
+    if (typeof title === "string") {
+      const lowerTitle = title.toLowerCase();
+      if (
+        lowerTitle.includes("duplicate") ||
+        lowerTitle.includes("duplikeret")
+      ) {
+        console.log("dupe fundet:", title);
+      }
+    }
+  });
 
   return <Body categories={categories} />;
 }
