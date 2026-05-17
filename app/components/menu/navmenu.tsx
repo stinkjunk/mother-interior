@@ -27,7 +27,7 @@ export default function NavMenu() {
             href="/items?category=vinyls"
             className="flex h-full w-full items-center pl-7 font-display text-8xl text-on-vinyls"
           >
-            {t("vinyls")}
+            {t("vinylsShort")}
           </Link>
         </li>
         <li className="interiorLink overflow-hidden max-sm:flex-1 max-sm:bg-interior">

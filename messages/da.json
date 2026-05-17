@@ -23,7 +23,8 @@
     "home": "Hjem",
     "items": "Opslag",
     "allItems": "Alle opslag",
-    "vinyls": "Vinyler",
+    "vinyls": "Vinylplader",
+    "vinylsShort": "Plader",
     "interior": "Interiør",
     "blog": "Blog",
     "about": "Om os",
@@ -68,6 +69,34 @@
         "h2": "Kontakt",
         "store": "<linkMiInsta>@mother_interior_cph</linkMiInsta>",
         "owner": "<linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
+      }
+    },
+    "Items": {
+      "categories": {
+        "vinyls": "Vinylplader",
+        "interior": "Interiør",
+        "blogposts": "Blogindlæg"
+      },
+      "ItemsPage": {
+        "title": "Varer | Mother Interior",
+        "h1": "Varer",
+        "filters": {
+          "title": "Sortér efter",
+          "date": {
+            "title": "Dato",
+            "newest": "Nyeste",
+            "oldest": "Ældste"
+          },
+          "price": {
+            "priceLowHigh": "Pris: Lav til høj",
+            "priceHighLow": "Pris: Høj til lav"
+          },
+          "sold": "Vis solgte varer"
+        },
+        "card": {
+          "soldLabel": "SOLGT"
+        },
+        "ItemPage": {}
       }
     }
   }
