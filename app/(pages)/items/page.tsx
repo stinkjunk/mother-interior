@@ -36,7 +36,7 @@ export default async function Items({
 
   //contentful:
   const results = await client.getEntries({});
-  console.log(JSON.stringify(results, null, 2));
+  console.log("Resultater: ", results);
 
   return <Body categories={categories} />;
 }
