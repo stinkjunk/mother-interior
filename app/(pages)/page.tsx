@@ -10,38 +10,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="h-dvh w-dvw absolute frontPage">
-        <Image
-          className="h-full object-cover -z-10"
-          src="/media/heroimg-placeholder.jpg"
-          alt={t("heroImageAlt")}
-          priority
-          fill
-        ></Image>
-      </div>
-      <div className="overflow-hidden absolute w-screen h-screen">
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{
-            width: "max(100vw, calc(100dvh * 637 / 478))",
-            aspectRatio: "637/ 478",
-          }}
-        >
-          <Link
-            href="/items?category=interior"
-            aria-labelledby="interior-link"
-            className="absolute bBox Interior"
-            style={{ top: "50%", left: "45%", width: "60%", height: "50%" }}
-          />
-          <Link
-            href="/items?category=vinyls"
-            aria-labelledby="vinyls-link"
-            className="absolute bBox Vinyls"
-            style={{ top: "30%", left: "25%", width: "35%", height: "30%" }}
-          />
-        </div>
-      </div>
-      <div className="  z-10 flex flex-col  w-fit ml-10 mt-10 text-mi-neutral-50">
+      <div className="absolute z-10 flex flex-col w-fit ml-10 mt-10 text-mi-neutral-50">
         <div className=" flex flex-col items-center">
           <CompositeLogo
             className="w-22 h-22 mb-1"
@@ -86,6 +55,38 @@ export default function Home() {
           </ul>
         </nav>
       </div>
+      <div className="h-dvh w-dvw absolute frontPage">
+        <Image
+          className="h-full object-cover -z-10"
+          src="/media/heroimg-placeholder.jpg"
+          alt={t("heroImageAlt")}
+          priority
+          fill
+        ></Image>
+      </div>
+      <div className="overflow-hidden absolute w-screen h-screen">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            width: "max(100vw, calc(100dvh * 637 / 478))",
+            aspectRatio: "637/ 478",
+          }}
+        >
+          <Link
+            href="/items?category=interior"
+            aria-labelledby="interior-link"
+            className="absolute bBox Interior"
+            style={{ top: "50%", left: "45%", width: "60%", height: "50%" }}
+          />
+          <Link
+            href="/items?category=vinyls"
+            aria-labelledby="vinyls-link"
+            className="absolute bBox Vinyls"
+            style={{ top: "30%", left: "25%", width: "35%", height: "30%" }}
+          />
+        </div>
+      </div>
+
       <LineDrawer />
     </main>
   );
