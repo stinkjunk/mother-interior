@@ -144,12 +144,12 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
     <div
       className={`itemsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
     >
-      <header className="itemsHeader max-sm:px-10 px-15">
+      <header className="h-20 max-sm:px-10 px-15 fixed bg-background w-full -translate-y-px">
         <h1 className="text-3xl font-medium mt-5">{t("h1")}</h1>
         <div className="w-full flex"></div>
       </header>
 
-      <main className="max-sm:px-10 px-15">
+      <main className="max-sm:px-10 px-15 mt-25">
         <div className="grid grid-cols-2 md:grid-cols-3">
           {items?.map((item) => (
             <div key={item.id}>
