@@ -33,7 +33,7 @@ export default async function Items({
       : [];
 
   // contentful:
-  const fetchThese: string[] = [];
+  const fetchThese = [];
   if (categories.length !== 0) {
     if (categories.includes("vinyls")) fetchThese.push("vinyls");
     if (categories.includes("interior")) fetchThese.push("post");
@@ -41,33 +41,55 @@ export default async function Items({
     // indtil jeg fandt ud af, at flere content types ville passe projektet bedre;
     // men efter omnavngivingen ændrede contently ikke API identifier lol!
     if (categories.includes("blogposts")) fetchThese.push("blogpost");
+  } else {
+    fetchThese.push("vinyls", "post", "blogpost");
   }
-  console.log(fetchThese);
+  const selectThese = ["sys.id", "sys.contentType", "fields.pinned"];
+  const selectBlogpost = [...selectThese, "fields.thumbnail"] as any;
+  const selectProduct = [
+    ...selectThese,
+    "fields.media",
+    "fields.price_dkk",
+    "fields.isSold",
+  ] as any;
 
-  const results =
-    categories.length === 0 || categories.length === 3
-      ? await client.getEntries({})
-      : await Promise.all(
-          fetchThese.map((cat) => client.getEntries({ content_type: cat }))
-        );
+  console.log("selectBlogpost: ", selectBlogpost);
+  console.log("selectProduct: ", selectProduct);
+
+  const selectMap: Record<string, any> = {
+    vinyls: selectProduct,
+    post: selectProduct,
+    blogpost: selectBlogpost,
+  };
+
+  fetchThese.map((cat) =>
+    client.getEntries({ content_type: cat, select: selectMap[cat] })
+  );
+
+  const results = await Promise.all(
+    fetchThese.map((cat) =>
+      client.getEntries({ content_type: cat, select: selectMap[cat] })
+    )
+  );
 
   console.log("Resultater: ", results);
-  const allItems = Array.isArray(results)
-    ? results.flatMap((r) => r.items)
-    : results.items;
+  // const allItems = Array.isArray(results)
+  //   ? results.flatMap((r) => r.items)
+  //   : results.items;
+  // console.log("Alle items: ", allItems);
 
-  allItems.forEach((item) => {
-    const title = item.fields.title;
-    if (typeof title === "string") {
-      const lowerTitle = title.toLowerCase();
-      if (
-        lowerTitle.includes("duplicate") ||
-        lowerTitle.includes("duplikeret")
-      ) {
-        console.log("dupe fundet:", title);
-      }
-    }
-  });
+  // allItems.forEach((item) => {
+  //   const title = item.fields.title;
+  //   if (typeof title === "string") {
+  //     const lowerTitle = title.toLowerCase();
+  //     if (
+  //       lowerTitle.includes("duplicate") ||
+  //       lowerTitle.includes("duplikeret")
+  //     ) {
+  //       console.log("dupe fundet:", title);
+  //     }
+  //   }
+  // });
 
   return <Body categories={categories} />;
 }
