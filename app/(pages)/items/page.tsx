@@ -23,9 +23,8 @@ export default async function Items({
 }: {
   searchParams: Promise<{ category?: string | string[] }>;
 }) {
+  // params
   const { category } = await searchParams;
-  console.log("Raw category from search params:", category);
-  console.log(category);
   const categories = Array.isArray(category)
     ? category
     : category
@@ -44,17 +43,20 @@ export default async function Items({
   } else {
     fetchThese.push("vinyls", "post", "blogpost");
   }
-  const selectThese = ["sys.id", "sys.contentType", "fields.pinned"];
-  const selectBlogpost = [...selectThese, "fields.thumbnail"] as any;
+  const selectThese = [
+    "sys.id",
+    "sys.createdAt",
+    "sys.contentType",
+    "fields.pinned",
+    "fields.title",
+  ] as any;
   const selectProduct = [
     ...selectThese,
     "fields.media",
     "fields.price_dkk",
     "fields.isSold",
   ] as any;
-
-  console.log("selectBlogpost: ", selectBlogpost);
-  console.log("selectProduct: ", selectProduct);
+  const selectBlogpost = [...selectThese, "fields.thumbnail"] as any;
 
   const selectMap: Record<string, any> = {
     vinyls: selectProduct,
@@ -68,42 +70,54 @@ export default async function Items({
 
   const results = await Promise.all(
     fetchThese.map((cat) =>
-      client.getEntries({ content_type: cat, select: selectMap[cat] })
+      client.getEntries({
+        content_type: cat,
+        select: selectMap[cat],
+      })
     )
   );
 
-  console.log("Resultater: ", results);
-  // const allItems = Array.isArray(results)
-  //   ? results.flatMap((r) => r.items)
-  //   : results.items;
-  // console.log("Alle items: ", allItems);
+  const allItems = results.flatMap((r) => r.items) as any[];
+  allItems.sort((a, b) => {
+    const aIsDupe =
+      (a.fields.title as string)?.toLowerCase().includes("duplicate") ||
+      (a.fields.title as string)?.toLowerCase().includes("duplikeret");
+    const bIsDupe =
+      (b.fields.title as string)?.toLowerCase().includes("duplicate") ||
+      (b.fields.title as string)?.toLowerCase().includes("duplikeret");
+    const aIsPinned = a.fields.pinned;
+    const bIsPinned = b.fields.pinned;
+    if (aIsPinned && !bIsPinned) return -1;
+    if (!aIsPinned && bIsPinned) return 1;
 
-  // allItems.forEach((item) => {
-  //   const title = item.fields.title;
-  //   if (typeof title === "string") {
-  //     const lowerTitle = title.toLowerCase();
-  //     if (
-  //       lowerTitle.includes("duplicate") ||
-  //       lowerTitle.includes("duplikeret")
-  //     ) {
-  //       console.log("dupe fundet:", title);
-  //     }
-  //   }
-  // });
+    if (aIsDupe && !bIsDupe) return 1;
+    if (!aIsDupe && bIsDupe) return -1;
+    return b.sys.createdAt.localeCompare(a.sys.createdAt);
+    // date kører kun hvis to items er ens i forhold til pinned/dupe status.
+  });
 
-  return <Body categories={categories} />;
+  return <Body categories={categories} items={allItems} />;
 }
 
-function Body({ categories }: { categories?: string[] }) {
+function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
   const t = useTranslations("ItemsPage");
+  console.log("Alle oplæg: ", items);
+
   return (
     <div
       className={`itemsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
     >
-      <header className="itemsHeader max-sm:px-10">
-        <h1 className="text-3xl font-medium mb-5 max-sm:mt-5">{t("h1")}</h1>
+      <header className="itemsHeader max-sm:px-10 px-15">
+        <h1 className="text-3xl font-medium mt-5">{t("h1")}</h1>
         <div className="w-full flex"></div>
       </header>
+      <div className="max-sm:px-10 px-15">
+        {items?.map((item) => (
+          <div key={item.sys.id}>
+            <p>{item.fields.title}</p>
+          </div>
+        ))}
+      </div>
       <main className="itemsChunk"></main>
     </div>
   );
