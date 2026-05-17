@@ -34,18 +34,29 @@ export default function Card({
         : "h-40 sm:h-60";
 
   return (
-    <Link href="#">
+    <Link href="#" className="relative">
       <div
         className={`itemCard ${categoryStyle} ${priorityStyle} ${className} bg-background text-foreground flex flex-col`}
       >
+        {isSold && (
+          <div className="soldContainer absolute h-full w-full px-2 py-1 text-xs font-bold flex items-center justify-center pb-8 sm:pb-10 z-5">
+            <p
+              className={`font-label text-2xl ${category === "vinyl" ? "text-mi-mint-100" : ""}`}
+            >
+              SOLD
+            </p>
+          </div>
+        )}
         <Image
           src={thumbnail}
           alt={title}
-          className="object-cover flex-1 w-full overflow-hidden p-4"
-          width={200}
-          height={200}
+          className={`object-cover flex-1 w-full overflow-hidden p-1.5 sm:p-4 ${isSold ? "blur-xs opacity-70" : ""}`}
+          width={150}
+          height={150}
         />
-        <p className="font-medium px-4 h-10 truncate">{title}</p>
+        <p className="font-medium px-1.5 h-8 sm:px-4 sm:h-10 z-10 truncate">
+          {title}
+        </p>
       </div>
     </Link>
   );
