@@ -131,6 +131,7 @@ export default async function Items({
       return item;
     })
   );
+  // console.log(withJSONThumbnails.length);
 
   return <Body categories={categories} items={withJSONThumbnails} />;
 }
@@ -142,24 +143,39 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
     <div
       className={`itemsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
     >
-      <header className="h-20 max-sm:px-10 px-15 fixed bg-background w-full -translate-y-px">
+      <header className="h-20 max-sm:px-10 px-15 fixed bg-background w-full -translate-y-px z-10">
         <h1 className="text-3xl font-medium mt-5">{t("h1")}</h1>
         <div className="w-full flex"></div>
       </header>
 
-      <main className="max-sm:px-5 px-15 mt-25">
-        <div className="grid grid-cols-2 md:grid-cols-3">
-          {items?.map((item) => (
-            <div key={item.id}>
+      <main className="max-sm:px-5 sm:pb-5 px-15 pb-5 mt-25">
+        <div className="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense">
+          {items?.map((item, i) => {
+            const indexInWave = i % 6;
+            const waveIndex = Math.floor(i / 6);
+            const seed = items[0].id
+              .split("")
+              .reduce((acc: number, c: string) => acc + c.charCodeAt(0), 0);
+            const horizontalSlot = ((seed + waveIndex) % 5) + 1;
+            const priority =
+              indexInWave === 0
+                ? "vertical"
+                : indexInWave === horizontalSlot
+                  ? "horizontal"
+                  : undefined;
+
+            return (
               <Card
+                key={item.id}
                 category={item.contentType}
                 title={item.title}
                 thumbnail={item.thumbnail}
                 pinned={item.pinned}
                 isSold={item.isSold}
+                priority={priority}
               />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </main>
     </div>

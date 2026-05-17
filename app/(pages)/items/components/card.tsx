@@ -33,9 +33,9 @@ export default function Card({
         : "h-40 sm:h-60";
 
   return (
-    <Link href="#" className="relative">
+    <Link href="#" className={`relative block ${priorityStyle} ${className}`}>
       <div
-        className={`itemCard ${categoryStyle} ${priorityStyle} ${className} bg-background text-foreground flex flex-col`}
+        className={`itemCard ${categoryStyle} bg-background text-foreground flex h-full w-full flex-col`}
       >
         {pinned && (
           <MdPushPin className="absolute top-2 right-2 z-5 fill-foreground w-9 h-9 rotate-45 bg-background p-1 rounded-full" />
@@ -53,10 +53,10 @@ export default function Card({
           src={thumbnail}
           alt={title}
           className={`object-cover flex-1 w-full overflow-hidden p-1.5 sm:p-4 ${isSold ? "opacity-40" : ""}`}
-          width={150}
-          height={150}
+          width={priority === "horizontal" ? 300 : 150}
+          height={priority === "vertical" ? 300 : 150}
         />
-        <p className="font-medium px-1.5 h-8 sm:px-4 sm:h-10 z-10 truncate">
+        <p className="font-medium px-1.5 h-8 sm:px-4 sm:h-10 z-5 truncate">
           {title}
         </p>
       </div>
