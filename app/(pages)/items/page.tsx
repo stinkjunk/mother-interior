@@ -1,6 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { Metadata } from "next";
 import searchParams from "next/navigation";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
 // http://localhost:3000/items?category=vinyls&category=interior&category=blogposts
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -11,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Items({
+  //få al data i dette lag
   searchParams,
 }: {
   searchParams: Promise<{ category?: string | string[] }>;
@@ -25,14 +28,18 @@ export default async function Items({
       : [];
 
   console.log("Parsed categories:", categories);
-  const t = await getTranslations("ItemsPage");
+  return <Body categories={categories} />;
+}
 
+function Body({ categories }: { categories?: string[] }) {
+  const t = useTranslations("ItemsPage");
   return (
     <div
-      className={`itemsPage ${categories.includes("interior") ? "interiorFilter " : ""}${categories.includes("vinyls") ? "vinylsFilter " : ""}${categories.includes("blogposts") ? "blogFilter " : ""} scrollablePage h-[calc(100dvh-var(--headerheight))]`}
+      className={`itemsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
     >
-      <header className="itemsHeader">
-        <h1></h1>
+      <header className="itemsHeader max-sm:px-10">
+        <h1 className="text-3xl font-medium mb-5 max-sm:mt-5">{t("h1")}</h1>
+        <div className="w-full flex"></div>
       </header>
       <main className="itemsChunk"></main>
     </div>

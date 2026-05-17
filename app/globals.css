@@ -701,7 +701,7 @@ body:has(.frontPage) .langMenuPopupItem {
    ============================================================ */
 
 :root {
-  --itemsHeaderHeight: 3rem;
+  --itemsHeaderHeight: 5rem;
 }
 
 .itemsHeader {
