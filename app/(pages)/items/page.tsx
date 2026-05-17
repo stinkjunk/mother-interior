@@ -156,7 +156,6 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
                 title={item.title}
                 thumbnail={item.thumbnail}
                 pinned={item.pinned}
-                price={item.price}
                 isSold={item.isSold}
               />
             </div>
