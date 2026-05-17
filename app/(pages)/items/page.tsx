@@ -32,12 +32,31 @@ export default async function Items({
       ? [category]
       : [];
 
-  // console.log("Parsed categories:", categories);
+  // contentful:
+  const fetchThese: string[] = [];
+  if (categories.length !== 0) {
+    if (categories.includes("vinyls")) fetchThese.push("vinyls");
+    if (categories.includes("interior")) fetchThese.push("post");
+    // da jeg lavede denne content type, kaldte jeg den for "post" i contentful,
+    // indtil jeg fandt ud af, at flere content types ville passe projektet bedre;
+    // men efter omnavngivingen ændrede contently ikke API identifier lol!
+    if (categories.includes("blogposts")) fetchThese.push("blogpost");
+  }
+  console.log(fetchThese);
 
-  //contentful:
-  const results = await client.getEntries({});
+  const results =
+    categories.length === 0 || categories.length === 3
+      ? await client.getEntries({})
+      : await Promise.all(
+          fetchThese.map((cat) => client.getEntries({ content_type: cat }))
+        );
+
   console.log("Resultater: ", results);
-  results.items.forEach((item) => {
+  const allItems = Array.isArray(results)
+    ? results.flatMap((r) => r.items)
+    : results.items;
+
+  allItems.forEach((item) => {
     const title = item.fields.title;
     if (typeof title === "string") {
       const lowerTitle = title.toLowerCase();
