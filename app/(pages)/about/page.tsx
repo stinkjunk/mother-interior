@@ -17,7 +17,7 @@ export default function About() {
   const t = useTranslations("AboutPage.about");
 
   return (
-    <div className="aboutPage scrollablePage  pb-20 flex flex-col items-center">
+    <main className="aboutPage scrollablePage  pb-20 flex flex-col items-center">
       <div className="w-7/10 sm:w-2/3 lg:w-1/2 sm:relative max-sm:flex max-sm:flex-col">
         <div className="max-sm:w-full max-sm:order-1 max-sm:mt-10 sm:absolute right-0 top-0 w-32 aspect-1">
           <div className="max-sm:w-full aspect-1 w-0.4 sm:fixed h-50 relative textClass">
@@ -60,6 +60,6 @@ export default function About() {
           <p className="mt-5">{t.rich("address.appointment", resolvers)}</p>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

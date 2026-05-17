@@ -9,7 +9,7 @@ export default function Home() {
   const nav = useTranslations("Navigation");
 
   return (
-    <>
+    <main>
       <div className="h-dvh w-dvw absolute frontPage">
         <Image
           className="h-full object-cover -z-10"
@@ -87,6 +87,6 @@ export default function Home() {
         </nav>
       </div>
       <LineDrawer />
-    </>
+    </main>
   );
 }

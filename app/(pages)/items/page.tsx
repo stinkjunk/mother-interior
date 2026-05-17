@@ -16,6 +16,7 @@ export default async function Items({
   searchParams: Promise<{ category?: string | string[] }>;
 }) {
   const { category } = await searchParams;
+  console.log("Raw category from search params:", category);
   console.log(category);
   const categories = Array.isArray(category)
     ? category
@@ -23,14 +24,17 @@ export default async function Items({
       ? [category]
       : [];
 
+  console.log("Parsed categories:", categories);
+  const t = await getTranslations("ItemsPage");
+
   return (
     <div
       className={`itemsPage ${categories.includes("interior") ? "interiorFilter " : ""}${categories.includes("vinyls") ? "vinylsFilter " : ""}${categories.includes("blogposts") ? "blogFilter " : ""} scrollablePage h-[calc(100dvh-var(--headerheight))]`}
     >
-      <div className="flex items-center justify-center h-full">
-        <h1 className="text-2xl font-display">Items Page</h1>
-      </div>
-      <div className="h-[500dvh]">{/* spacer div for scrollin'! */}</div>
+      <header className="itemsHeader">
+        <h1></h1>
+      </header>
+      <main className="itemsChunk"></main>
     </div>
   );
 }

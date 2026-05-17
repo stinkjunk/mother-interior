@@ -299,7 +299,7 @@ body:has(.aboutPage) .aboutLink {
 body:has(.frontPage) .mobileHeaderBg {
   display: none;
 }
-body:has(.frontPage) header {
+body:has(.frontPage) .mainHeader {
   background-color: transparent;
 }
 
@@ -414,7 +414,6 @@ body:has(.frontPage):not(
    ============================================================ */
 
 :root {
-  --headerheight: 5rem;
   --menuOpenTime: 0.8s;
   --slot: 16.666;
   --menuCloseTimeFront: calc(var(--menuOpenTime) + var(--menuOpenTime) / 6);
@@ -568,7 +567,7 @@ body:has(.frontPage):has(
    ============================================================ */
 
 @media (max-width: 640px) {
-  body:has(.menuToggle[data-state="closed"]) header {
+  body:has(.menuToggle[data-state="closed"]) .mainHeader {
     pointer-events: none;
   }
   body:has(.menuToggle[data-state="closed"]) .menuToggle,
@@ -690,8 +689,23 @@ body:has(.frontPage) .langMenuPopupItem {
    HEADER / SCROLL
    ============================================================ */
 
+:root {
+  --headerheight: 5rem;
+}
 .scrollablePage {
   margin-top: var(--headerheight);
+}
+
+/* ============================================================
+   ITEMS PAGE
+   ============================================================ */
+
+:root {
+  --itemsHeaderHeight: 3rem;
+}
+
+.itemsHeader {
+  height: var(--itemsHeaderHeight);
 }
 
 /* ============================================================

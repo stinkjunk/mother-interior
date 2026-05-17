@@ -24,7 +24,7 @@ export default function NotFound() {
     "text-mi-tomato-300",
   ];
   return (
-    <div className="w-dvw h-dvh flex flex-col items-center justify-center gap-4 px-10 c404">
+    <main className="w-dvw h-dvh flex flex-col items-center justify-center gap-4 px-10 c404">
       <p className="text-8xl font-bold font-display">
         <span className={fourOhFourCols[(countdown + 0) % 6]}>4</span>
         <span className={fourOhFourCols[(countdown + 1) % 6]}>0</span>
@@ -47,6 +47,6 @@ export default function NotFound() {
           </span>
         </span>
       </p>
-    </div>
+    </main>
   );
 }
