@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export default function Card({
   category,
   title,
@@ -23,12 +26,27 @@ export default function Card({
       : category === "interior"
         ? "interiorStyling"
         : "blogpostStyling";
+  const priorityStyle =
+    priority === "horizontal"
+      ? "col-span-2 h-40 sm:h-60"
+      : priority === "vertical"
+        ? "row-span-2 h-80 sm:h-120"
+        : "h-40 sm:h-60";
 
   return (
-    <div
-      className={`itemCard ${categoryStyle} ${className} bg-background text-foreground`}
-    >
-      <p className="font-medium">{title}</p>
-    </div>
+    <Link href="#">
+      <div
+        className={`itemCard ${categoryStyle} ${priorityStyle} ${className} bg-background text-foreground flex flex-col`}
+      >
+        <Image
+          src={thumbnail}
+          alt={title}
+          className="object-cover flex-1 w-full overflow-hidden p-4"
+          width={200}
+          height={200}
+        />
+        <p className="font-medium px-4 h-10 truncate">{title}</p>
+      </div>
+    </Link>
   );
 }

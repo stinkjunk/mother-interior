@@ -131,20 +131,18 @@ export default async function Items({
       return item;
     })
   );
-  console.log("Alle items efter sortering: ", withJSONThumbnails);
 
   return <Body categories={categories} items={withJSONThumbnails} />;
 }
 
 function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
   const t = useTranslations("ItemsPage");
-  // console.log("Alle oplæg: ", items);
 
   return (
     <div
       className={`itemsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
     >
-      <header className="h-20 max-sm:px-10 px-15 fixed bg-background w-full -translate-y-px">
+      <header className="h-20 max-sm:px-10 px-15 fixed bg-background w-full -translate-y-px z-10">
         <h1 className="text-3xl font-medium mt-5">{t("h1")}</h1>
         <div className="w-full flex"></div>
       </header>

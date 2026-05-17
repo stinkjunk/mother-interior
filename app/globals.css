@@ -700,13 +700,18 @@ body:has(.frontPage) .langMenuPopupItem {
    ITEMS PAGE
    ============================================================ */
 
-/* :root {
-  --itemsHeaderHeight: 5rem;
+.itemCard {
+  transition: 0.15s ease-in-out;
+  /* img {
+    transition: 0.15s ease-in-out;
+    &:hover {
+      transform: scale(1.05);
+    }
+  } */
+  &:hover {
+    opacity: 0.7;
+  }
 }
-
-.itemsHeader {
-  height: var(--itemsHeaderHeight);
-} */
 
 .itemCard.vinylStyling {
   --background: var(--color-vinyls);
