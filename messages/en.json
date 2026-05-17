@@ -40,8 +40,32 @@
     "brandName": "Mother Interior"
   },
   "ItemsPage": {
-    "title": "Items | Mother Interior"
+    "categories": {
+      "vinyls": "Vinyls",
+      "interior": "Interior",
+      "blogposts": "Blogposts"
+    },
+
+    "title": "Items | Mother Interior",
+    "h1": "Items",
+    "filters": {
+      "title": "Sort by",
+      "date": {
+        "title": "Date",
+        "newest": "Newest",
+        "oldest": "Oldest"
+      },
+      "price": {
+        "priceLowHigh": "Price: Low to High",
+        "priceHighLow": "Price: High to Low"
+      },
+      "sold": "Show Sold Items"
+    },
+    "card": {
+      "soldLabel": "SOLD"
+    }
   },
+  "ItemPage": {},
   "AboutPage": {
     "title": "About | Mother Interior",
     "about": {
@@ -71,34 +95,6 @@
         "store": "<linkMiInsta>@mother_interior_cph</linkMiInsta>",
         "owner": "<linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
       }
-    }
-  },
-  "Items": {
-    "categories": {
-      "vinyls": "Vinyls",
-      "interior": "Interior",
-      "blogposts": "Blogposts"
-    },
-    "ItemsPage": {
-      "title": "Items | Mother Interior",
-      "h1": "Items",
-      "filters": {
-        "title": "Sort by",
-        "date": {
-          "title": "Date",
-          "newest": "Newest",
-          "oldest": "Oldest"
-        },
-        "price": {
-          "priceLowHigh": "Price: Low to High",
-          "priceHighLow": "Price: High to Low"
-        },
-        "sold": "Show Sold Items"
-      },
-      "card": {
-        "soldLabel": "SOLD"
-      },
-      "ItemPage": {}
     }
   }
 }

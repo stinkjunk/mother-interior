@@ -40,8 +40,31 @@
     "brandName": "Mother Interior"
   },
   "ItemsPage": {
-    "title": "Opslag | Mother Interior"
+    "categories": {
+      "vinyls": "Vinylplader",
+      "interior": "Interiør",
+      "blogposts": "Blogindlæg"
+    },
+    "title": "Oplæg | Mother Interior",
+    "h1": "Oplæg",
+    "filters": {
+      "title": "Sortér efter",
+      "date": {
+        "title": "Dato",
+        "newest": "Nyeste",
+        "oldest": "Ældste"
+      },
+      "price": {
+        "priceLowHigh": "Pris: Lav til høj",
+        "priceHighLow": "Pris: Høj til lav"
+      },
+      "sold": "Vis solgte varer"
+    },
+    "card": {
+      "soldLabel": "SOLGT"
+    }
   },
+  "ItemPage": {},
   "AboutPage": {
     "title": "Om os | Mother Interior",
     "about": {
@@ -69,34 +92,6 @@
         "h2": "Kontakt",
         "store": "<linkMiInsta>@mother_interior_cph</linkMiInsta>",
         "owner": "<linkOwnerInsta>@christiandorofdenmark</linkOwnerInsta>"
-      }
-    },
-    "Items": {
-      "categories": {
-        "vinyls": "Vinylplader",
-        "interior": "Interiør",
-        "blogposts": "Blogindlæg"
-      },
-      "ItemsPage": {
-        "title": "Oplæg | Mother Interior",
-        "h1": "Oplæg",
-        "filters": {
-          "title": "Sortér efter",
-          "date": {
-            "title": "Dato",
-            "newest": "Nyeste",
-            "oldest": "Ældste"
-          },
-          "price": {
-            "priceLowHigh": "Pris: Lav til høj",
-            "priceHighLow": "Pris: Høj til lav"
-          },
-          "sold": "Vis solgte varer"
-        },
-        "card": {
-          "soldLabel": "SOLGT"
-        },
-        "ItemPage": {}
       }
     }
   }
