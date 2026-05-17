@@ -96,12 +96,41 @@ export default async function Items({
     // date kører kun hvis to items er ens i forhold til pinned/dupe status.
   });
 
-  return <Body categories={categories} items={allItems} />;
+  const normalizedItems = allItems.map((item) => {
+    const fields = item.fields as any;
+    const rawMedia = fields.media?.[0] ?? fields.thumbnail ?? null;
+    const mediaUrl = rawMedia?.fields?.file?.url;
+    return {
+      id: item.sys.id,
+      contentType: item.sys.contentType.sys.id,
+      title: fields.title,
+      thumbnail: mediaUrl ? `https:${mediaUrl}` : null,
+      price: fields.price_dkk ?? null,
+      isSold: fields.isSold ?? null,
+      pinned: fields.pinned ?? false,
+      createdAt: item.sys.createdAt,
+    };
+  });
+
+  const withJSONThumbnails = await Promise.all(
+    normalizedItems.map(async (item) => {
+      const url = item.thumbnail;
+      if (url?.endsWith(".json")) {
+        const res = await fetch(url);
+        const links: string[] = await res.json();
+        return { ...item, thumbnail: links[0] ?? null };
+      }
+      return item;
+    })
+  );
+  console.log("Alle items efter sortering: ", withJSONThumbnails);
+
+  return <Body categories={categories} items={withJSONThumbnails} />;
 }
 
 function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
   const t = useTranslations("ItemsPage");
-  console.log("Alle oplæg: ", items);
+  // console.log("Alle oplæg: ", items);
 
   return (
     <div
@@ -113,8 +142,8 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
       </header>
       <div className="max-sm:px-10 px-15">
         {items?.map((item) => (
-          <div key={item.sys.id}>
-            <p>{item.fields.title}</p>
+          <div key={item.id}>
+            <p>{item.title}</p>
           </div>
         ))}
       </div>
