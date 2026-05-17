@@ -708,6 +708,21 @@ body:has(.frontPage) .langMenuPopupItem {
   height: var(--itemsHeaderHeight);
 }
 
+.itemCard.vinylStyling {
+  --background: var(--color-vinyls);
+  --foreground: var(--color-on-vinyls);
+}
+
+.itemCard.interiorStyling {
+  --background: var(--color-interior);
+  --foreground: var(--color-on-interior);
+}
+
+.itemCard.blogpostStyling {
+  --background: var(--color-blogposts);
+  --foreground: var(--color-on-blogposts);
+}
+
 /* ============================================================
    404 PAGE
    ============================================================ */

@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { createClient } from "contentful";
+import Card from "./components/card";
 // http://localhost:3000/items?category=vinyls&category=interior&category=blogposts
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -100,9 +101,16 @@ export default async function Items({
     const fields = item.fields as any;
     const rawMedia = fields.media?.[0] ?? fields.thumbnail ?? null;
     const mediaUrl = rawMedia?.fields?.file?.url;
+    const contentType = item.sys.contentType.sys.id;
+    const newContentType =
+      contentType === "post"
+        ? "interior"
+        : contentType === "vinyls"
+          ? "vinyl"
+          : contentType;
     return {
       id: item.sys.id,
-      contentType: item.sys.contentType.sys.id,
+      contentType: newContentType,
       title: fields.title,
       thumbnail: mediaUrl ? `https:${mediaUrl}` : null,
       price: fields.price_dkk ?? null,
@@ -140,14 +148,23 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
         <h1 className="text-3xl font-medium mt-5">{t("h1")}</h1>
         <div className="w-full flex"></div>
       </header>
-      <div className="max-sm:px-10 px-15">
-        {items?.map((item) => (
-          <div key={item.id}>
-            <p>{item.title}</p>
-          </div>
-        ))}
-      </div>
-      <main className="itemsChunk"></main>
+
+      <main className="max-sm:px-10 px-15">
+        <div className="grid grid-cols-2 md:grid-cols-3">
+          {items?.map((item) => (
+            <div key={item.id}>
+              <Card
+                category={item.contentType}
+                title={item.title}
+                thumbnail={item.thumbnail}
+                pinned={item.pinned}
+                price={item.price}
+                isSold={item.isSold}
+              />
+            </div>
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
