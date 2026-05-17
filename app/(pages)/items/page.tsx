@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { Metadata } from "next";
-import searchParams from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { createClient } from "contentful";
 // http://localhost:3000/items?category=vinyls&category=interior&category=blogposts
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -11,6 +11,11 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("title"),
   };
 }
+
+const client = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID!,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+});
 
 export default async function Items({
   //få al data i dette lag
@@ -27,7 +32,12 @@ export default async function Items({
       ? [category]
       : [];
 
-  console.log("Parsed categories:", categories);
+  // console.log("Parsed categories:", categories);
+
+  //contentful:
+  const results = await client.getEntries({});
+  console.log(JSON.stringify(results, null, 2));
+
   return <Body categories={categories} />;
 }
 
