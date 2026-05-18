@@ -1,4 +1,3 @@
-import { div } from "motion/react-client";
 import CompositeLogo from "./compositelogo";
 export default function LoaderThing({
   className = "",

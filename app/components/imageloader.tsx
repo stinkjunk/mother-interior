@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import LoaderThing from "./loaderthing";
+const loadedSrcs = new Set<string>();
 
 export default function ImageLoader({
   className = "",
@@ -25,7 +26,22 @@ export default function ImageLoader({
   width?: number;
   height?: number;
 }) {
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(() => loadedSrcs.has(src));
+
+  const callbackRef = useCallback(
+    (node: HTMLImageElement | null) => {
+      if (node?.complete && node.naturalWidth > 0) {
+        loadedSrcs.add(src);
+        setLoaded(true);
+      }
+    },
+    [src]
+  );
+
+  const handleLoad = () => {
+    loadedSrcs.add(src);
+    setLoaded(true);
+  };
 
   return (
     <>
@@ -50,7 +66,8 @@ export default function ImageLoader({
       <Image
         src={src}
         alt={alt}
-        onLoad={() => setLoaded(true)}
+        onLoad={handleLoad}
+        ref={callbackRef}
         loading={loading}
         className={className}
         {...(!fill ? { width, height } : { fill: true })}
