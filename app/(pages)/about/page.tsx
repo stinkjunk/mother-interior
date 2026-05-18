@@ -22,8 +22,8 @@ export default function About() {
       <div className="max-sm:w-full max-sm:px-10 sm:w-2/3 lg:w-1/2 sm:relative">
         <div className="max-sm:w-full max-sm:order-1 max-sm:mt-10 sm:absolute right-0 top-0 w-32 aspect-1">
           <div className="max-sm:w-full aspect-1 w-0.4 sm:fixed h-50 relative textClass">
-            <ImageLoader
-              src="/media/owner.jpg"
+            <Image
+              src="/media/owner.webp"
               loading="eager"
               alt={t("ownerImage.alt")}
               width={400}
