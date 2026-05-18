@@ -130,14 +130,12 @@ export default async function Items({
       return item;
     })
   );
-  // console.log(withJSONThumbnails.length);
 
   return <Body categories={categories} items={withJSONThumbnails} />;
 }
 
 function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
   const t = useTranslations("ItemsPage");
-  const ALL = ["vinyls", "interior", "blogposts"];
 
   return (
     <div
