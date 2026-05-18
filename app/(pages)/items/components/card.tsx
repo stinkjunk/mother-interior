@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ImageLoader from "@/app/components/imageloader";
 import Link from "next/link";
 import { MdPushPin } from "react-icons/md";
 
@@ -49,10 +49,12 @@ export default function Card({
             </p>
           </div>
         )}
-        <Image
+        <ImageLoader
           src={thumbnail}
           alt={title}
           className={`object-cover flex-1 w-full overflow-hidden p-1.5 sm:p-4 ${isSold ? "opacity-40" : ""}`}
+          loaderClasses="bg-background z-10"
+          loaderThingClasses="scale-75"
           width={priority === "horizontal" ? 300 : 150}
           height={priority === "vertical" ? 300 : 150}
         />

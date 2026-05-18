@@ -143,7 +143,7 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
     <div
       className={`itemsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
     >
-      <header className="h-20 max-sm:px-10 px-15 fixed bg-background w-full -translate-y-px z-10">
+      <header className="h-20 max-sm:px-10 px-15 fixed bg-background w-full -translate-y-px z-15">
         <h1 className="text-3xl font-medium mt-5">{t("h1")}</h1>
         <div className="w-full flex"></div>
       </header>
