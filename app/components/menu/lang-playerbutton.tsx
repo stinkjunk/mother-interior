@@ -49,7 +49,7 @@ export default function LangPlayerButton() {
 
   return (
     <div
-      className="flex gap-2 font-label absolute top-0 right-0 h-20 items-center pr-12.5 max-sm:pr-7 z-45 lang-playerButton"
+      className="flex gap-2 font-label absolute top-0 right-0 h-20 items-center pr-12.5 max-sm:pr-7 lang-playerButton"
       data-state={isLangMenuOpen ? "open" : "closed"}
     >
       <div ref={langMenuRef} className="relative">
@@ -63,7 +63,7 @@ export default function LangPlayerButton() {
           </span>
         </button>
         <div
-          className="menuPopup absolute top-full right-0 mt-2 z-80"
+          className="menuPopup absolute top-full right-0 mt-2"
           data-state={isLangMenuOpen ? "open" : "closed"}
         >
           <button

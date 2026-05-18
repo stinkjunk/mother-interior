@@ -39,7 +39,7 @@ export default function BgLoader({
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute h-full w-full flex items-center justify-center z-50 bg-background"
+            className="absolute h-full w-full flex items-center justify-center bg-background bgLoaderOverlay"
           >
             <LoaderThing />
           </motion.div>

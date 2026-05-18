@@ -296,11 +296,55 @@ body:has(.aboutPage) .aboutLink {
 }
 
 /*Nav Menu*/
-body:has(.frontPage) .mobileHeaderBg {
-  display: none;
-}
 body:has(.frontPage) .mainHeader {
   background-color: transparent;
+}
+
+body:has(.frontPage) .mainHeader,
+.mainHeader,
+.navMenu,
+.navLogoLink,
+.menuToggle,
+.lang-playerButton {
+  z-index: 45;
+}
+
+.bgLoaderOverlay {
+  z-index: 50;
+}
+
+body:has(.menuToggle[data-interacted="true"]) .mainHeader,
+body:has(.menuToggle[data-interacted="true"]) .navMenu,
+body:has(.menuToggle[data-interacted="true"]) .navLogoLink,
+body:has(.menuToggle[data-interacted="true"]) .menuToggle,
+body:has(.menuToggle[data-interacted="true"]) .lang-playerButton {
+  z-index: 60;
+}
+
+body:has(.menuToggle[data-interacted="true"]) .menuPopup {
+  z-index: 70;
+}
+
+body:has(.menuToggle[data-interacted="true"]) .bgLoaderOverlay {
+  z-index: 40;
+}
+
+body:has(.frontPage) .mainHeader {
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease;
+}
+
+@media (min-width: 640px) {
+  body:has(.frontPage) .mainHeader {
+    transform: translateY(-100%);
+  }
+}
+
+@media (max-width: 640px) {
+  body:has(.frontPage) .mainHeader {
+    transform: none;
+  }
 }
 
 /* ============================================================
@@ -368,35 +412,6 @@ body:has(.frontPage) .mainHeader {
 }
 
 /* ============================================================
-   FRONT PAGE — DEFAULT HIDDEN STATES
-   The navMenu and background pill are invisible on front page
-   at rest. They only become visible during the close animation
-   triggered by JS when navigating to front page from an open menu.
-   The :not(...) guard ensures these never conflict with the animation.
-   ============================================================ */
-
-body:has(.frontPage):not(
-    :has(.menuToggle[data-interacted="true"][data-state="closed"])
-  )
-  .navMenu {
-  transform: translateX(100vw);
-}
-
-body:has(.frontPage):not(
-    :has(.menuToggle[data-interacted="true"][data-state="closed"])
-  )
-  .menuToggleBackground
-  > div,
-body:has(.frontPage):not(
-    :has(.menuToggle[data-interacted="true"][data-state="closed"])
-  )
-  .menuToggleButton
-  > button {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* ============================================================
    MASTER TIMER
    6 slots total (1 background + 5 links)
    Each slot = 100 / 6 = 16.666 units of --t
@@ -407,25 +422,14 @@ body:has(.frontPage):not(
    Slot 5 (blog):     66.666  – 83.333
    Slot 6 (about):    83.333  – 100
 
-   Front page close adds a 7th slot for navMenu slide-out.
-   Both --t (links, 100→0) and --t-close-front (slide-out, 0→100)
-   run simultaneously so the full sequence plays correctly.
-   Slot 7 occupies 85.714–100 of --t-close-front.
    ============================================================ */
 
 :root {
   --menuOpenTime: 0.8s;
   --slot: 16.666;
-  --menuCloseTimeFront: calc(var(--menuOpenTime) + var(--menuOpenTime) / 6);
 }
 
 @property --t {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-@property --t-close-front {
   syntax: "<number>";
   inherits: true;
   initial-value: 0;
@@ -449,15 +453,6 @@ body:has(.frontPage):not(
   }
 }
 
-@keyframes masterCloseFront {
-  from {
-    --t-close-front: 0;
-  }
-  to {
-    --t-close-front: 100;
-  }
-}
-
 /* Open — all pages */
 body:has(.menuToggle[data-interacted="true"][data-state="open"]) {
   animation: masterOpen var(--menuOpenTime) ease forwards;
@@ -468,18 +463,6 @@ body:not(:has(.frontPage)):has(
     .menuToggle[data-interacted="true"][data-state="closed"]
   ) {
   animation: masterClose var(--menuOpenTime) ease forwards;
-}
-
-/* Close — front page only.
-   Both timers run simultaneously:
-   masterClose drives --t (100→0) so link animations fire normally.
-   masterCloseFront drives --t-close-front (0→100) for the slide-out. */
-body:has(.frontPage):has(
-    .menuToggle[data-interacted="true"][data-state="closed"]
-  ) {
-  animation:
-    masterClose var(--menuOpenTime) ease forwards,
-    masterCloseFront var(--menuCloseTimeFront) ease forwards;
 }
 
 /* ============================================================
@@ -543,23 +526,6 @@ body:has(.frontPage):has(
     (var(--t) - calc(var(--slot) * 5)) / var(--slot),
     1
   );
-}
-
-/* Slot 7 — front page close only.
-   Slides the entire navMenu offscreen after links have animated out.
-   Scoped to the active close state so it never fires on page load. */
-body:has(.frontPage):has(
-    .menuToggle[data-interacted="true"][data-state="closed"]
-  )
-  .navMenu {
-  --menu-toggle-progress: clamp(0, (var(--t-close-front) - 85.714) / 14.286, 1);
-  transform: translateX(calc(var(--menu-toggle-progress) * 100vw));
-}
-:root {
-  --menuCloseTimeFront: calc(
-    var(--menuOpenTime) + var(--menuOpenTime) / 6 + 0.1s
-  );
-  /*Time Padding*/
 }
 
 /* ============================================================
@@ -671,11 +637,6 @@ body:has(.frontPage) .altColor {
     background-color: transparent;
     color: var(--foreground);
     outline: none;
-  }
-
-  body:has(.frontPage) .navMenu,
-  body:has(.frontPage) .navLogoLink {
-    display: none;
   }
 }
 
