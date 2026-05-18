@@ -60,6 +60,7 @@ export default function Home() {
         <BgLoader
           src="/media/heroimg-placeholder.jpg"
           alt={t("heroImageAlt")}
+          className="object-cover"
         />
       </div>
       <div className="overflow-hidden absolute w-screen h-screen">
