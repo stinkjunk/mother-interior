@@ -303,10 +303,12 @@ body:has(.frontPage) .mainHeader {
 body:has(.frontPage) .mainHeader,
 .mainHeader,
 .navMenu,
-.navLogoLink,
 .menuToggle,
 .lang-playerButton {
   z-index: 45;
+}
+.navLogoLink {
+  z-index: 46;
 }
 
 .bgLoaderOverlay {
@@ -315,10 +317,12 @@ body:has(.frontPage) .mainHeader,
 
 body:has(.menuToggle[data-interacted="true"]) .mainHeader,
 body:has(.menuToggle[data-interacted="true"]) .navMenu,
-body:has(.menuToggle[data-interacted="true"]) .navLogoLink,
 body:has(.menuToggle[data-interacted="true"]) .menuToggle,
 body:has(.menuToggle[data-interacted="true"]) .lang-playerButton {
   z-index: 60;
+}
+body:has(.menuToggle[data-interacted="true"]) .navLogoLink {
+  z-index: 61;
 }
 
 body:has(.menuToggle[data-interacted="true"]) .menuPopup {
@@ -453,16 +457,18 @@ body:has(.frontPage) .mainHeader {
   }
 }
 
-/* Open — all pages */
+/* Open — */
 body:has(.menuToggle[data-interacted="true"][data-state="open"]) {
   animation: masterOpen var(--menuOpenTime) ease forwards;
 }
 
-/* Close — non-front pages */
-body:not(:has(.frontPage)):has(
-    .menuToggle[data-interacted="true"][data-state="closed"]
-  ) {
+/* Close */
+body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   animation: masterClose var(--menuOpenTime) ease forwards;
+}
+
+body:has(.frontPage) .mobileHeaderBg {
+  display: none;
 }
 
 /* ============================================================
