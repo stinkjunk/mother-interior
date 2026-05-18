@@ -1,20 +1,19 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { BiPlus } from "react-icons/bi";
 
 const ALL = ["vinyls", "interior", "blogposts"];
 
 export default function FilterTags({
-  active: initialActive,
   labels,
 }: {
-  active: string[];
   labels: { interior: string; vinyls: string; blogposts: string };
 }) {
   const router = useRouter();
-  const [active, setActive] = useState(initialActive);
+  const searchParams = useSearchParams();
+  const raw = searchParams.getAll("category");
+  const active = raw.length === 0 ? ALL : raw;
   const isAll = active.length === ALL.length;
   const filterTagStyle =
     "border font-label text-sm px-2 max-sm:text-xs flex gap-1 items-center";
@@ -30,10 +29,6 @@ export default function FilterTags({
     } else {
       next = [...active, tag];
     }
-
-    const normalized =
-      next.length === 0 || next.length === ALL.length ? ALL : next;
-    setActive(normalized);
 
     if (next.length === 0 || next.length === ALL.length) {
       router.push("/items", { scroll: false });

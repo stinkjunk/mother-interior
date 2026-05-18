@@ -143,9 +143,6 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
   const t = useTranslations("ItemsPage");
   const ALL = ["vinyls", "interior", "blogposts"];
 
-  const active: string[] =
-    categories && categories.length > 0 ? categories : ALL;
-
   return (
     <div
       className={`itemsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
@@ -153,7 +150,6 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
       <header className="h-25 fixed bg-background w-full -translate-y-px z-15 flex flex-col max-sm:px-5 px-15">
         <h1 className=" text-3xl font-medium mt-5">{t("h1")}</h1>
         <FilterTags
-          active={active}
           labels={{
             interior: t("categories.interior"),
             vinyls: t("categories.vinylsShort"),
