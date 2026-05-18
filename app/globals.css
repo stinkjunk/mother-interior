@@ -296,9 +296,6 @@ body:has(.aboutPage) .aboutLink {
 }
 
 /*Nav Menu*/
-body:has(.frontPage) .mainHeader {
-  background-color: transparent;
-}
 
 body:has(.frontPage) .mainHeader,
 .mainHeader,
@@ -333,21 +330,23 @@ body:has(.menuToggle[data-interacted="true"]) .bgLoaderOverlay {
   z-index: 40;
 }
 
-body:has(.frontPage) .mainHeader {
-  transition:
-    transform 220ms ease,
-    background-color 220ms ease;
+.navMenu,
+.navLogoLink,
+.headerBg {
+  transition: transform 220ms ease;
 }
 
 @media (min-width: 640px) {
-  body:has(.frontPage) .mainHeader {
+  body:has(.frontPage) .navMenu,
+  body:has(.frontPage) .navLogoLink,
+  body:has(.frontPage) .headerBg {
     transform: translateY(-100%);
   }
 }
 
 @media (max-width: 640px) {
-  body:has(.frontPage) .mainHeader {
-    transform: none;
+  body:has(.frontPage) .headerBg {
+    display: none;
   }
 }
 
@@ -467,10 +466,6 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
   animation: masterClose var(--menuOpenTime) ease forwards;
 }
 
-body:has(.frontPage) .mobileHeaderBg {
-  display: none;
-}
-
 /* ============================================================
    ELEMENT ANIMATIONS
    ============================================================ */
@@ -584,12 +579,12 @@ body:has(.menuToggle[data-state="closed"]):has(
   fill: var(--color-mi-blue-700);
 }
 
-body:has(.frontPage) .navLogoFillAll {
-  fill: var(--color-mi-neutral-50);
-}
-
-/* Fade in on front page mobile, synced to slot 1 */
 @media (max-width: 640px) {
+  body:has(.frontPage) .navLogoFillAll {
+    fill: var(--color-mi-neutral-50);
+  }
+
+  /* Fade in on front page mobile, synced to slot 1 */
   body:has(.frontPage) .navLogoLink {
     opacity: clamp(0, var(--t) / var(--slot), 1);
     pointer-events: none;
@@ -651,9 +646,9 @@ body:has(.frontPage) .altColor {
 }
 
 body:has(.frontPage) .langMenuPopupItem {
-  background-color: transparent;
-  color: var(--color-mi-neutral-50);
-  outline: none;
+  background-color: var(--foreground);
+  color: var(--background);
+  outline: 2px solid var(--background);
 }
 
 /* ============================================================
