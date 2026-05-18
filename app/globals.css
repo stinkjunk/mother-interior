@@ -643,12 +643,18 @@ body:has(.frontPage) .altColor {
     color: var(--foreground);
     outline: none;
   }
+
+  body:has(.frontPage) .langMenuPopupItem {
+    color: var(--color-mi-neutral-100) !important;
+  }
 }
 
-body:has(.frontPage) .langMenuPopupItem {
-  background-color: var(--foreground);
-  color: var(--background);
-  outline: 2px solid var(--background);
+@media (max-width: 640px) {
+  body:has(.frontPage) .langMenuPopupItem {
+    background-color: var(--foreground);
+    color: var(--background);
+    outline: 2px solid var(--background);
+  }
 }
 
 /* ============================================================
