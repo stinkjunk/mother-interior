@@ -3,8 +3,6 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { BiPlus } from "react-icons/bi";
 
-const ALL = ["vinyls", "interior", "blogposts"];
-
 export default function FilterTags({
   labels,
 }: {
@@ -17,10 +15,11 @@ export default function FilterTags({
     "border font-label text-sm px-2 max-sm:text-xs flex gap-1 items-center";
 
   function handleFilter(tag: string) {
-    const isActive = active.includes(tag);
-    const next = isActive ? active.filter((t) => t !== tag) : [...active, tag];
+    const next = active.includes(tag)
+      ? active.filter((t) => t !== tag)
+      : [...active, tag];
 
-    if (next.length === 0 || next.length === ALL.length) {
+    if (next.length === 0) {
       router.push("/items", { scroll: false });
     } else {
       const params = next.map((c) => `category=${c}`).join("&");
