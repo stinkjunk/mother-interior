@@ -584,6 +584,10 @@ body:has(.menuToggle[data-state="closed"]):has(
   fill: var(--color-mi-blue-700);
 }
 
+body:has(.frontPage) .navLogoFillAll {
+  fill: var(--color-mi-neutral-50);
+}
+
 /* Fade in on front page mobile, synced to slot 1 */
 @media (max-width: 640px) {
   body:has(.frontPage) .navLogoLink {
