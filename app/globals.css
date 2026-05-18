@@ -729,6 +729,56 @@ body:has(.frontPage) .langMenuPopupItem {
 }
 
 /* ============================================================
+   LOADER "SPINNER", OR THINGY
+   ============================================================ */
+
+@keyframes loaderPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+@keyframes loaderStrokePulse {
+  0%,
+  100% {
+    stroke-dashoffset: 100;
+  }
+}
+
+.loaderThingLayer1 {
+  /* outermost layer */
+  animation: loaderPulse 2s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.loaderThingLayer2 {
+  /* outer layer */
+  animation: loaderPulse 2s ease-in-out infinite;
+  animation-delay: -1.25s;
+}
+
+.loaderThingLayer3 {
+  /* inner layer */
+  animation: loaderPulse 2s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+.loaderThingLayer4 {
+  /* innermost layer */
+  animation: loaderPulse 2s ease-in-out infinite;
+  animation-delay: -0.5s;
+}
+
+.loaderThingLayer5 {
+  /* logo background */
+  animation: loaderPulse 2s ease-in-out infinite;
+  animation-delay: -0.25s;
+}
+
+/* ============================================================
    404 PAGE
    ============================================================ */
 

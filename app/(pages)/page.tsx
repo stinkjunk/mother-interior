@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import CompositeLogo from "../components/compositelogo";
 import LineDrawer from "../components/homepage/linedrawer";
+import BgLoader from "../components/homepage/bgloader";
 
 export default function Home() {
   const t = useTranslations("HomePage");
@@ -56,13 +57,10 @@ export default function Home() {
         </nav>
       </div>
       <div className="h-dvh w-dvw absolute frontPage">
-        <Image
-          className="h-full object-cover -z-10"
+        <BgLoader
           src="/media/heroimg-placeholder.jpg"
           alt={t("heroImageAlt")}
-          priority
-          fill
-        ></Image>
+        />
       </div>
       <div className="overflow-hidden absolute w-screen h-screen">
         <div
