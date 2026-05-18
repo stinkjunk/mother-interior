@@ -42,8 +42,10 @@
   "ItemsPage": {
     "categories": {
       "vinyls": "Vinylplader",
+      "vinylsShort": "Plader",
       "interior": "Interiør",
-      "blogposts": "Blogindlæg"
+      "blogposts": "Blogindlæg",
+      "blogpostsShort": "Blog"
     },
     "title": "Oplæg | Mother Interior",
     "h1": "Oplæg",

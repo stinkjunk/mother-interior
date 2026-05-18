@@ -700,6 +700,55 @@ body:has(.frontPage) .altColor {
   --foreground: var(--color-on-blogposts);
 }
 
+.filterTag.interiorFilter {
+  background-color: var(--color-interior);
+  fill: var(--color-interior);
+  color: var(--color-on-interior);
+  border-color: var(--color-on-interior);
+}
+.filterTag.vinylsFilter {
+  background-color: var(--color-vinyls);
+  fill: var(--color-vinyls);
+  color: var(--color-on-vinyls);
+  border-color: var(--color-on-vinyls);
+}
+.filterTag.blogFilter {
+  background-color: var(--color-blogposts);
+  fill: var(--color-blogposts);
+  color: var(--color-on-blogposts);
+  border-color: var(--color-on-blogposts);
+}
+
+.filterTag.interiorFilter.disabled,
+.filterTag.vinylsFilter.disabled,
+.filterTag.blogFilter.disabled {
+  background-color: var(--color-mi-neutral-200);
+  fill: var(--color-mi-neutral-800);
+  color: var(--color-mi-neutral-800);
+  border-color: var(--color-mi-neutral-800);
+}
+
+/*Pga. Next cache problemer, opdateres fetchede kategorier nogengange ikke.*/
+/*CSS workaround for disse tilfælde.*/
+body:has(.filterTag.interiorFilter.disabled) .itemCard.interiorStyling,
+body:has(.filterTag.vinylsFilter.disabled) .itemCard.vinylStyling,
+body:has(.filterTag.blogFilter.disabled) .itemCard.blogpostStyling {
+  display: none;
+}
+
+.filterTag,
+.filterTag svg {
+  transition: 0.15s ease-in-out;
+}
+.filterTag svg {
+  scale: 1.5;
+  transform: rotate(45deg);
+}
+
+.filterTag.disabled svg {
+  transform: rotate(0deg);
+}
+
 /* ============================================================
    LOADER "SPINNER", OR THINGY
    ============================================================ */

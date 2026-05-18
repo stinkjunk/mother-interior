@@ -33,9 +33,12 @@ export default function Card({
         : "h-40 sm:h-60";
 
   return (
-    <Link href="#" className={`relative block ${priorityStyle} ${className}`}>
+    <Link
+      href="#"
+      className={`itemCard ${categoryStyle} relative block ${priorityStyle} ${className}`}
+    >
       <div
-        className={`itemCard ${categoryStyle} bg-background text-foreground flex h-full w-full flex-col`}
+        className={`bg-background text-foreground flex h-full w-full flex-col`}
       >
         {pinned && (
           <MdPushPin className="absolute top-2 right-2 z-5 fill-foreground w-9 h-9 rotate-45 bg-background p-1 rounded-full" />

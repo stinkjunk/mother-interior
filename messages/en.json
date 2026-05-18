@@ -42,8 +42,10 @@
   "ItemsPage": {
     "categories": {
       "vinyls": "Vinyls",
+      "vinylsShort": "Vinyls",
       "interior": "Interior",
-      "blogposts": "Blogposts"
+      "blogposts": "Blogposts",
+      "blogpostsShort": "Blog"
     },
 
     "title": "Items | Mother Interior",
