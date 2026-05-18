@@ -64,7 +64,8 @@
     },
     "card": {
       "soldLabel": "SOLGT"
-    }
+    },
+    "noItems": "Ingen oplæg. Vælg venligst en kategori."
   },
   "ItemPage": {},
   "AboutPage": {

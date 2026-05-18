@@ -246,9 +246,9 @@ body:has(.menuToggle[data-state="open"]) {
 /*Nav menu links styling*/
 
 body:has(.itemsPage) .itemsLink,
-body:has(.interiorFilter) .interiorLink,
-body:has(.vinylsFilter) .vinylsLink,
-body:has(.blogFilter) .blogLink,
+body:has(.itemsPage.interiorFilter) .interiorLink,
+body:has(.itemsPage.vinylsFilter) .vinylsLink,
+body:has(.itemsPage.blogFilter) .blogLink,
 body:has(.aboutPage) .aboutLink {
   text-decoration: underline;
 }

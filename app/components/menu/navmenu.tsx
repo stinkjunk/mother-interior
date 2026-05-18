@@ -40,7 +40,7 @@ export default function NavMenu() {
         </li>
         <li className="itemsLink desktopHandler overflow-hidden max-sm:flex-1 max-sm:bg-items">
           <Link
-            href="/items"
+            href="/items?category=interior&category=vinyls&category=blogposts"
             className="max-sm:flex max-sm:h-full max-sm:w-full max-sm:items-center max-sm:pl-7 max-sm:font-display max-sm:text-8xl max-sm:text-on-items"
           >
             {t("items")}

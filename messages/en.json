@@ -65,7 +65,8 @@
     },
     "card": {
       "soldLabel": "SOLD"
-    }
+    },
+    "noItems": "No items. Please select a category."
   },
   "ItemPage": {},
   "AboutPage": {

@@ -37,16 +37,12 @@ export default async function Items({
 
   // contentful:
   const fetchThese = [];
-  if (categories.length !== 0) {
-    if (categories.includes("vinyls")) fetchThese.push("vinyls");
-    if (categories.includes("interior")) fetchThese.push("post");
-    // da jeg lavede denne content type, kaldte jeg den for "post" i contentful,
-    // indtil jeg fandt ud af, at flere content types ville passe projektet bedre;
-    // men efter omnavngivingen ændrede contently ikke API identifier lol!
-    if (categories.includes("blogposts")) fetchThese.push("blogpost");
-  } else {
-    fetchThese.push("vinyls", "post", "blogpost");
-  }
+  if (categories.includes("vinyls")) fetchThese.push("vinyls");
+  if (categories.includes("interior")) fetchThese.push("post");
+  // da jeg lavede denne content type, kaldte jeg den for "post" i contentful,
+  // indtil jeg fandt ud af, at flere content types ville passe projektet bedre;
+  // men efter omnavngivingen ændrede contently ikke API identifier lol!
+  if (categories.includes("blogposts")) fetchThese.push("blogpost");
   const selectThese = [
     "sys.id",
     "sys.createdAt",
@@ -159,34 +155,41 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
       </header>
 
       <main className="max-sm:px-5 sm:pb-5 px-15 pb-5 mt-25">
-        <div className="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense">
-          {items?.map((item, i) => {
-            const indexInWave = i % 6;
-            const waveIndex = Math.floor(i / 6);
-            const seed = items[0].id
-              .split("")
-              .reduce((acc: number, c: string) => acc + c.charCodeAt(0), 0);
-            const horizontalSlot = ((seed + waveIndex) % 5) + 1;
-            const priority =
-              indexInWave === 0
-                ? "vertical"
-                : indexInWave === horizontalSlot
-                  ? "horizontal"
-                  : undefined;
+        {items && items.length != 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense">
+            {items?.map((item, i) => {
+              const indexInWave = i % 6;
+              const waveIndex = Math.floor(i / 6);
+              const seed = items[0].id
+                .split("")
+                .reduce((acc: number, c: string) => acc + c.charCodeAt(0), 0);
+              const horizontalSlot = ((seed + waveIndex) % 5) + 1;
+              const priority =
+                indexInWave === 0
+                  ? "vertical"
+                  : indexInWave === horizontalSlot
+                    ? "horizontal"
+                    : undefined;
 
-            return (
-              <Card
-                key={item.id}
-                category={item.contentType}
-                title={item.title}
-                thumbnail={item.thumbnail}
-                pinned={item.pinned}
-                isSold={item.isSold}
-                priority={priority}
-              />
-            );
-          })}
-        </div>
+              return (
+                <Card
+                  key={item.id}
+                  category={item.contentType}
+                  title={item.title}
+                  thumbnail={item.thumbnail}
+                  pinned={item.pinned}
+                  isSold={item.isSold}
+                  priority={priority}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          // h-5 + h-40 (h45) = 11.25rem...
+          <div className="flex flex-col items-center gap-5 mt-10 h-[calc(100vh-11.25rem)] overflow-hidden -mb-5 justify-center">
+            <p className="text-xl px-10 pb-22.5">{t("noItems")}</p>
+          </div>
+        )}
       </main>
     </div>
   );
