@@ -704,7 +704,6 @@ body:has(.frontPage) .altColor {
 }
 
 .interiorPage .imgNavBtn,
-.interiorPage .imgNavBtn svg,
 .interiorPage .priceTag,
 .interiorPage .filterTag,
 .filterTag.interiorFilter {
@@ -714,8 +713,7 @@ body:has(.frontPage) .altColor {
   border-color: var(--color-on-interior);
 }
 
-.interiorPage .imgNavBtn:hover,
-.interiorPage .imgNavBtn:hover svg {
+.interiorPage .imgNavBtn:hover {
   background-color: var(--color-on-interior);
   fill: var(--color-on-interior);
   color: var(--color-interior);
@@ -723,7 +721,6 @@ body:has(.frontPage) .altColor {
 }
 
 .vinylsPage .imgNavBtn,
-.vinylsPage .imgNavBtn svg,
 .vinylsPage .priceTag,
 .vinylsPage .filterTag,
 .filterTag.vinylsFilter {
@@ -733,7 +730,7 @@ body:has(.frontPage) .altColor {
   border-color: var(--color-on-vinyls);
 }
 
-.vinylsPage .imgNavBtn:hover .vinylsPage .imgNavBtn:hover svg {
+.vinylsPage .imgNavBtn:hover {
   background-color: var(--color-on-vinyls);
   fill: var(--color-on-vinyls);
   color: var(--color-vinyls);
