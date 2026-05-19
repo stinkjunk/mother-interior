@@ -52,7 +52,7 @@ export default async function Item({
   };
 
   const getDeezerData = async (deezerAPICall: string) => {
-    const res = await fetch(deezerAPICall);
+    const res = await fetch(deezerAPICall, { next: { revalidate: 86400 } });
     const data = await res.json();
 
     // console.log("Rå deezer data: ", data);
@@ -70,7 +70,9 @@ export default async function Item({
     const title = data.title;
     const duration = data.duration;
 
-    const tracklistRes = await fetch(data.tracklist);
+    const tracklistRes = await fetch(data.tracklist, {
+      next: { revalidate: 86400 },
+    });
     const tracklistData = await tracklistRes.json();
 
     // console.log("Rå tracklist data: ", tracklistData);
@@ -119,7 +121,7 @@ export default async function Item({
     updatedAt: entry.sys.updatedAt,
   };
 
-  // console.log("Fetched item:", item);
+  console.log("Fetched item:", item);
 
   return <Body item={item} />;
 }
