@@ -47,9 +47,7 @@ export default function LineDrawer() {
             ];
           }
 
-          // Mobile tweaks per request
           if (lineName === "Vinyls") {
-            // start from bottom-center of bounding box, stop at bottom-center of link
             return [
               {
                 x1: b.left + b.width / 2,
@@ -74,7 +72,6 @@ export default function LineDrawer() {
             ];
           }
 
-          // Fallback for allItems variants: keep previous behaviour but on mobile these are hidden by CSS
           return [
             {
               x1: b.left,

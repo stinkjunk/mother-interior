@@ -23,7 +23,7 @@ export default function Home() {
           <ul className="flex flex-col mt-5 gap-5 items-start font-semibold">
             <Link
               href="/items?category=interior&category=vinyls&category=blogposts"
-              className="dskHeroLink pr-2 sm:pr-5 max-sm:py-1 "
+              className="dskHeroLink allItems pr-2 sm:pr-5 max-sm:py-1 "
             >
               {nav("items")}
             </Link>
