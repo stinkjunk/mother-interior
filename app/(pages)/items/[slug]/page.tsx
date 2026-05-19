@@ -121,7 +121,7 @@ export default async function Item({
     updatedAt: entry.sys.updatedAt,
   };
 
-  console.log("Fetched item:", item);
+  //   console.log("Fetched item:", item);
 
   return <Body item={item} />;
 }
