@@ -77,7 +77,16 @@
     },
     "imageX": "Billede",
     "thumbnailX": "Miniaturebillede",
-    "ofX": "ud af"
+    "ofX": "ud af",
+    "soldLabel": "SOLGT",
+    "otherLocaleNotice": "Dette produkt er opslået på engelsk.",
+    "postedOn": "Opslået den",
+    "vinyls": {
+      "tracklist": {
+        "title": "Trackliste",
+        "deezerInfo": "Data leveret af"
+      }
+    }
   },
   "AboutPage": {
     "title": "Om os | Mother Interior",

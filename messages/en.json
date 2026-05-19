@@ -78,7 +78,16 @@
     },
     "imageX": "Image",
     "thumbnailX": "Thumbnail",
-    "ofX": "of"
+    "ofX": "of",
+    "otherLocaleNotice": "This item is listed in Danish.",
+    "soldLabel": "SOLD",
+    "postedOn": "Posted on",
+    "vinyls": {
+      "tracklist": {
+        "title": "Tracklist",
+        "deezerInfo": "Data provided by"
+      }
+    }
   },
   "AboutPage": {
     "title": "About | Mother Interior",
