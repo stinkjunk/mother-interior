@@ -247,8 +247,11 @@ body:has(.menuToggle[data-state="open"]) {
 
 body:has(.itemsPage) .itemsLink,
 body:has(.itemsPage.interiorFilter) .interiorLink,
+body:has(.itemPage.interiorPage) .interiorLink,
 body:has(.itemsPage.vinylsFilter) .vinylsLink,
+body:has(.itemPage.vinylsPage) .vinylsLink,
 body:has(.itemsPage.blogFilter) .blogLink,
+body:has(.itemPage.blogPage) .blogLink,
 body:has(.aboutPage) .aboutLink {
   text-decoration: underline;
 }
@@ -700,18 +703,23 @@ body:has(.frontPage) .altColor {
   --foreground: var(--color-on-blogposts);
 }
 
+.interiorPage .filterTag,
 .filterTag.interiorFilter {
   background-color: var(--color-interior);
   fill: var(--color-interior);
   color: var(--color-on-interior);
   border-color: var(--color-on-interior);
 }
+
+.vinylsPage .filterTag,
 .filterTag.vinylsFilter {
   background-color: var(--color-vinyls);
   fill: var(--color-vinyls);
   color: var(--color-on-vinyls);
   border-color: var(--color-on-vinyls);
 }
+
+.blogPage .filterTag,
 .filterTag.blogFilter {
   background-color: var(--color-blogposts);
   fill: var(--color-blogposts);
@@ -734,6 +742,10 @@ body:has(.filterTag.interiorFilter.disabled) .itemCard.interiorStyling,
 body:has(.filterTag.vinylsFilter.disabled) .itemCard.vinylStyling,
 body:has(.filterTag.blogFilter.disabled) .itemCard.blogpostStyling {
   display: none;
+}
+
+.itemPage .filterTag {
+  transition: none;
 }
 
 .filterTag,

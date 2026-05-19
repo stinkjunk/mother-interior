@@ -68,7 +68,15 @@
     },
     "noItems": "No items. Please select a category."
   },
-  "ItemPage": {},
+  "ItemPage": {
+    "categories": {
+      "vinyls": "Vinyls",
+      "vinylsShort": "Vinyls",
+      "interior": "Interior",
+      "blogposts": "Blogposts",
+      "blogpostsShort": "Blog"
+    }
+  },
   "AboutPage": {
     "title": "About | Mother Interior",
     "about": {

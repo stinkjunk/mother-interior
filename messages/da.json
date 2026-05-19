@@ -67,7 +67,15 @@
     },
     "noItems": "Ingen oplæg. Vælg venligst en kategori."
   },
-  "ItemPage": {},
+  "ItemPage": {
+    "categories": {
+      "vinyls": "Vinylplader",
+      "vinylsShort": "Plader",
+      "interior": "Interiør",
+      "blogposts": "Blogindlæg",
+      "blogpostsShort": "Blog"
+    }
+  },
   "AboutPage": {
     "title": "Om os | Mother Interior",
     "about": {
