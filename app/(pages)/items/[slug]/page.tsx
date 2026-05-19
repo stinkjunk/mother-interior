@@ -159,14 +159,18 @@ function Body({ item }: { item: any }) {
             <span className="flex-1 truncate">/ {item.title}</span>
           </p>
         </div>
-        <Images
-          urls={item.media ?? [item.thumbnail]}
-          title={item.title}
-          className="mt-5"
-          imageX={t("imageX")}
-          thumbnailX={t("thumbnailX")}
-          ofX={t("ofX")}
-        ></Images>
+        <div className="md:grid md:grid-cols-[3fr_4fr]">
+          <Images
+            urls={item.media ?? [item.thumbnail]}
+            title={item.title}
+            className="mt-5"
+            imageX={t("imageX")}
+            thumbnailX={t("thumbnailX")}
+            ofX={t("ofX")}
+            price={item.price_dkk ? `${item.price_dkk} DKK` : ""}
+            isSold={item.isSold}
+          ></Images>
+        </div>
       </main>
     </div>
   );
