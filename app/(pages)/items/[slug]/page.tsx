@@ -141,6 +141,21 @@ function Body({ item }: { item: any }) {
   // console.log("Page Class:", pageClass);
 
   const t = useTranslations("ItemPage");
+
+  const [priceInt, priceDec] =
+    item.price_dkk !== undefined
+      ? item.price_dkk.toFixed(2).replace(".", ",").split(",")
+      : ["", ""];
+  const formattedPriceInt = priceInt.replace(/(\d{4})(?=\d)/g, "$1.");
+  console.log(
+    "Price:",
+    item.price_dkk,
+    "Formatted Price Int:",
+    formattedPriceInt,
+    "Price Dec:",
+    priceDec
+  );
+
   return (
     <div className={`itemsPage itemPage ${pageClass} scrollablePage`}>
       <main className="pb-5">
@@ -167,7 +182,8 @@ function Body({ item }: { item: any }) {
             imageX={t("imageX")}
             thumbnailX={t("thumbnailX")}
             ofX={t("ofX")}
-            price={item.price_dkk ? `${item.price_dkk} DKK` : ""}
+            priceInt={formattedPriceInt}
+            priceDec={priceDec}
             isSold={item.isSold}
           ></Images>
         </div>

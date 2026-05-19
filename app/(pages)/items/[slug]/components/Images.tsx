@@ -14,7 +14,8 @@ export default function Images({
   imageX = "",
   thumbnailX = "",
   ofX = "",
-  price = "",
+  priceInt = "",
+  priceDec = "",
   isSold = false,
 }: {
   urls: string[];
@@ -23,7 +24,8 @@ export default function Images({
   imageX?: string;
   thumbnailX?: string;
   ofX?: string;
-  price?: string;
+  priceInt?: string;
+  priceDec?: string;
   isSold?: boolean;
 }) {
   const [currentImage, setCurrentImage] = useState(0);
@@ -39,11 +41,19 @@ export default function Images({
   return (
     <div className={className}>
       <div className="md:ml-25 relative aspect-square">
-        {price !== "" && (
-          <div className="md:-ml-25 absolute bottom-0 mb-15 md:mb-20 left-0 px-3 pr-2 pl-5 md:pl-30 text-2xl font-label z-10 filterTag border-2 border-l-0">
-            {isSold ? `Sold` : price}
+        {priceInt ? (
+          <div className="md:-ml-25 absolute bottom-0 mb-15 md:mb-20 left-0 px-3 pr-2 pl-5 md:pl-30 text-2xl font-label z-10 filterTag border-2 border-l-0 flex">
+            {isSold ? (
+              `Sold`
+            ) : (
+              <>
+                {priceInt}
+                {priceDec && <span className="text-lg">,{priceDec}</span>}
+                <span className="ml-2">DKK</span>
+              </>
+            )}
           </div>
-        )}
+        ) : null}
         <ImageLoader
           src={urls[currentImage]}
           alt={`${title} (${imageX} ${currentImage + 1} ${ofX} ${urls.length})`}
