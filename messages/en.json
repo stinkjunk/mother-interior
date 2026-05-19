@@ -75,7 +75,10 @@
       "interior": "Interior",
       "blogposts": "Blogposts",
       "blogpostsShort": "Blog"
-    }
+    },
+    "imageX": "Image",
+    "thumbnailX": "Thumbnail",
+    "ofX": "of"
   },
   "AboutPage": {
     "title": "About | Mother Interior",

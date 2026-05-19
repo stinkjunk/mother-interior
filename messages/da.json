@@ -74,7 +74,10 @@
       "interior": "Interiør",
       "blogposts": "Blogindlæg",
       "blogpostsShort": "Blog"
-    }
+    },
+    "imageX": "Billede",
+    "thumbnailX": "Miniaturebillede",
+    "ofX": "ud af"
   },
   "AboutPage": {
     "title": "Om os | Mother Interior",

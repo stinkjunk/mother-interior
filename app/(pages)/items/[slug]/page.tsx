@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { createClient } from "contentful";
 import { useTranslations } from "next-intl";
+import ImageLoader from "@/app/components/imageloader";
+import Images from "./components/Images";
 import Link from "next/link";
 
 const client = createClient({
@@ -142,8 +144,8 @@ function Body({ item }: { item: any }) {
   return (
     <div className={`itemsPage itemPage ${pageClass} scrollablePage`}>
       <main className="pb-5">
-        <div className="w-full px-5 pt-10 overflow-hidden">
-          <p className="w-full flex font-label text-sm max-sm:text-xs">
+        <div className="w-full pt-10 overflow-hidden">
+          <p className="w-full flex font-label text-sm max-sm:text-xs px-5 sm:px-25">
             <Link
               href={`/items?category=${isProduct ? contentType : "blogposts"}`}
               className="filterTag border px-2 mr-2 flex gap-1 items-center"
@@ -157,6 +159,14 @@ function Body({ item }: { item: any }) {
             <span className="flex-1 truncate">/ {item.title}</span>
           </p>
         </div>
+        <Images
+          urls={item.media ?? [item.thumbnail]}
+          title={item.title}
+          className="mt-5"
+          imageX={t("imageX")}
+          thumbnailX={t("thumbnailX")}
+          ofX={t("ofX")}
+        ></Images>
       </main>
     </div>
   );
