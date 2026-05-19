@@ -1,13 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { Metadata } from "next";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { createClient } from "contentful";
 import FilterTags from "./components/filtertags";
 import Card from "./components/card";
-import { BiPlus } from "react-icons/bi";
-
-// http://localhost:3000/items?category=vinyls&category=interior&category=blogposts
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("ItemsPage");
@@ -169,6 +165,9 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
                     ? "horizontal"
                     : undefined;
 
+              const itemUrl = `${item.title
+                .replace(/-/g, "!HYPH")
+                .replace(/\s+/g, "-")}--${item.id}`;
               return (
                 <Card
                   key={item.id}
@@ -178,6 +177,7 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
                   pinned={item.pinned}
                   isSold={item.isSold}
                   priority={priority}
+                  href={`/items/${itemUrl}`}
                 />
               );
             })}

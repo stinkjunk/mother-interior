@@ -10,6 +10,7 @@ export default function Card({
   isSold,
   priority,
   className = "",
+  href,
 }: {
   category: "vinyl" | "interior" | "blogpost";
   title: string;
@@ -18,6 +19,7 @@ export default function Card({
   isSold?: boolean;
   priority?: "horizontal" | "vertical";
   className?: string;
+  href: string;
 }) {
   const categoryStyle =
     category === "vinyl"
@@ -34,7 +36,7 @@ export default function Card({
 
   return (
     <Link
-      href="#"
+      href={href}
       className={`itemCard ${categoryStyle} relative block ${priorityStyle} ${className}`}
     >
       <div
