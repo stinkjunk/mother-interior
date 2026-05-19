@@ -48,7 +48,9 @@ export default function Images({
             ) : (
               <>
                 {priceInt}
-                {priceDec && <span className="text-lg">,{priceDec}</span>}
+                {priceDec != "00" && (
+                  <span className="text-lg">,{priceDec}</span>
+                )}
                 <span className="ml-2">DKK</span>
               </>
             )}
