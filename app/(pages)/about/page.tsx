@@ -1,7 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
-import ImageLoader from "@/app/components/imageloader";
-import type { RichTranslationValues } from "next-intl";
 import Image from "next/image";
 
 import { Metadata } from "next";
