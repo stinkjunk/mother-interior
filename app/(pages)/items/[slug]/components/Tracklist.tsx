@@ -37,7 +37,7 @@ export default function Tracklist({
             <p className="text-sm opacity-70">{tracks.artist}</p>
           </div>
         </div>
-        <div className="text-right ml-auto">
+        <div className="text-right ml-auto md:hidden lg:block">
           <p className="font-medium text-sm">{tracklistTitle}</p>
           <p className="text-sm opacity-70">
             {deezerInfo}{" "}

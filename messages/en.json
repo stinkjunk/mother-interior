@@ -91,7 +91,14 @@
         "closeTrackListLabel": "Hide tracklist"
       }
     },
-    "interior": {},
+    "interior": {
+      "dimensions": {
+        "title": "Dimensions",
+        "height": "Height",
+        "width": "Width",
+        "length": "Length"
+      }
+    },
     "seeOnInsta": "See item on Instagram",
     "howToBuy": {
       "h2": "How to Buy / More information",

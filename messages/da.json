@@ -90,7 +90,14 @@
         "closeTrackListLabel": "Skjul trackliste"
       }
     },
-    "interior": {},
+    "interior": {
+      "dimensions": {
+        "title": "Dimensioner",
+        "height": "Højde",
+        "width": "Bredde",
+        "length": "Længde"
+      }
+    },
     "seeOnInsta": "Se varen på Instagram",
     "howToBuy": {
       "h2": "Hvordan køber jeg / Mere information",

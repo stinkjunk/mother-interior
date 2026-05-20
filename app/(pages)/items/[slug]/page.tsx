@@ -7,6 +7,8 @@ import Link from "next/link";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import Tracklist from "./components/Tracklist";
 import { resolvers } from "@/i8n/resolvers/resolvers";
+import { number } from "motion";
+import { div } from "motion/react-client";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -61,7 +63,6 @@ export default async function Item({
     const data = await res.json();
 
     // console.log("Rå deezer data: ", data);
-
     const cover = {
       standard: data.cover,
       sm: data.cover_small,
@@ -89,7 +90,7 @@ export default async function Item({
       link: track.link,
     }));
 
-    console.log("Formateret tracklist: ", tracklist);
+    // console.log("Formateret tracklist: ", tracklist);
 
     return { link, artist, title, duration, cover, tracklist };
   };
@@ -122,13 +123,16 @@ export default async function Item({
     tags: fields.tags as string[],
     locale: fields.locale as string,
     pinned: fields.pinned as boolean,
+    height: fields.height as number | undefined,
+    width: fields.width as number | undefined,
+    length: fields.length as number | undefined,
     contentType,
     isProduct,
     createdAt: entry.sys.createdAt,
     updatedAt: entry.sys.updatedAt,
   };
 
-  //   console.log("Fetched item:", item);
+  //   // console.log("Fetched item:", item);
 
   return <Body item={item} />;
 }
@@ -178,7 +182,7 @@ function Body({ item }: { item: any }) {
             <span className="flex-1 truncate">/ {item.title}</span>
           </p>
         </div>
-        <div className="md:grid md:grid-cols-[3fr_4fr] gap-10 mt-5 md:mr-25">
+        <div className="md:grid md:grid-cols-[5fr_3fr] lg:grid-cols-[3fr_4fr] md:grid-rows-[auto_1fr] mt-5 md:mr-25">
           <Images
             urls={item.media ?? [item.thumbnail]}
             title={item.title}
@@ -189,9 +193,12 @@ function Body({ item }: { item: any }) {
             priceDec={priceDec}
             isSold={item.isSold}
             soldLabel={t("soldLabel")}
+            className="row-span-2"
           ></Images>
-          <div className="max-sm:px-5 max-md:px-15 md:px-0 md:mr-25 max-md:mt-10 ">
-            <h1 className="text-3xl font-medium mb-3">{item.title}</h1>
+          <h1 className="text-3xl font-medium mb-3 md:row-start-1 md:col-start-1 md:col-span-2 max-sm:px-5 max-md:px-15 md:px-0 md:mx-25 max-md:mt-10 lg:ml-10 lg:mr-10 lg:col-start-2 lg:col-span-1">
+            {item.title}
+          </h1>
+          <div className="md:ml-10 max-sm:px-5 max-md:px-15 md:px-0 md:mr-10  md:col-start-2 md; lg:col-start-2 lg:row-start-2">
             <p className="text-sm font-label font-light">
               {t("postedOn")} {formattedDate}
             </p>
@@ -212,9 +219,44 @@ function Body({ item }: { item: any }) {
                 closeTrackListLabel={t("vinyls.tracklist.closeTrackListLabel")}
               ></Tracklist>
             ) : null}
+            {contentType === "interior" &&
+              (item.height || item.width || item.length) && (
+                <div className="mt-10">
+                  <h2 className="text-xl font-medium">
+                    {t("interior.dimensions.title")}
+                  </h2>
+                  <div className="w-full h2 flex mt-1 justify-between md:flex-col lg:flex-row sm:pr-40 md:pr-0 md:gap-5 lg:gap-0 lg:pr-20">
+                    {item.height && (
+                      <div>
+                        <p>
+                          <strong>{t("interior.dimensions.height")}:</strong>
+                        </p>
+                        <p>{item.height} cm</p>
+                      </div>
+                    )}
+                    {item.width && (
+                      <div>
+                        <p>
+                          <strong>{t("interior.dimensions.width")}:</strong>
+                        </p>
+                        <p>{item.width} cm</p>
+                      </div>
+                    )}
+                    {item.length && (
+                      <div>
+                        <p>
+                          <strong>{t("interior.dimensions.length")}:</strong>
+                        </p>
+                        <p>{item.length} cm</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
           </div>
+          <div className="max-sm:px-5 max-md:px-15 md:px-0 md:mr-25 max-md:mt-10 col-start-2 "></div>
         </div>
-        <div className="px-5 sm:px-15 md:px-25 mt-15 textClass">
+        <div className="px-5 sm:px-15 md:px-25 mt-10 textClass">
           {item.description &&
             documentToReactComponents(item.description, {
               renderNode: {
