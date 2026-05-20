@@ -85,7 +85,9 @@
     "vinyls": {
       "tracklist": {
         "title": "Tracklist",
-        "deezerInfo": "Data provided by"
+        "deezerInfo": "Data provided by",
+        "openTrackListLabel": "See tracklist",
+        "closeTrackListLabel": "Hide tracklist"
       }
     }
   },

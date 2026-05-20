@@ -5,6 +5,7 @@ import Image from "next/image";
 import Images from "./components/Images";
 import Link from "next/link";
 import { HiOutlineInformationCircle } from "react-icons/hi";
+import Tracklist from "./components/Tracklist";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -198,65 +199,18 @@ function Body({ item }: { item: any }) {
                 <HiOutlineInformationCircle /> {t("otherLocaleNotice")}
               </p>
             )}
+            {contentType === "vinyls" && item.deezerData != undefined ? (
+              <Tracklist
+                tracks={item.deezerData}
+                tracklistTitle={t("vinyls.tracklist.title")}
+                deezerInfo={t("vinyls.tracklist.deezerInfo")}
+                openTrackListLabel={t("vinyls.tracklist.openTrackListLabel")}
+                closeTrackListLabel={t("vinyls.tracklist.closeTrackListLabel")}
+              ></Tracklist>
+            ) : null}
           </div>
         </div>
-        <div className="px-5 sm:px-15 md:px-25 mt-20">
-          {contentType === "vinyls" && item.deezerData != undefined ? (
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-row w-full justify-between">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={item.deezerData.cover.standard}
-                    alt={`${item.deezerData.title} cover`}
-                    width={40}
-                    height={40}
-                    className="object-cover"
-                  />
-                  <div>
-                    <p className="font-medium text-sm">
-                      {item.deezerData.title}
-                    </p>
-                    <p className="text-sm opacity-70">
-                      {item.deezerData.artist}
-                    </p>
-                  </div>
-                </div>
-                <div className="text-right ml-auto">
-                  <p className="font-medium text-sm">
-                    {t("vinyls.tracklist.title")}
-                  </p>
-                  <p className="text-sm opacity-70">
-                    {t("vinyls.tracklist.deezerInfo")}{" "}
-                    <Link
-                      href={item.deezerData.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline"
-                    >
-                      Deezer
-                    </Link>
-                  </p>
-                </div>
-              </div>
-              <div className="">
-                {item.deezerData.tracklist.map((track: any, index: number) => (
-                  <p
-                    key={index}
-                    className="flex justify-between text-sm opacity-70"
-                  >
-                    <span>
-                      {track.position}. {track.title}
-                    </span>
-                    <span>
-                      {Math.floor(track.duration / 60)}:
-                      {String(track.duration % 60).padStart(2, "0")}
-                    </span>
-                  </p>
-                ))}
-              </div>
-            </div>
-          ) : null}
-        </div>
+        <div className="px-5 sm:px-15 md:px-25 mt-20"></div>
       </main>
     </div>
   );
