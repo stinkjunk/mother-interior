@@ -68,7 +68,7 @@ export default function Tracklist({
           className={`absolute w-full overflow-hidden ${dropped ? "" : "pointer-events-none"}`}
         >
           <div
-            className={`w-full border-2 border-t-0 border-mi-neutral-100 transition-all ${dropped ? "" : "-translate-y-full"}`}
+            className={`w-full mb-5 border-2 border-t-0 border-mi-neutral-100 transition-all ${dropped ? "" : "-translate-y-full"}`}
           >
             {tracks.tracklist.map((track: any, index: number) => (
               <p

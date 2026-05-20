@@ -1,6 +1,7 @@
 import Link from "next/link";
 import links from "@/lib/links.json";
 import type { RichTranslationValues } from "next-intl";
+import { link } from "fs";
 
 export const resolvers: RichTranslationValues = {
   linkOwnerInsta: (chunks) => (
@@ -18,6 +19,7 @@ export const resolvers: RichTranslationValues = {
       {chunks}
     </Link>
   ),
+  linkAboutPage: (chunks) => <Link href="/about">{chunks}</Link>,
   strong: (chunks) => <strong>{chunks}</strong>,
   br: () => <br />,
 };

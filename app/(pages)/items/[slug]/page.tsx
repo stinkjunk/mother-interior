@@ -6,6 +6,7 @@ import Images from "./components/Images";
 import Link from "next/link";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import Tracklist from "./components/Tracklist";
+import { resolvers } from "@/i8n/resolvers/resolvers";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -161,7 +162,7 @@ function Body({ item }: { item: any }) {
 
   return (
     <div className={`itemsPage itemPage ${pageClass} scrollablePage`}>
-      <main className="pb-5">
+      <main className="pb-20">
         <div className="w-full pt-10 overflow-hidden">
           <p className="w-full flex font-label text-sm max-sm:text-xs px-5 sm:px-25">
             <Link
@@ -213,7 +214,7 @@ function Body({ item }: { item: any }) {
             ) : null}
           </div>
         </div>
-        <div className="px-5 sm:px-15 md:px-25 mt-15">
+        <div className="px-5 sm:px-15 md:px-25 mt-15 textClass">
           {item.description &&
             documentToReactComponents(item.description, {
               renderNode: {
@@ -236,6 +237,22 @@ function Body({ item }: { item: any }) {
                 },
               },
             })}
+          {!item.isSold && isProduct && (
+            <>
+              <h2 className="text-xl font-medium">{t("howToBuy.h2")}</h2>
+              <p className="mt-5">{t("howToBuy.description")}</p>
+              {item.instaLink && (
+                <Link
+                  href={item.instaLink}
+                  className="mt-5 block"
+                  target="_blank"
+                >
+                  {t("seeOnInsta")}
+                </Link>
+              )}
+              <p className="mt-5">{t.rich("howToBuy.moreInfo", resolvers)}</p>
+            </>
+          )}
         </div>
       </main>
     </div>

@@ -89,6 +89,13 @@
         "openTrackListLabel": "Se trackliste",
         "closeTrackListLabel": "Skjul trackliste"
       }
+    },
+    "interior": {},
+    "seeOnInsta": "Se varen på Instagram",
+    "howToBuy": {
+      "h2": "Hvordan køber jeg / Mere information",
+      "description": "For at købe denne vare, kontakt os via Instagram eller besøg os i butikken.",
+      "moreInfo": "For yderligere information, se vores <linkAboutPage>om os side</linkAboutPage>."
     }
   },
   "AboutPage": {

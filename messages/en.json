@@ -90,6 +90,13 @@
         "openTrackListLabel": "See tracklist",
         "closeTrackListLabel": "Hide tracklist"
       }
+    },
+    "interior": {},
+    "seeOnInsta": "See item on Instagram",
+    "howToBuy": {
+      "h2": "How to Buy / More information",
+      "description": "To purchase this item, contact through Instagram or visit us in-store.",
+      "moreInfo": "For further information, check our <linkAboutPage>about page</linkAboutPage>."
     }
   },
   "AboutPage": {
