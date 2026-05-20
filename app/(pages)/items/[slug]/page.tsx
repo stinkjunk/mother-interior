@@ -196,7 +196,10 @@ function Body({ item }: { item: any }) {
             </p>
             {isOtherLocale && (
               <p className="absolute text-xs font-label inline-flex items-center gap-1 opacity-70 mt-1">
-                <HiOutlineInformationCircle /> {t("otherLocaleNotice")}
+                <HiOutlineInformationCircle />{" "}
+                {isProduct
+                  ? t("otherLocaleNotice")
+                  : t("otherLocaleBlogNotice")}
               </p>
             )}
             {contentType === "vinyls" && item.deezerData != undefined ? (
