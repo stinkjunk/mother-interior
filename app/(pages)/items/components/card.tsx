@@ -8,6 +8,7 @@ export default function Card({
   thumbnail,
   pinned,
   isSold,
+  soldLabel,
   priority,
   className = "",
   href,
@@ -17,6 +18,7 @@ export default function Card({
   thumbnail: string;
   pinned: boolean;
   isSold?: boolean;
+  soldLabel?: string;
   priority?: "horizontal" | "vertical";
   className?: string;
   href: string;
@@ -50,7 +52,7 @@ export default function Card({
             <p
               className={`font-label text-[8cqw] md:text-[5cqw] ${category === "vinyl" ? "text-mi-mint-100" : ""}`}
             >
-              SOLD
+              {soldLabel}
             </p>
           </div>
         )}

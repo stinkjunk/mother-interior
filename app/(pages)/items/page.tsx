@@ -176,6 +176,7 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
                   thumbnail={item.thumbnail}
                   pinned={item.pinned}
                   isSold={item.isSold}
+                  soldLabel={t("card.soldLabel")}
                   priority={priority}
                   href={`/items/${itemUrl}`}
                 />
