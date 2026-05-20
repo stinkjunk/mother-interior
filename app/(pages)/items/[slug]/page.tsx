@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { createClient } from "contentful";
 import { useTranslations, useLocale } from "next-intl";
-import Image from "next/image";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Images from "./components/Images";
 import Link from "next/link";
 import { HiOutlineInformationCircle } from "react-icons/hi";
@@ -106,7 +106,7 @@ export default async function Item({
 
   const item = {
     title: fields.title as string,
-    description: fields.description,
+    description: fields.description ?? fields.content,
     media: isProduct ? await resolveMedia(fields.media as any[]) : undefined,
     thumbnail: !isProduct
       ? `https:${fields.thumbnail.fields.file.url}`
@@ -210,7 +210,30 @@ function Body({ item }: { item: any }) {
             ) : null}
           </div>
         </div>
-        <div className="px-5 sm:px-15 md:px-25 mt-20"></div>
+        <div className="px-5 sm:px-15 md:px-25 mt-15">
+          {item.description &&
+            documentToReactComponents(item.description, {
+              renderNode: {
+                paragraph: (node, children) => (
+                  <p className="mb-5 last:mb-0">{children}</p>
+                ),
+                hyperlink: (node, children) => {
+                  const url = node.data.uri;
+                  const isExternal = url.startsWith("http");
+                  return (
+                    <Link
+                      href={url}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="underline"
+                    >
+                      {children}
+                    </Link>
+                  );
+                },
+              },
+            })}
+        </div>
       </main>
     </div>
   );
