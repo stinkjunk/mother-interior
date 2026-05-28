@@ -646,9 +646,8 @@ body:has(.frontPage) .altColor {
     color: var(--foreground);
     outline: none;
   }
-
   body:has(.frontPage) .langMenuPopupItem {
-    color: var(--color-mi-neutral-100) !important;
+    color: var(--color-mi-neutral-50) !important;
   }
 }
 
