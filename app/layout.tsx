@@ -7,6 +7,7 @@ import { NextIntlClientProvider } from "next-intl";
 import NavMenu from "./components/menu/navmenu";
 import NavLogo from "./components/menu/navlogo";
 import Link from "next/link";
+import SCProvider from "./components/menu/scprovider";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
@@ -37,7 +38,9 @@ export default function RootLayout({
               />
               <NavMenu />
             </div>
-            <LangPlayerButton />
+            <SCProvider>
+              {(tracks) => <LangPlayerButton tracks={tracks} />}
+            </SCProvider>
             <div className="absolute top-0 h-20 w-dvw -z-10 flex flex-col bg-background headerBg">
               {/* <div className="flex-1 bg-mi-neutral-100"></div>
               <div className="bg-linear-to-b from-mi-neutral-100 to-transparent h-2"></div> */}

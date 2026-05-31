@@ -4,8 +4,9 @@ import { FaPlay } from "react-icons/fa6";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useTransition, useState } from "react";
 import { setLocale } from "@/app/actions/locale";
+import PlayerButton from "./playerbutton";
 
-export default function LangPlayerButton() {
+export default function LangPlayerButton(tracks: any) {
   const t = useTranslations("Menu");
   const [isPending, startTransition] = useTransition();
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -76,12 +77,7 @@ export default function LangPlayerButton() {
         </div>
       </div>
 
-      <button
-        className="cursor-pointer"
-        aria-label={t("Player.openWidgetAriaLabel")}
-      >
-        <FaPlay className="altColor" />
-      </button>
+      <PlayerButton />
     </div>
   );
 }
