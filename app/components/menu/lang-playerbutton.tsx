@@ -5,8 +5,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useTransition, useState } from "react";
 import { setLocale } from "@/app/actions/locale";
 import PlayerButton from "./playerbutton";
+import { TrackMeta } from "@/lib/tracks";
 
-export default function LangPlayerButton(tracks: any) {
+export default function LangPlayerButton({ tracks }: { tracks: TrackMeta[] }) {
   const t = useTranslations("Menu");
   const [isPending, startTransition] = useTransition();
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -77,7 +78,7 @@ export default function LangPlayerButton(tracks: any) {
         </div>
       </div>
 
-      <PlayerButton />
+      <PlayerButton tracks={tracks} />
     </div>
   );
 }
