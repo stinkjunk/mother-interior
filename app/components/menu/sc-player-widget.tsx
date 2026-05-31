@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import type { TrackMeta } from "@/lib/tracks";
 
-export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
+export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
   const t = useTranslations("Menu");
   const [isSCMounted, setIsSCMounted] = useState(false);
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);

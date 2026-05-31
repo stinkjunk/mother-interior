@@ -4,7 +4,7 @@ import { FaPlay } from "react-icons/fa6";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useTransition, useState } from "react";
 import { setLocale } from "@/app/actions/locale";
-import PlayerButton from "./playerbutton";
+import SCPlayerWidget from "./sc-player-widget";
 import { TrackMeta } from "@/lib/tracks";
 
 export default function LangPlayerButton({ tracks }: { tracks: TrackMeta[] }) {
@@ -78,7 +78,7 @@ export default function LangPlayerButton({ tracks }: { tracks: TrackMeta[] }) {
         </div>
       </div>
 
-      <PlayerButton tracks={tracks} />
+      <SCPlayerWidget tracks={tracks} />
     </div>
   );
 }

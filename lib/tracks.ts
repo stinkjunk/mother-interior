@@ -1,3 +1,5 @@
+// placeholder hardcodede tracks; tænker det ville være ideelt at fetche trackliste direkte
+// fra d'Ors soundcloud konto
 export const TRACKS = [
   "https://soundcloud.com/christian-dor/in-absentia-mix-10-the",
   "https://soundcloud.com/christian-dor/jah-will-save-us-all-2",
