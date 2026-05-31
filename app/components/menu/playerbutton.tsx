@@ -90,27 +90,44 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
               onClick={() => setIsWidgetOpen(false)}
             ></button>
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              className="absolute top-full right-0 mt-2 w-72 bg-background border border-border rounded-lg shadow-lg p-4 flex flex-col gap-3"
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute top-full right-0 w-72 bg-background border border-border rounded-lg shadow-lg p-4 flex flex-col gap-3 mr-10"
             >
               {/* Artwork + track info */}
               <div className="flex gap-3 items-center">
                 {track.artwork && (
-                  <Image
-                    src={track.artwork}
-                    alt={track.title}
-                    width={56}
-                    height={56}
-                    className="rounded object-cover shrink-0"
-                  />
+                  // <Image
+                  //   src={track.artwork}
+                  //   alt={track.title}
+                  //   width={56}
+                  //   height={56}
+                  //   className="rounded object-cover shrink-0"
+                  // />
+                  <div className="h-30 aspect-square mask-[url('/media/scplayer/vinyl-mask.svg')] mask-size-[100%_100%] relative">
+                    <Image
+                      src="/media/scplayer/vinyl-bg.webp"
+                      alt=""
+                      width={300}
+                      height={300}
+                      objectFit="cover"
+                    />
+
+                    <div className="absolute inset-0 h-full w-full flex items-center justify-center">
+                      <Image
+                        src={track.artwork}
+                        alt={track.title}
+                        width={50}
+                        height={50}
+                        className="rounded-full"
+                      />
+                    </div>
+                  </div>
                 )}
                 <div className="flex flex-col overflow-hidden">
-                  <span className="font-medium text-sm truncate">
-                    {track.title}
-                  </span>
-                  <span className="text-xs text-muted-foreground truncate">
+                  <span className="font-medium truncate">{track.title}</span>
+                  <span className="text-xs text-muted-foreground truncate font-label">
                     {track.artist}
                   </span>
                 </div>
@@ -158,20 +175,6 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
                 >
                   <FaForward className="altColor w-4 h-4" />
                 </button>
-              </div>
-
-              {/* Track list */}
-              <div className="flex flex-col gap-1 mt-1 max-h-40 overflow-y-auto">
-                {tracks.map((t, i) => (
-                  <button
-                    key={t.url}
-                    onClick={() => goTo(i)}
-                    className={`text-left text-xs px-2 py-1.5 rounded cursor-pointer truncate transition-colors
-                  ${i === currentIndex ? "bg-foreground text-background" : "hover:bg-border"}`}
-                  >
-                    {t.title}
-                  </button>
-                ))}
               </div>
             </motion.div>
           </>

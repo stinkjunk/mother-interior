@@ -51,12 +51,12 @@ export default function LangPlayerButton({ tracks }: { tracks: TrackMeta[] }) {
 
   return (
     <div
-      className="flex gap-2 font-label absolute top-0 right-0 h-20 items-center pr-12.5 max-sm:pr-7 lang-playerButton"
+      className="flex gap-2 absolute top-0 right-0 h-20 items-center pr-12.5 max-sm:pr-7 lang-playerButton"
       data-state={isLangMenuOpen ? "open" : "closed"}
     >
       <div ref={langMenuRef} className="relative">
         <button
-          className="altColor cursor-pointer p-1"
+          className="altColor cursor-pointer p-1 font-label"
           aria-label={t("LangSelect.openMenuAriaLabel")}
           onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
         >
