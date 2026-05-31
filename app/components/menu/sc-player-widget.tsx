@@ -19,16 +19,26 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [isTrackListOpen, setIsTrackListOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [displayPositionMs, setDisplayPositionMs] = useState(0);
+  const [spinMs, setSpinMs] = useState(0);
   const widgetRef = useRef<HTMLButtonElement | null>(null);
-  const displayPositionRef = useRef(0);
-  const lastSyncRef = useRef<number | null>(null);
-  const pausedPositionRef = useRef(0);
 
   const { ref, state, props, controls } = useSCWidget();
 
   const track = tracks[currentIndex];
-  const durationMs = state.durationMs > 0 ? state.durationMs : track.durationMs;
+
+  useEffect(() => {
+    if (!state.isPlaying) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setSpinMs((ms) => ms + 16 / 25);
+    }, 16);
+
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [state.isPlaying]);
 
   useEffect(() => {
     if (!isWidgetOpen) {
@@ -46,103 +56,16 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
     };
   }, [isWidgetOpen]);
 
-  useEffect(() => {
-    if (!state.isPlaying || durationMs <= 0) {
-      lastSyncRef.current = null;
-      return;
-    }
-
-    lastSyncRef.current = performance.now();
-
-    const timer = setInterval(() => {
-      const now = performance.now();
-      const previousSync = lastSyncRef.current ?? now;
-      const elapsed = now - previousSync;
-      const nextPosition = Math.min(
-        displayPositionRef.current + elapsed,
-        durationMs
-      );
-
-      displayPositionRef.current = nextPosition;
-      setDisplayPositionMs(nextPosition);
-      lastSyncRef.current = now;
-    }, 100);
-
-    return () => clearInterval(timer);
-  }, [state.isPlaying, durationMs]);
-
-  const syncDisplayPosition = (positionMs: number) => {
-    const clampedPosition = Math.max(
-      0,
-      Math.min(positionMs, durationMs || positionMs)
-    );
-    pausedPositionRef.current = clampedPosition;
-    displayPositionRef.current = clampedPosition;
-    setDisplayPositionMs(clampedPosition);
-    lastSyncRef.current = performance.now();
-  };
-
-  const handlePlaybackToggle = () => {
-    if (state.isPlaying) {
-      syncDisplayPosition(displayPositionRef.current);
-      controls.pause();
-      return;
-    }
-
-    const resumePosition = pausedPositionRef.current;
-    if (resumePosition > 0) {
-      syncDisplayPosition(resumePosition);
-      controls.seekTo(resumePosition);
-    }
-
-    controls.play();
-  };
-
-  const loadTrack = (nextIndex: number) => {
-    const wasPlaying = state.isPlaying;
-    const nextTrack = tracks[nextIndex];
-
-    setCurrentIndex(nextIndex);
-    setDisplayPositionMs(0);
-    displayPositionRef.current = 0;
-    lastSyncRef.current = null;
-    pausedPositionRef.current = 0;
-
-    controls.pause();
-    controls.load(nextTrack.url, {
-      callback: () => {
-        controls.seekTo(0);
-
-        if (wasPlaying) {
-          controls.play();
-        }
-      },
-    });
-  };
-
   const toggleWidget = () => {
     if (!isSCMounted) setIsSCMounted(true);
     setIsWidgetOpen((prev) => !prev);
-    console.log("url: " + track.url);
   };
 
   const goTo = (index: number) => {
     const next = (index + tracks.length) % tracks.length;
-    loadTrack(next);
+    setCurrentIndex(next);
+    controls.load(tracks[next].url);
   };
-
-  // format
-  const fmt = (ms: number) => {
-    const s = Math.floor(ms / 1000);
-    const h = Math.floor(s / 3600);
-    const m = Math.floor((s % 3600) / 60);
-    const sec = s % 60;
-    return h > 0
-      ? `${h}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`
-      : `${m}:${String(sec).padStart(2, "0")}`;
-  };
-
-  const progress = durationMs > 0 ? (displayPositionMs / durationMs) * 100 : 0;
 
   return (
     <>
@@ -165,32 +88,8 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
           ref={ref}
           url={track.url}
           hidden
-          autoPlay={false}
+          autoPlay={state.isPlaying}
           {...props}
-          onPause={(e) => {
-            props.onPause?.(e);
-            const pausedPosition =
-              e?.currentPosition ?? displayPositionRef.current;
-            syncDisplayPosition(pausedPosition);
-          }}
-          onPlay={(e) => {
-            props.onPlay?.(e);
-            const currentPosition =
-              e?.currentPosition ?? pausedPositionRef.current;
-            if (currentPosition >= 0) {
-              pausedPositionRef.current = currentPosition;
-              displayPositionRef.current = currentPosition;
-              setDisplayPositionMs(currentPosition);
-            }
-          }}
-          onPlayProgress={(e) => {
-            props.onPlayProgress?.(e);
-            const currentPosition =
-              e?.currentPosition ?? displayPositionRef.current;
-            displayPositionRef.current = currentPosition;
-            setDisplayPositionMs(currentPosition);
-            pausedPositionRef.current = currentPosition;
-          }}
         />
       )}
 
@@ -213,8 +112,8 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
                 <div className="flex gap-3 items-center">
                   {track.artwork && (
                     <div
-                      className="h-20 aspect-square mask-[url('/media/scplayer/vinyl-mask.svg')] mask-size-[100%_100%] relative transition-all"
-                      style={{ rotate: `${displayPositionMs * 0.05}deg` }}
+                      className={`h-20 aspect-square mask-[url('/media/scplayer/vinyl-mask.svg')] mask-size-[100%_100%] transition-all relative`}
+                      style={{ transform: `rotate(${spinMs}deg)` }}
                     >
                       <Image
                         src="/media/scplayer/vinyl-bg.webp"
@@ -244,36 +143,8 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
                 </div>
 
                 <div
-                  className={`${durationMs <= 0 ? "opacity-50 pointer-events-none" : ""} flex flex-col gap-4`}
+                  className={`${state.durationMs <= 0 ? "opacity-50 pointer-events-none" : ""} flex flex-col gap-4`}
                 >
-                  {/* Progress bar */}
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span className="tabular-nums">
-                      {fmt(displayPositionMs)}
-                    </span>
-                    <div
-                      className="flex-1 h-1 bg-foreground/50 rounded-full cursor-pointer relative"
-                      onClick={(e) => {
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const pct = (e.clientX - rect.left) / rect.width;
-                        const nextPosition = pct * durationMs;
-                        setDisplayPositionMs(nextPosition);
-                        displayPositionRef.current = nextPosition;
-                        pausedPositionRef.current = nextPosition;
-                        lastSyncRef.current = performance.now();
-                        controls.seekTo(nextPosition);
-                      }}
-                    >
-                      <div
-                        className="h-full bg-foreground rounded-full"
-                        style={{ width: `${progress}%` }}
-                      />
-                    </div>
-                    <span className="tabular-nums">
-                      {durationMs > 0 ? fmt(durationMs) : "--:--"}
-                    </span>
-                  </div>
-
                   {/* Controls */}
                   <div className="flex justify-center items-center gap-6">
                     <button
@@ -283,7 +154,7 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
                       <FaBackward className="text-foreground w-4 h-4" />
                     </button>
                     <button
-                      onClick={handlePlaybackToggle}
+                      onClick={controls.toggle}
                       className="cursor-pointer"
                     >
                       {state.isPlaying ? (
