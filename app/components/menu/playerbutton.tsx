@@ -2,7 +2,8 @@
 import { FaPlay, FaPause, FaForward, FaBackward } from "react-icons/fa6";
 import { SCWidget, useSCWidget } from "soundcloud-widget-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import type { TrackMeta } from "@/lib/tracks";
 
@@ -11,10 +12,27 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
   const [isSCMounted, setIsSCMounted] = useState(false);
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const widgetRef = useRef<HTMLButtonElement | null>(null);
 
   const { ref, state, props, controls } = useSCWidget();
 
   const track = tracks[currentIndex];
+
+  useEffect(() => {
+    if (!isWidgetOpen) {
+      return;
+    }
+
+    const handleScroll = () => {
+      setIsWidgetOpen(false);
+    };
+
+    document.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [isWidgetOpen]);
 
   const toggleWidget = () => {
     if (!isSCMounted) setIsSCMounted(true);
@@ -42,6 +60,7 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
       <button
         className="cursor-pointer"
         onClick={toggleWidget}
+        ref={widgetRef}
         aria-label={t("Player.openWidgetAriaLabel")}
       >
         {state.isPlaying ? (
@@ -63,88 +82,101 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
       )}
 
       {/* UI shell — toggled freely */}
-      {isWidgetOpen && (
-        <div className="absolute top-full right-0 mt-2 w-72 bg-background border border-border rounded-lg shadow-lg p-4 flex flex-col gap-3">
-          {/* Artwork + track info */}
-          <div className="flex gap-3 items-center">
-            {track.artwork && (
-              <Image
-                src={track.artwork}
-                alt={track.title}
-                width={56}
-                height={56}
-                className="rounded object-cover shrink-0"
-              />
-            )}
-            <div className="flex flex-col overflow-hidden">
-              <span className="font-medium text-sm truncate">
-                {track.title}
-              </span>
-              <span className="text-xs text-muted-foreground truncate">
-                {track.artist}
-              </span>
-            </div>
-          </div>
-
-          {/* Progress bar */}
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <span className="tabular-nums">{fmt(state.positionMs)}</span>
-            <div
-              className="flex-1 h-1 bg-border rounded-full cursor-pointer relative"
-              onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const pct = (e.clientX - rect.left) / rect.width;
-                controls.seekTo(pct * state.durationMs);
-              }}
-            >
-              <div
-                className="h-full bg-foreground rounded-full"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-            <span className="tabular-nums">
-              {state.durationMs > 0 ? fmt(state.durationMs) : "--:--"}
-            </span>
-          </div>
-
-          {/* Controls */}
-          <div className="flex justify-center items-center gap-6">
+      <AnimatePresence>
+        {isWidgetOpen && (
+          <>
             <button
-              onClick={() => goTo(currentIndex - 1)}
-              className="cursor-pointer"
+              className="absolute top-0 right-0 h-screen w-screen cursor-default!"
+              onClick={() => setIsWidgetOpen(false)}
+            ></button>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute top-full right-0 mt-2 w-72 bg-background border border-border rounded-lg shadow-lg p-4 flex flex-col gap-3"
             >
-              <FaBackward className="altColor w-4 h-4" />
-            </button>
-            <button onClick={controls.toggle} className="cursor-pointer">
-              {state.isPlaying ? (
-                <FaPause className="altColor w-5 h-5" />
-              ) : (
-                <FaPlay className="altColor w-5 h-5" />
-              )}
-            </button>
-            <button
-              onClick={() => goTo(currentIndex + 1)}
-              className="cursor-pointer"
-            >
-              <FaForward className="altColor w-4 h-4" />
-            </button>
-          </div>
+              {/* Artwork + track info */}
+              <div className="flex gap-3 items-center">
+                {track.artwork && (
+                  <Image
+                    src={track.artwork}
+                    alt={track.title}
+                    width={56}
+                    height={56}
+                    className="rounded object-cover shrink-0"
+                  />
+                )}
+                <div className="flex flex-col overflow-hidden">
+                  <span className="font-medium text-sm truncate">
+                    {track.title}
+                  </span>
+                  <span className="text-xs text-muted-foreground truncate">
+                    {track.artist}
+                  </span>
+                </div>
+              </div>
 
-          {/* Track list */}
-          <div className="flex flex-col gap-1 mt-1 max-h-40 overflow-y-auto">
-            {tracks.map((t, i) => (
-              <button
-                key={t.url}
-                onClick={() => goTo(i)}
-                className={`text-left text-xs px-2 py-1.5 rounded cursor-pointer truncate transition-colors
+              {/* Progress bar */}
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span className="tabular-nums">{fmt(state.positionMs)}</span>
+                <div
+                  className="flex-1 h-1 bg-border rounded-full cursor-pointer relative"
+                  onClick={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const pct = (e.clientX - rect.left) / rect.width;
+                    controls.seekTo(pct * state.durationMs);
+                  }}
+                >
+                  <div
+                    className="h-full bg-foreground rounded-full"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+                <span className="tabular-nums">
+                  {state.durationMs > 0 ? fmt(state.durationMs) : "--:--"}
+                </span>
+              </div>
+
+              {/* Controls */}
+              <div className="flex justify-center items-center gap-6">
+                <button
+                  onClick={() => goTo(currentIndex - 1)}
+                  className="cursor-pointer"
+                >
+                  <FaBackward className="altColor w-4 h-4" />
+                </button>
+                <button onClick={controls.toggle} className="cursor-pointer">
+                  {state.isPlaying ? (
+                    <FaPause className="altColor w-5 h-5" />
+                  ) : (
+                    <FaPlay className="altColor w-5 h-5" />
+                  )}
+                </button>
+                <button
+                  onClick={() => goTo(currentIndex + 1)}
+                  className="cursor-pointer"
+                >
+                  <FaForward className="altColor w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Track list */}
+              <div className="flex flex-col gap-1 mt-1 max-h-40 overflow-y-auto">
+                {tracks.map((t, i) => (
+                  <button
+                    key={t.url}
+                    onClick={() => goTo(i)}
+                    className={`text-left text-xs px-2 py-1.5 rounded cursor-pointer truncate transition-colors
                   ${i === currentIndex ? "bg-foreground text-background" : "hover:bg-border"}`}
-              >
-                {t.title}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+                  >
+                    {t.title}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }
