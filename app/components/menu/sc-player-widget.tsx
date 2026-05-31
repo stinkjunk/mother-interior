@@ -139,48 +139,57 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
                   </div>
                 </div>
 
-                {/* Progress bar */}
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="tabular-nums">{fmt(state.positionMs)}</span>
-                  <div
-                    className="flex-1 h-1 bg-foreground/50 rounded-full cursor-pointer relative"
-                    onClick={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      const pct = (e.clientX - rect.left) / rect.width;
-                      controls.seekTo(pct * state.durationMs);
-                    }}
-                  >
+                <div
+                  className={`${state.durationMs <= 0 ? "opacity-50 pointer-events-none" : ""} flex flex-col gap-4`}
+                >
+                  {/* Progress bar */}
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span className="tabular-nums">
+                      {fmt(state.positionMs)}
+                    </span>
                     <div
-                      className="h-full bg-foreground rounded-full"
-                      style={{ width: `${progress}%` }}
-                    />
+                      className="flex-1 h-1 bg-foreground/50 rounded-full cursor-pointer relative"
+                      onClick={(e) => {
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const pct = (e.clientX - rect.left) / rect.width;
+                        controls.seekTo(pct * state.durationMs);
+                      }}
+                    >
+                      <div
+                        className="h-full bg-foreground rounded-full"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                    <span className="tabular-nums">
+                      {state.durationMs > 0 ? fmt(state.durationMs) : "--:--"}
+                    </span>
                   </div>
-                  <span className="tabular-nums">
-                    {state.durationMs > 0 ? fmt(state.durationMs) : "--:--"}
-                  </span>
-                </div>
 
-                {/* Controls */}
-                <div className="flex justify-center items-center gap-6">
-                  <button
-                    onClick={() => goTo(currentIndex - 1)}
-                    className="cursor-pointer"
-                  >
-                    <FaBackward className="text-foreground w-4 h-4" />
-                  </button>
-                  <button onClick={controls.toggle} className="cursor-pointer">
-                    {state.isPlaying ? (
-                      <FaPause className="text-foreground w-5 h-5" />
-                    ) : (
-                      <FaPlay className="text-foreground w-5 h-5" />
-                    )}
-                  </button>
-                  <button
-                    onClick={() => goTo(currentIndex + 1)}
-                    className="cursor-pointer"
-                  >
-                    <FaForward className="text-foreground w-4 h-4" />
-                  </button>
+                  {/* Controls */}
+                  <div className="flex justify-center items-center gap-6">
+                    <button
+                      onClick={() => goTo(currentIndex - 1)}
+                      className="cursor-pointer"
+                    >
+                      <FaBackward className="text-foreground w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={controls.toggle}
+                      className="cursor-pointer"
+                    >
+                      {state.isPlaying ? (
+                        <FaPause className="text-foreground w-5 h-5" />
+                      ) : (
+                        <FaPlay className="text-foreground w-5 h-5" />
+                      )}
+                    </button>
+                    <button
+                      onClick={() => goTo(currentIndex + 1)}
+                      className="cursor-pointer"
+                    >
+                      <FaForward className="text-foreground w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
                 <button
                   className={`cursor-pointer w-full flex justify-between items-center p-2 rounded text-xs font-label transition-colors
