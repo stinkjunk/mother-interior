@@ -6,7 +6,7 @@ import FilterTags from "./components/filtertags";
 import Card from "./components/card";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("ItemsPage");
+  const t = await getTranslations("PostsPage");
   return {
     title: t("title"),
   };
@@ -17,7 +17,7 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
 });
 
-export default async function Items({
+export default async function Posts({
   //få al data i dette lag
   searchParams,
 }: {
@@ -73,8 +73,8 @@ export default async function Items({
     )
   );
 
-  const allItems = results.flatMap((r) => r.items) as any[];
-  allItems.sort((a, b) => {
+  const allPosts = results.flatMap((r) => r.items) as any[];
+  allPosts.sort((a, b) => {
     const aIsDupe =
       (a.fields.title as string)?.toLowerCase().includes("duplicate") ||
       (a.fields.title as string)?.toLowerCase().includes("duplikeret");
@@ -89,10 +89,10 @@ export default async function Items({
     if (aIsDupe && !bIsDupe) return 1;
     if (!aIsDupe && bIsDupe) return -1;
     return b.sys.createdAt.localeCompare(a.sys.createdAt);
-    // date kører kun hvis to items er ens i forhold til pinned/dupe status.
+    // date kører kun hvis to posts er ens i forhold til pinned/dupe status.
   });
 
-  const normalizedItems = allItems.map((item) => {
+  const normalizedPosts = allPosts.map((item) => {
     const fields = item.fields as any;
     const rawMedia = fields.media?.[0] ?? fields.thumbnail ?? null;
     const mediaUrl = rawMedia?.fields?.file?.url;
@@ -116,7 +116,7 @@ export default async function Items({
   });
 
   const withJSONThumbnails = await Promise.all(
-    normalizedItems.map(async (item) => {
+    normalizedPosts.map(async (item) => {
       const url = item.thumbnail;
       if (url?.endsWith(".json")) {
         const res = await fetch(url);
@@ -127,15 +127,15 @@ export default async function Items({
     })
   );
 
-  return <Body categories={categories} items={withJSONThumbnails} />;
+  return <Body categories={categories} posts={withJSONThumbnails} />;
 }
 
-function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
-  const t = useTranslations("ItemsPage");
+function Body({ categories, posts }: { categories?: string[]; posts?: any[] }) {
+  const t = useTranslations("PostsPage");
 
   return (
     <div
-      className={`itemsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
+      className={`postsPage ${categories?.includes("interior") ? "interiorFilter " : ""}${categories?.includes("vinyls") ? "vinylsFilter " : ""}${categories?.includes("blogposts") ? "blogFilter " : ""}scrollablePage`}
     >
       <header className="h-25 fixed bg-background w-full -translate-y-px z-15 flex flex-col max-sm:px-5 px-15">
         <h1 className=" text-3xl font-medium mt-5">{t("h1")}</h1>
@@ -149,12 +149,12 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
       </header>
 
       <main className="max-sm:px-5 sm:pb-5 px-15 pb-5 mt-25">
-        {items && items.length != 0 ? (
+        {posts && posts.length != 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 grid-flow-row-dense">
-            {items?.map((item, i) => {
+            {posts?.map((item, i) => {
               const indexInWave = i % 6;
               const waveIndex = Math.floor(i / 6);
-              const seed = items[0].id
+              const seed = posts[0].id
                 .split("")
                 .reduce((acc: number, c: string) => acc + c.charCodeAt(0), 0);
               const horizontalSlot = ((seed + waveIndex) % 5) + 1;
@@ -178,7 +178,7 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
                   isSold={item.isSold}
                   soldLabel={t("card.soldLabel")}
                   priority={priority}
-                  href={`/items/${itemUrl}`}
+                  href={`/posts/${itemUrl}`}
                 />
               );
             })}
@@ -186,7 +186,7 @@ function Body({ categories, items }: { categories?: string[]; items?: any[] }) {
         ) : (
           // h-5 + h-40 (h45) = 11.25rem...
           <div className="flex flex-col items-center gap-5 mt-10 h-[calc(100vh-11.25rem)] overflow-hidden -mb-5 justify-center">
-            <p className="text-xl px-10 pb-22.5">{t("noItems")}</p>
+            <p className="text-xl px-10 pb-22.5">{t("noPosts")}</p>
           </div>
         )}
       </main>

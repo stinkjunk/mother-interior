@@ -21,8 +21,8 @@
   },
   "Navigation": {
     "home": "Home",
-    "items": "Items",
-    "allItems": "All items",
+    "posts": "Posts",
+    "allPosts": "All posts",
     "vinyls": "Vinyls",
     "vinylsShort": "Vinyls",
     "interior": "Interior",
@@ -39,7 +39,7 @@
     "heroImageAlt": "Mother Interior",
     "brandName": "Mother Interior"
   },
-  "ItemsPage": {
+  "PostsPage": {
     "categories": {
       "vinyls": "Vinyls",
       "vinylsShort": "Vinyls",
@@ -48,8 +48,8 @@
       "blogpostsShort": "Blog"
     },
 
-    "title": "Items | Mother Interior",
-    "h1": "Items",
+    "title": "Posts | Mother Interior",
+    "h1": "Posts",
     "filters": {
       "title": "Sort by",
       "date": {
@@ -61,12 +61,12 @@
         "priceLowHigh": "Price: Low to High",
         "priceHighLow": "Price: High to Low"
       },
-      "sold": "Show Sold Items"
+      "sold": "Show Sold Posts"
     },
     "card": {
       "soldLabel": "SOLD"
     },
-    "noItems": "No items. Please select a category."
+    "noPosts": "No posts. Please select a category."
   },
   "ItemPage": {
     "categories": {
@@ -121,7 +121,7 @@
       "purchasing": {
         "h2": "How do I purchase a listed item?",
         "description": "This site is not a webshop — it is primarily a gallery and a platform to showcase inventory and post updates via short blogposts.",
-        "callToAction": "<strong>To buy listed items</strong>, please visit us at <linkStoreLocation>Blågårdsgade 31c</linkStoreLocation>, open Tuesdays 12:00-18:00, or by appointment via <linkMiInsta>Instagram DM.</linkMiInsta>"
+        "callToAction": "<strong>To buy listed posts</strong>, please visit us at <linkStoreLocation>Blågårdsgade 31c</linkStoreLocation>, open Tuesdays 12:00-18:00, or by appointment via <linkMiInsta>Instagram DM.</linkMiInsta>"
       },
       "address": {
         "h2": "Address and opening times",

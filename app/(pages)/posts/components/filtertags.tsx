@@ -20,10 +20,10 @@ export default function FilterTags({
       : [...active, tag];
 
     if (next.length === 0) {
-      router.push("/items", { scroll: false });
+      router.push("/posts", { scroll: false });
     } else {
       const params = next.map((c) => `category=${c}`).join("&");
-      router.push(`/items?${params}`, { scroll: false });
+      router.push(`/posts?${params}`, { scroll: false });
     }
   }
 

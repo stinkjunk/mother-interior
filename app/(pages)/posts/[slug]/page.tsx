@@ -165,12 +165,12 @@ function Body({ item }: { item: any }) {
   const formattedPriceInt = priceInt.replace(/(\d{4})(?=\d)/g, "$1.");
 
   return (
-    <div className={`itemsPage itemPage ${pageClass} scrollablePage`}>
+    <div className={`postsPage itemPage ${pageClass} scrollablePage`}>
       <main className="pb-20">
         <div className="w-full pt-10 overflow-hidden">
           <p className="w-full flex font-label text-sm max-sm:text-xs px-5 sm:px-25">
             <Link
-              href={`/items?category=${isProduct ? contentType : "blogposts"}`}
+              href={`/posts?category=${isProduct ? contentType : "blogposts"}`}
               className="filterTag border px-2 mr-2 flex gap-1 items-center"
             >
               {contentType === "vinyls"

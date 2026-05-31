@@ -1,5 +1,5 @@
 // "use client";
-// http://localhost:3000/items?category=vinyls&category=interior&category=blogposts
+// http://localhost:3000/posts?category=vinyls&category=interior&category=blogposts
 
 // import { useSearchParams, usePathname } from "next/navigation";
 import CompositeLogo from "../compositelogo";

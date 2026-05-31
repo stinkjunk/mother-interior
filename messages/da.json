@@ -21,8 +21,8 @@
   },
   "Navigation": {
     "home": "Hjem",
-    "items": "Opslag",
-    "allItems": "Alle opslag",
+    "posts": "Opslag",
+    "allPosts": "Alle opslag",
     "vinyls": "Vinylplader",
     "vinylsShort": "Plader",
     "interior": "Interiør",
@@ -39,7 +39,7 @@
     "heroImageAlt": "Mother Interior",
     "brandName": "Mother Interior"
   },
-  "ItemsPage": {
+  "PostsPage": {
     "categories": {
       "vinyls": "Vinylplader",
       "vinylsShort": "Plader",
@@ -47,8 +47,8 @@
       "blogposts": "Blogindlæg",
       "blogpostsShort": "Blog"
     },
-    "title": "Oplæg | Mother Interior",
-    "h1": "Oplæg",
+    "title": "Opslag | Mother Interior",
+    "h1": "Opslag",
     "filters": {
       "title": "Sortér efter",
       "date": {
@@ -60,12 +60,12 @@
         "priceLowHigh": "Pris: Lav til høj",
         "priceHighLow": "Pris: Høj til lav"
       },
-      "sold": "Vis solgte varer"
+      "sold": "Vis solgte opslag"
     },
     "card": {
       "soldLabel": "SOLGT"
     },
-    "noItems": "Ingen oplæg. Vælg venligst en kategori."
+    "noPosts": "Ingen opslag. Vælg venligst en kategori."
   },
   "ItemPage": {
     "categories": {
@@ -120,7 +120,7 @@
       "purchasing": {
         "h2": "Hvordan køber jeg en vare?",
         "description": "Denne side er ikke en webshop — det er primært et galleri og en platform, hvor Mother Interior fremviser sit lager og poster opdateringer via korte blogindlæg.",
-        "callToAction": "<strong>For at købe de viste varer</strong>, besøg os på <linkStoreLocation>Blågårdsgade 31c</linkStoreLocation>, åbent tirsdage 12:00-18:00, eller efter aftale via <linkMiInsta>Instagram DM.</linkMiInsta>"
+        "callToAction": "<strong>For at købe de viste opslag</strong>, besøg os på <linkStoreLocation>Blågårdsgade 31c</linkStoreLocation>, åbent tirsdage 12:00-18:00, eller efter aftale via <linkMiInsta>Instagram DM.</linkMiInsta>"
       },
       "address": {
         "h2": "Adresse og åbningstider",

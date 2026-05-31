@@ -171,7 +171,7 @@ body:has(.menuToggle[data-state="open"]) {
     opacity: 1;
   }
 
-  .bBox.allItems {
+  .bBox.allPosts {
     display: none;
   }
 }
@@ -180,7 +180,7 @@ body:has(.menuToggle[data-state="open"]) {
   .bBox:hover,
   body:has(.dskHeroLink.Vinyls:hover) .bBox.Vinyls,
   body:has(.dskHeroLink.Interior:hover) .bBox.Interior,
-  body:has(.dskHeroLink.allItems:hover) .bBox {
+  body:has(.dskHeroLink.allPosts:hover) .bBox {
     opacity: 1;
   }
 }
@@ -204,8 +204,8 @@ body:has(.menuToggle[data-state="open"]) {
     stroke-width: 1;
   }
 
-  .dskLine.allItemsVinyls,
-  .dskLine.allItemsInterior {
+  .dskLine.allPostsVinyls,
+  .dskLine.allPostsInterior {
     display: none;
   }
 
@@ -234,8 +234,8 @@ body:has(.menuToggle[data-state="open"]) {
     opacity: 1;
   }
 
-  body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsVinyls,
-  body:has(.dskHeroLink.allItems:hover) .dskLine.allItemsInterior {
+  body:has(.dskHeroLink.allPosts:hover) .dskLine.allPostsVinyls,
+  body:has(.dskHeroLink.allPosts:hover) .dskLine.allPostsInterior {
     opacity: 1;
   }
 }
@@ -245,12 +245,12 @@ body:has(.menuToggle[data-state="open"]) {
 
 /*Nav menu links styling*/
 
-body:has(.itemsPage) .itemsLink,
-body:has(.itemsPage.interiorFilter) .interiorLink,
+body:has(.postsPage) .postsLink,
+body:has(.postsPage.interiorFilter) .interiorLink,
 body:has(.itemPage.interiorPage) .interiorLink,
-body:has(.itemsPage.vinylsFilter) .vinylsLink,
+body:has(.postsPage.vinylsFilter) .vinylsLink,
 body:has(.itemPage.vinylsPage) .vinylsLink,
-body:has(.itemsPage.blogFilter) .blogLink,
+body:has(.postsPage.blogFilter) .blogLink,
 body:has(.itemPage.blogPage) .blogLink,
 body:has(.aboutPage) .aboutLink {
   text-decoration: underline;
@@ -258,7 +258,7 @@ body:has(.aboutPage) .aboutLink {
 
 /*Nav active states*/
 /* Slot 2 */
-.navMenu .itemsLink {
+.navMenu .postsLink {
   --link-progress: clamp(0, (var(--t) - var(--slot)) / var(--slot), 1);
 }
 
@@ -492,7 +492,7 @@ body:has(.menuToggle[data-interacted="true"][data-state="closed"]) {
 }
 
 /* Slot 2 */
-.navMenu .itemsLink {
+.navMenu .postsLink {
   --link-progress: clamp(0, (var(--t) - var(--slot)) / var(--slot), 1);
 }
 

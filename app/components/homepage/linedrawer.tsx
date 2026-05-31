@@ -18,8 +18,8 @@ export default function LineDrawer() {
       const pairs: [string, string, string][] = [
         [".bBox.Vinyls", ".dskHeroLink.Vinyls", "Vinyls"],
         [".bBox.Interior", ".dskHeroLink.Interior", "Interior"],
-        [".bBox.Vinyls", ".dskHeroLink.allItems", "allItemsVinyls"],
-        [".bBox.Interior", ".dskHeroLink.allItems", "allItemsInterior"],
+        [".bBox.Vinyls", ".dskHeroLink.allPosts", "allPostsVinyls"],
+        [".bBox.Interior", ".dskHeroLink.allPosts", "allPostsInterior"],
       ];
 
       const isMobile =

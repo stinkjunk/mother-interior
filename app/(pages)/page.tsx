@@ -22,27 +22,27 @@ export default function Home() {
         <nav>
           <ul className="flex flex-col mt-5 gap-5 items-start font-semibold">
             <Link
-              href="/items?category=interior&category=vinyls&category=blogposts"
-              className="dskHeroLink allItems pr-2 sm:pr-5 max-sm:py-1 "
+              href="/posts?category=interior&category=vinyls&category=blogposts"
+              className="dskHeroLink allPosts pr-2 sm:pr-5 max-sm:py-1 "
             >
-              {nav("items")}
+              {nav("posts")}
             </Link>
             <Link
-              href="/items?category=interior"
+              href="/posts?category=interior"
               className="dskHeroLink Interior pr-2 sm:pr-5 max-sm:py-1 "
               id="interior-link"
             >
               {nav("interior")}
             </Link>
             <Link
-              href="/items?category=vinyls"
+              href="/posts?category=vinyls"
               className="dskHeroLink Vinyls pr-2 sm:pr-5 max-sm:py-1 "
               id="vinyls-link"
             >
               {nav("vinyls")}
             </Link>
             <Link
-              href="/items?category=blogposts"
+              href="/posts?category=blogposts"
               className="dskHeroLink pr-2 sm:pr-5 max-sm:py-1 "
             >
               {nav("blog")}
@@ -72,13 +72,13 @@ export default function Home() {
           }}
         >
           <Link
-            href="/items?category=interior"
+            href="/posts?category=interior"
             aria-labelledby="interior-link"
             className="absolute bBox Interior"
             style={{ top: "50%", left: "45%", width: "60%", height: "50%" }}
           />
           <Link
-            href="/items?category=vinyls"
+            href="/posts?category=vinyls"
             aria-labelledby="vinyls-link"
             className="absolute bBox Vinyls"
             style={{ top: "30%", left: "25%", width: "35%", height: "30%" }}

@@ -16,7 +16,7 @@ export default function NavMenu() {
         </li>
         <li className="blogLink overflow-hidden max-sm:flex-1 max-sm:bg-blogposts">
           <Link
-            href="/items?category=blogposts"
+            href="/posts?category=blogposts"
             className="flex h-full w-full items-center pl-7 font-display text-8xl text-on-blogposts"
           >
             {t("blog")}
@@ -24,7 +24,7 @@ export default function NavMenu() {
         </li>
         <li className="vinylsLink overflow-hidden max-sm:flex-1 max-sm:bg-vinyls">
           <Link
-            href="/items?category=vinyls"
+            href="/posts?category=vinyls"
             className="flex h-full w-full items-center pl-7 font-display text-8xl text-on-vinyls"
           >
             {t("vinylsShort")}
@@ -32,18 +32,18 @@ export default function NavMenu() {
         </li>
         <li className="interiorLink overflow-hidden max-sm:flex-1 max-sm:bg-interior">
           <Link
-            href="/items?category=interior"
+            href="/posts?category=interior"
             className="flex h-full w-full items-center pl-7 font-display text-8xl text-on-interior"
           >
             {t("interior")}
           </Link>
         </li>
-        <li className="itemsLink desktopHandler overflow-hidden max-sm:flex-1 max-sm:bg-items">
+        <li className="postsLink desktopHandler overflow-hidden max-sm:flex-1 max-sm:bg-items">
           <Link
-            href="/items?category=interior&category=vinyls&category=blogposts"
+            href="/posts?category=interior&category=vinyls&category=blogposts"
             className="max-sm:flex max-sm:h-full max-sm:w-full max-sm:items-center max-sm:pl-7 max-sm:font-display max-sm:text-8xl max-sm:text-on-items"
           >
-            {t("items")}
+            {t("posts")}
           </Link>
         </li>
       </ul>
