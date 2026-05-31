@@ -256,7 +256,7 @@ function Body({ item }: { item: any }) {
           </div>
           <div className="max-sm:px-5 max-md:px-15 md:px-0 md:mr-25 max-md:mt-10 col-start-2 "></div>
         </div>
-        <div className="px-5 sm:px-15 md:px-25 mt-10 textClass">
+        <div className="px-10 md:px-35 lg:px-40 mt-10 md:mt-20 textClass">
           {item.description &&
             documentToReactComponents(item.description, {
               renderNode: {
