@@ -25,16 +25,18 @@ export async function fetchTrackMeta(url: string): Promise<TrackMeta> {
     .replace(/-large|-small|-medium|-crop|-t67x67|-badge|-tiny/, "-t500x500")
     .replace(/\?.*$/, "");
 
+  const title = (oembed.title as string).replace(/\s+by\s+.+$/i, "");
+
   console.log({
     url,
-    title: oembed.title,
+    title: title,
     artist: oembed.author_name,
     artwork,
   });
 
   return {
     url,
-    title: oembed.title,
+    title: title,
     artist: oembed.author_name,
     artwork,
     durationMs: 0,
