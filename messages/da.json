@@ -11,7 +11,9 @@
       "otherLocaleAriaLabel": "English"
     },
     "Player": {
-      "openWidgetAriaLabel": "Åbn SoundCloud-widget"
+      "openWidgetAriaLabel": "Åbn SoundCloud-widget",
+      "openTrackListLabel": "Se trackliste",
+      "closeTrackListLabel": "Skjul trackliste"
     }
   },
   "NotFound": {

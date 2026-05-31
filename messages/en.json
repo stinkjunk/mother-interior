@@ -11,7 +11,9 @@
       "otherLocaleAriaLabel": "Dansk"
     },
     "Player": {
-      "openWidgetAriaLabel": "Open SoundCloud Widget"
+      "openWidgetAriaLabel": "Open SoundCloud Widget",
+      "openTrackListLabel": "See tracklist",
+      "closeTrackListLabel": "Hide tracklist"
     }
   },
   "NotFound": {
