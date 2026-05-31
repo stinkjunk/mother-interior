@@ -21,11 +21,12 @@ export async function fetchTrackMeta(url: string): Promise<TrackMeta> {
     { next: { revalidate: 3600 } }
   ).then((r) => r.json());
 
-  const artwork = (oembed.thumbnail_url as string)
-    .replace(/-large|-small|-medium|-crop|-t67x67|-badge|-tiny/, "-t500x500")
-    .replace(/\?.*$/, "");
+  const thumbnailWithoutParams = (oembed.thumbnail_url as string).split("?")[0];
+  const thumbnailParts = thumbnailWithoutParams.split("-");
+  thumbnailParts[thumbnailParts.length - 1] = "t500x500";
+  const artwork = thumbnailParts.join("-");
 
-  const title = (oembed.title as string).replace(/\s+by\s+.+$/i, "");
+  const title = (oembed.title as string).split(" by ")[0].trim();
 
   console.log({
     url,
