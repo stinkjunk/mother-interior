@@ -53,10 +53,15 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
     controls.load(tracks[next].url);
   };
 
-  // Format ms -> m:ss
+  // format
   const fmt = (ms: number) => {
     const s = Math.floor(ms / 1000);
-    return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const sec = s % 60;
+    return h > 0
+      ? `${h}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`
+      : `${m}:${String(sec).padStart(2, "0")}`;
   };
 
   const progress =
@@ -83,7 +88,7 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
           ref={ref}
           url={track.url}
           hidden
-          autoPlay={false}
+          autoPlay={state.isPlaying}
           {...props}
         />
       )}

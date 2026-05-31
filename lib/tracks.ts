@@ -25,12 +25,12 @@ export async function fetchTrackMeta(url: string): Promise<TrackMeta> {
 
   const title = (oembed.title as string).split(" by ")[0].trim();
 
-  console.log({
-    url,
-    title: title,
-    artist: oembed.author_name,
-    artwork: oembed.thumbnail_url,
-  });
+  //   console.log({
+  //     url,
+  //     title: title,
+  //     artist: oembed.author_name,
+  //     artwork: oembed.thumbnail_url,
+  //   });
 
   return {
     url,
