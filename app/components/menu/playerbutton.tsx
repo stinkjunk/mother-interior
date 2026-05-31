@@ -98,14 +98,7 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
               {/* Artwork + track info */}
               <div className="flex gap-3 items-center">
                 {track.artwork && (
-                  // <Image
-                  //   src={track.artwork}
-                  //   alt={track.title}
-                  //   width={56}
-                  //   height={56}
-                  //   className="rounded object-cover shrink-0"
-                  // />
-                  <div className="h-30 aspect-square mask-[url('/media/scplayer/vinyl-mask.svg')] mask-size-[100%_100%] relative">
+                  <div className="h-20 aspect-square mask-[url('/media/scplayer/vinyl-mask.svg')] mask-size-[100%_100%] relative">
                     <Image
                       src="/media/scplayer/vinyl-bg.webp"
                       alt=""
@@ -118,8 +111,8 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
                       <Image
                         src={track.artwork}
                         alt={track.title}
-                        width={50}
-                        height={50}
+                        width={40}
+                        height={40}
                         className="rounded-full"
                       />
                     </div>
@@ -137,7 +130,7 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 <span className="tabular-nums">{fmt(state.positionMs)}</span>
                 <div
-                  className="flex-1 h-1 bg-border rounded-full cursor-pointer relative"
+                  className="flex-1 h-1 bg-foreground/50 rounded-full cursor-pointer relative"
                   onClick={(e) => {
                     const rect = e.currentTarget.getBoundingClientRect();
                     const pct = (e.clientX - rect.left) / rect.width;
@@ -160,20 +153,20 @@ export default function PlayerButton({ tracks }: { tracks: TrackMeta[] }) {
                   onClick={() => goTo(currentIndex - 1)}
                   className="cursor-pointer"
                 >
-                  <FaBackward className="altColor w-4 h-4" />
+                  <FaBackward className="text-foreground w-4 h-4" />
                 </button>
                 <button onClick={controls.toggle} className="cursor-pointer">
                   {state.isPlaying ? (
-                    <FaPause className="altColor w-5 h-5" />
+                    <FaPause className="text-foreground w-5 h-5" />
                   ) : (
-                    <FaPlay className="altColor w-5 h-5" />
+                    <FaPlay className="text-foreground w-5 h-5" />
                   )}
                 </button>
                 <button
                   onClick={() => goTo(currentIndex + 1)}
                   className="cursor-pointer"
                 >
-                  <FaForward className="altColor w-4 h-4" />
+                  <FaForward className="text-foreground w-4 h-4" />
                 </button>
               </div>
             </motion.div>
