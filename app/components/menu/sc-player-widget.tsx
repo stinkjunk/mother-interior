@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import {
   FaPlay,
   FaPause,
@@ -44,6 +45,7 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
   const toggleWidget = () => {
     if (!isSCMounted) setIsSCMounted(true);
     setIsWidgetOpen((prev) => !prev);
+    console.log(tracks);
   };
 
   const goTo = (index: number) => {
@@ -119,7 +121,13 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
                     </div>
                   )}
                   <div className="flex flex-col overflow-hidden">
-                    <span className="font-medium truncate">{track.title}</span>
+                    <Link
+                      href={track.url}
+                      target="_blank"
+                      className="font-medium truncate underline"
+                    >
+                      {track.title}
+                    </Link>
                     <span className="text-xs text-muted-foreground truncate font-label">
                       {track.artist}
                     </span>
