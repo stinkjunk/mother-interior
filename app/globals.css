@@ -651,6 +651,18 @@ body:has(.frontPage) .altColor {
   }
 }
 
+/* ============================================================
+   SOUNDCLOUD PLAYER WIDGET
+   ============================================================ */
+
+.spinningVinyl {
+  animation: spin 4s linear infinite;
+}
+
+.spinningVinyl.paused {
+  animation-play-state: paused;
+}
+
 @media (max-width: 640px) {
   body:has(.frontPage) .langMenuPopupItem {
     background-color: var(--foreground);

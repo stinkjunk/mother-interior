@@ -19,26 +19,11 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [isTrackListOpen, setIsTrackListOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [spinMs, setSpinMs] = useState(0);
   const widgetRef = useRef<HTMLButtonElement | null>(null);
 
   const { ref, state, props, controls } = useSCWidget();
 
   const track = tracks[currentIndex];
-
-  useEffect(() => {
-    if (!state.isPlaying) {
-      return;
-    }
-
-    const interval = window.setInterval(() => {
-      setSpinMs((ms) => ms + 16 / 25);
-    }, 16);
-
-    return () => {
-      window.clearInterval(interval);
-    };
-  }, [state.isPlaying]);
 
   useEffect(() => {
     if (!isWidgetOpen) {
@@ -112,8 +97,7 @@ export default function SCPlayerWidget({ tracks }: { tracks: TrackMeta[] }) {
                 <div className="flex gap-3 items-center">
                   {track.artwork && (
                     <div
-                      className={`h-20 aspect-square mask-[url('/media/scplayer/vinyl-mask.svg')] mask-size-[100%_100%] transition-all relative`}
-                      style={{ transform: `rotate(${spinMs}deg)` }}
+                      className={`h-20 aspect-square mask-[url('/media/scplayer/vinyl-mask.svg')] mask-size-[100%_100%] relative spinningVinyl ${state.isPlaying ? "" : "paused"}`}
                     >
                       <Image
                         src="/media/scplayer/vinyl-bg.webp"
